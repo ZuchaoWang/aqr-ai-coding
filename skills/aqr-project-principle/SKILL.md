@@ -56,7 +56,15 @@ Therefore:
 
 Every document should remain practical to review.
 
-## 5. Keep Solution Simple
+## 5. Avoid Dead Ends
+
+Do not persist in a direction that is unlikely to produce progress.
+
+- Do not put significant effort to reverse-engineer long minified dependency code, or huge dependency repo, unless explicitly asked to.
+- Use the appropriate information source first: official documentation for unfamiliar dependencies, and online discussions or examples for difficult programming problems.
+- After three significant unsuccessful attempts, simplify or relax the task, or skip it and move to the next job. Report the attempts, the skipped work, and the remaining limitation.
+
+## 6. Keep Solution Simple
 
 Prefer the simplest complete solution.
 
@@ -68,7 +76,7 @@ Avoid:
 
 At the same time, do not artificially limit the scope of changes. Make the smallest set of changes that completely and cleanly solves the intended problem.
 
-## 6. Verify Before Completion
+## 7. Verify Before Completion
 
 Before considering work complete:
 
