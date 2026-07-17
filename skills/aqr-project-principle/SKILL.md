@@ -60,7 +60,7 @@ Every document should remain practical to review.
 
 Do not persist in a direction that is unlikely to produce progress.
 
-- Do not put significant effort to reverse-engineer long minified dependency code, or huge dependency repo, unless explicitly asked to.
+- Do not put significant effort into reverse-engineering long minified dependency code or a large dependency repo unless explicitly asked to.
 - Use the appropriate information source first: official documentation for unfamiliar dependencies, and online discussions or examples for difficult programming problems.
 - After three significant unsuccessful attempts, simplify or relax the task, or skip it and move to the next job. Report the attempts, the skipped work, and the remaining limitation.
 
