@@ -28,10 +28,7 @@ docs/
     tech_stack.md         # languages, frameworks, libraries, and rationale
 
   uidesign/               # project-level UI design; omit for non-frontend projects
-    screens.md            # screens, panels, navigation, URL scheme
-    interactions.md       # per-screen behavior and input-to-result flow
-    visual_language.md    # palette, typography, shared component styling
-    visualization.md      # chart encoding; omit if no data visualization
+    {{feature}}/          # one feature per folder, can contain markdown, images, and other assets
 
   research/
     background.md         # background knowledge for concepts and motivations
