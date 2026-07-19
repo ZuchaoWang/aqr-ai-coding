@@ -1,6 +1,6 @@
 # Frontend design content criteria
 
-Criteria for frontend design docs — when the design describes a frontend (a whole app or a single module). For a frontend, decomposition is the component tree, and the inter-component interface is carried by state and interactions — not prop wiring, which is an implementation detail.
+Criteria for frontend design docs — when the design describes a frontend (a whole app or a single module).
 
 ## Purpose
 

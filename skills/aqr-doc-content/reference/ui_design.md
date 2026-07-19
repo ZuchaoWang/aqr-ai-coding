@@ -1,6 +1,6 @@
 # UI design content criteria
 
-Criteria for the UI conceptual design doc. Apply to frontend projects (web app, dashboard, visualization). This is the product-level UI requirement: what the UI must do for the user — pages, flows, behaviors.
+Criteria for the UI conceptual design doc. Apply to frontend projects (web app, dashboard, visualization).
 
 ## Purpose
 
