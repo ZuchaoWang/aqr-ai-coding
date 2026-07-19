@@ -15,6 +15,7 @@ docs/
     usage_scenarios.md    # concrete user-facing scenarios the project must support
     roadmap.md            # the sequence of development objectives: order, target dates, owners
     concepts.md           # active domain vocabulary: concepts the project uses, with definitions
+    ui_design.md          # UI conceptual design: screens, flows, behaviors; omit for non-frontend projects
 
   client_docs/            # verbatim requirements and feedback from the client
     {{date}}/             # snapshot of client materials received on that date
@@ -27,11 +28,7 @@ docs/
     deploy.md             # deployment topology, runtime environment, ops notes
     tech_stack.md         # languages, frameworks, libraries, and rationale
 
-  ui_design.md            # UI conceptual design: screens, flows, behaviors; omit for non-frontend projects
-  style/                  # visual style guide; omit for non-frontend projects
-    palette.md            # colors and their roles
-    typography.md         # typefaces, roles, key sizes
-    components.md         # shared component styling conventions
+  styles/                 # visual style guide, can hold any files; omit for non-frontend projects
 
   research/
     background.md         # background knowledge for concepts and motivations

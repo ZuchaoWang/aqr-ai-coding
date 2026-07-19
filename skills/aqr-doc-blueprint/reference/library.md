@@ -14,7 +14,6 @@ docs/
     mission.md            # what the library does, who depends on it, what it replaces
     roadmap.md            # the sequence of development objectives: order, target dates, owners
     concepts.md           # active vocabulary: concepts and API terms the library exposes
-    api.md                # public API: reference and canonical usage examples
     api_design.md         # public API design: why the surface is shaped this way, stability and versioning decisions
 
   research/
