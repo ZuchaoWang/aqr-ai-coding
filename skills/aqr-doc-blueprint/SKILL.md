@@ -17,56 +17,14 @@ README.md                # what the project is and how to start; points at docs/
 CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
 ```
 
-Top-level repo orientation — what each top-level directory is for — belongs here in CLAUDE.md/README, not in a separate layout doc. Stack-specific root files (version pins, manifests, editor and lint config) are per-stack conventions, outside this layout.
+## Layout by repo type
 
-## Recommended docs structure
+`docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The recommended tree under it depends on what kind of repo you are documenting. Use the matching reference to bootstrap a new docs tree or to audit an existing one for drift. The reference is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead.
 
-`docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a reference: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead.
+| Repo type | What it is | Reference |
+| - | - | - |
+| System code repo | A deployed system with architecture, deployment, and modules | `reference/system.md` |
+| Library code repo | Code published for other repos to depend on; the public API surface is the primary artifact | `reference/library.md` |
+| Noncode repo | Docs are the repo's primary output — proposals, decisions, research; no code to describe | `reference/noncode.md` |
 
-```
-docs/
-  index.md                # documentation map: one section per top-level docs/ subdirectory
-
-  project/
-    mission.md            # what the project is for; problem statement and scope
-    usage_scenarios.md    # concrete user-facing scenarios the project must support
-    roadmap.md            # the sequence of development objectives: order, target dates, owners
-    concepts.md           # active domain vocabulary: concepts the project uses, with definitions
-
-  client_docs/            # verbatim requirements and feedback from the client
-    {{date}}/             # snapshot of client materials received on that date
-
-  migration/              # notes for migrating from a prior project
-    {{old_project_name}}.md  # what carried over and what changed from the prior project
-
-  architecture/
-    design.md             # system-level design: public interface (incl. external API), components, data flow, key decisions
-    deploy.md             # deployment topology, runtime environment, ops notes
-    tech_stack.md         # languages, frameworks, libraries, and rationale
-
-  research/
-    background.md         # background knowledge for concepts and motivations
-    related_works.md      # existing works related
-    brainstorm.md         # discussion of possible designs
-
-  implementation/
-    # One design doc per module, named after the module. The rule recurses at every
-    # level: a unit (the implementation root, a layer, or a module) that is a single
-    # module is one file; a unit with several modules is a folder.
-
-    # Multi-stack project — one entry per stack (e.g. frontend, backend):
-    {{layer}}.md              # a layer that is a single module
-    {{layer}}/                # a layer with several modules
-      index.md                #   layer design: its modules as black boxes
-      modules/{{module}}.md   #   one per module; recurses identically
-
-    # Single-stack project — same rule, no layer level:
-    {{module}}.md             # the implementation, if it is a single module
-    index.md                  # the implementation, if it has several modules
-    modules/{{module}}.md     #   one per module; recurses identically
-
-  data/
-    {{dataset}}.md        # one doc per dataset
-```
-
-Not every project needs every file; add what applies.
+Not every project needs every file in its reference tree; add what applies.
