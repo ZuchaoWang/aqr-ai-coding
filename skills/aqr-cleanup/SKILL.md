@@ -1,6 +1,6 @@
 ---
 name: aqr-cleanup
-description: Use when manually invoked to clean up an existing project — checks code/doc consistency, refactors code problems, and verifies the refactor does not break behavior.
+description: Use when manually invoked to clean up an existing project — checks code/doc consistency, addresses code problems and quality risks (bugs, performance, security), and verifies fixes do not break behavior.
 disable-model-invocation: true
 ---
 
@@ -8,12 +8,13 @@ disable-model-invocation: true
 
 Manual-only cleanup pass over an existing project. Do not auto-invoke; run only when explicitly named.
 
-Two kinds of issues are in scope, found by reading docs and code together:
+Issues in scope, found by reading docs and code together:
 
 - **Code/doc inconsistencies** — module responsibilities, interface contracts, file paths, names, signatures, documented vs. actual behavior.
-- **Code problems** — duplication that can be extracted, unclear names, dead code and unreachable branches, unnecessary complexity with a simpler equivalent, necessary complexity that can be decomposed into separate functions or classes, inconsistencies with surrounding code.
+- **Code problems** — duplication that can be extracted, unclear names, dead code and unreachable branches, unnecessary complexity with a simpler equivalent, necessary complexity that can be decomposed into separate functions or classes, non-idiomatic code or best-practice violations, inconsistencies with surrounding code.
+- **Quality risks** — likely bugs and unhandled edge cases, performance hotspots, security exposures.
 
-After every non-trivial fix, confirm behavior is unchanged: run the project's tests if available, otherwise exercise the affected paths by hand. Stop and report if a fix cannot be verified.
+After every non-trivial fix, verify it: run the project's tests if available, otherwise exercise the affected paths by hand. Refactors and consistency fixes should leave behavior unchanged; bug, performance, or security fixes should produce the intended behavior. Stop and report if a fix cannot be verified.
 
 ## Steps
 
@@ -21,7 +22,7 @@ The cleanup involves three phases, in order:
 
 ### 1. Investigate and Fix the Obvious
 
-Catalog issues from both categories above. Fix the obvious ones immediately — typos, stale references, simple renames, isolated dead code, mechanical refactors. Where doc and code disagree, fix the side that does not match the intended design; consult git history if the intent is unclear. Smallest change that cleanly fixes each. No speculative refactors. Verify each fix per the rule above.
+Catalog issues from all categories above. Fix the obvious ones immediately — where the correct fix is clear and low-risk (typos, stale references, simple renames, isolated dead code, mechanical refactors, clear bug fixes such as a missing null check). Where doc and code disagree, fix the side that does not match the intended design; consult git history if the intent is unclear. Smallest change that cleanly fixes each. No speculative refactors. Verify each fix per the rule above.
 
 Defer anything ambiguous to phase 2.
 
