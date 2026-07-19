@@ -11,10 +11,14 @@ All skills in this repo are **doc only**. No skill ships executable code. Their 
 ## Layout
 
 ```
-skills/<skill-name>/
-  SKILL.md              # skill definition: YAML frontmatter + body
-  reference/            # explanatory docs loaded on demand
-agents/<agent-name>.md  # subagent definition: YAML frontmatter + body
+skills/
+  general/<skill-name>/       # universal skills, typically installed at user scope
+    SKILL.md                  # skill definition: YAML frontmatter + body
+    reference/                # explanatory docs loaded on demand
+  opinionated/<skill-name>/   # taste-based skills, typically installed at project scope
+    SKILL.md
+    reference/
+agents/<agent-name>.md        # subagent definition: YAML frontmatter + body
 ```
 
 Each `SKILL.md` starts with YAML frontmatter:
@@ -44,13 +48,13 @@ permission:
 
 ## Skills currently in this repo
 
-**Universal** — engineering and working floor, not taste:
+**General** — engineering and working floor, not taste. Typically installed at user scope:
 
 - `aqr-code-criteria` — Universal code quality principles that apply regardless of language or stack. Applied when writing or reviewing code; criteria are not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
 - `aqr-cleanup` — Manual-only cleanup pass over an existing project: checks code/doc consistency, refactors code problems, verifies the refactor does not break behavior. Invoked by name only.
 
-**Opinionated** — taste-based choices:
+**Opinionated** — taste-based choices. Typically installed at project scope:
 
 - `aqr-doc-blueprint` — Reference for the recommended docs layout: the `docs/` tree plus the root entry points that route into it. Describes what docs a project should have and where; not how to write them. Does not mention issues or workflow.
 - `aqr-doc-content` — Content criteria for every standard doc type in the blueprint layout (design, project, research, dataset). Applied when writing or reviewing docs; criteria are not copied into the project.
@@ -90,11 +94,12 @@ When editing an agent:
 
 ## Installing skills and agents
 
-These are opt-in. Install them **per project** — not at user scope — only in projects that want them. For Claude Code, copy or symlink each item into the project's corresponding folder:
+These are opt-in. General skills are typically installed at user scope; opinionated skills at project scope, only in projects that want them. For Claude Code, copy or symlink each item:
 
 ```
-<project>/.claude/skills/<skill-name>/
-<project>/.claude/agents/<agent-name>.md
+~/.claude/skills/<skill-name>/               # general skills, user scope
+<project>/.claude/skills/<skill-name>/        # opinionated skills, project scope
+<project>/.claude/agents/<agent-name>.md      # agents, project scope
 ```
 
 Copy the directory or file verbatim. The host agent reads the frontmatter to decide when to invoke; nothing else needs configuration.
@@ -119,6 +124,6 @@ There is no test suite. Verification is by inspection:
 
 - `find skills agents -type f | sort` — check the file tree is intact.
 - `grep -rn "^Status:" skills/ agents/` — should return nothing. Markdown files start with a `#` title, not a `Status:` header.
-- `grep -n "^---$" skills/*/SKILL.md` — confirm every SKILL.md has YAML frontmatter (two `---` lines).
+- `grep -n "^---$" skills/*/*/SKILL.md` — confirm every SKILL.md has YAML frontmatter (two `---` lines).
 - `grep -n "^---$" agents/*.md` — confirm every agent file has YAML frontmatter (two `---` lines).
 - Read each `SKILL.md` and agent file end-to-end before considering it ready.
