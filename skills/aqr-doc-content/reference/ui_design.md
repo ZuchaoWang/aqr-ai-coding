@@ -1,8 +1,6 @@
 # UI design content criteria
 
-Criteria for the project-level UI design docs in `uidesign/` — apply to frontend projects (web app, dashboard, visualization). These are product decisions: what the UI should be, not how the components are built. The component build itself is a normal frontend module covered by a design doc in `implementation/`.
-
-State anything shared across screens once, in the matching file.
+Criteria for the UI conceptual design doc — `ui_design.md`. Apply to frontend projects (web app, dashboard, visualization). This is the product-level UI requirement: what the UI must do for the user — screens, flows, behaviors. The visual style (palette, typography, components) lives separately in `style/`; the component build itself is a normal frontend module covered by a code design doc.
 
 ## 1. Screens
 
@@ -29,22 +27,9 @@ Content — per screen or panel:
 
 Constraints: describe observable behavior, not implementation.
 
-## 3. Visual language
+## 3. Visualization encoding
 
-Purpose: a reviewer reads it and understands the shared visual style the UI is built in.
-
-Content — state once, when shared across screens:
-
-1. **Target viewport** — fixed size or responsive breakpoints.
-2. **Palette** — each color and its role.
-3. **Typography** — typefaces, roles, key sizes.
-4. **Shared component styling** — conventions shared across components.
-
-Constraints: note a screen only where it overrides the shared style.
-
-## 4. Visualization encoding
-
-Purpose: a reviewer reads it and understands, per chart, how data is encoded visually and why. Omit this file if the project has no data visualization.
+Purpose: a reviewer reads it and understands, per chart, how data is encoded visually and why. Omit this section if the project has no data visualization.
 
 Content — for each chart:
 

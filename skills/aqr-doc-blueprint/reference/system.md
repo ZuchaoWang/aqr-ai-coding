@@ -27,8 +27,11 @@ docs/
     deploy.md             # deployment topology, runtime environment, ops notes
     tech_stack.md         # languages, frameworks, libraries, and rationale
 
-  uidesign/               # project-level UI design; omit for non-frontend projects
-    {{feature}}/          # one feature per folder, can contain markdown, images, and other assets
+  ui_design.md            # UI conceptual design: screens, flows, behaviors; omit for non-frontend projects
+  style/                  # visual style guide; omit for non-frontend projects
+    palette.md            # colors and their roles
+    typography.md         # typefaces, roles, key sizes
+    components.md         # shared component styling conventions
 
   research/
     background.md         # background knowledge for concepts and motivations

@@ -11,8 +11,7 @@ Sections:
 1. **Goal** — one paragraph: what this project does and for whom. For a library, also state what consumers can accomplish with it that they could not (or could not as easily) before. For a noncode repo, state what knowledge, decisions, or proposals it holds and what a reader can find here that they could not find elsewhere.
 2. **Problem statement** — what is broken or missing today, concretely. Reference prior work, incidents, or external context. For a library, reference the prior libraries, manual approaches, or workarounds it replaces. For a noncode repo, reference what was scattered, missing, or unrecoverable before.
 3. **Scope** — in scope and out of scope for the project as a whole. Revise when scope shifts; ambiguous scope creates drift. For a noncode repo, also name where out-of-scope topics belong (another repo, a folder, etc.).
-4. **Audience (noncode)** — for a noncode repo, name the kinds of reader, what they are assumed to know, and what they are looking for; this shapes how docs are structured. State concrete personas over generic "anyone interested". Omit for code repos, where the audience is implicit (contributors and users).
-5. **Stakeholders** — who maintains the project, who depends on or reads it, who decides priorities.
+4. **Stakeholders** — who maintains the project, who depends on or reads it, who decides priorities.
 
 Constraints: target ~1 page. Scope must be explicit.
 
@@ -47,12 +46,6 @@ Sections (system and library repos):
 4. **Later** — milestones beyond Next, stated at a coarser grain.
 5. **Decisions log** — key decisions that shaped the roadmap, each with a one-line rationale and date. Example: "2026-03: deferred multi-tenant isolation to v2 — single-tenant ships first to meet the pilot deadline; revisit when a second tenant is signed."
 
-For a noncode repo, swap the milestone sections for:
-
-1. **Open decisions** — unresolved questions the repo is meant to settle, with the trigger that would unblock each. Say "deferred" with a trigger condition rather than "TBD".
-2. **Pending docs** — docs known to be missing, in intended order.
-3. **Decisions log** — key decisions that shaped the repo's scope or direction, each with a one-line rationale and date.
-
 Constraints: reference work by name rather than re-describing it. For a date-driven project, swap Now/Next/Later for dated milestones (name, target date, what is included). Keep it current — a stale roadmap misleads more than no roadmap.
 
 ## 4. Tech stack
@@ -82,6 +75,8 @@ This is the active vocabulary, not a dictionary — list only what a reader need
 ## 6. API reference (libraries)
 
 Purpose: a consumer reads it and can use the library correctly without reading code or design docs. State the public surface as a reference, not as a design — what each symbol is and how to call it, not why it was designed that way.
+
+The design counterpart — why the API is shaped this way, stability and versioning decisions — lives in `api_design.md` alongside this file; its content criteria are the library overlay in `reference/code-design.md`.
 
 Content:
 
