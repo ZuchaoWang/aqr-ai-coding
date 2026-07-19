@@ -14,7 +14,8 @@ Defines **what good content looks like** for common documentation types. When wr
 
 | Doc type | What it covers | Reference |
 | - | - | - |
-| System design doc | Module decomposition, public interface and API contract, data and control flow, data model and state, key algorithm, decisions, testing approach, with a UI/frontend overlay | `reference/system_design.md` |
+| System design doc | Module decomposition, public interface and API contract, data and control flow, data model and state, key algorithm, decisions, testing approach | `reference/system_design.md` |
+| Frontend design doc | Component tree, state list, interactions — for designs describing a frontend | `reference/frontend_design.md` |
 | UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/ui_design.md` |
 
 ### Project docs
