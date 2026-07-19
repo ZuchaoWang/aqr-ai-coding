@@ -1,6 +1,6 @@
-# aqr-agent-skills
+# aqr-ai-coding
 
-Custom AI-coding skills — two are a universal engineering and working floor, three are opinionated taste. Source repository — install by copying or symlinking a skill directory into a project's `.claude/skills/` folder, then point the agent at it from that project's `CLAUDE.md`. Install per project only where wanted, not at user scope.
+Custom AI-coding skills and agents — two universal skills (an engineering and working floor), three opinionated skills (doc and style taste), one manual-only cleanup skill, and one read-only visual inspection subagent. Source repository — install by copying or symlinking the relevant directory into a project's `.claude/skills/` or `.claude/agents/` folder, then point the agent at it from that project's `CLAUDE.md`. Install per project only where wanted, not at user scope.
 
 ## Skills
 
@@ -8,6 +8,7 @@ Custom AI-coding skills — two are a universal engineering and working floor, t
 
 - `aqr-code-criteria` — Universal code quality principles that apply regardless of language or stack.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow.
+- `aqr-cleanup` — Manual-only cleanup pass: checks code/doc consistency, refactors code problems, verifies the refactor does not break behavior.
 
 **Opinionated** — taste-based choices a project opts into:
 
@@ -15,7 +16,13 @@ Custom AI-coding skills — two are a universal engineering and working floor, t
 - `aqr-doc-content` — Content criteria for common documentation types (design, project, research, dataset).
 - `aqr-style-rules` — Opinionated, stack-specific style defaults for code, tests, notebooks, presentations, and doc formatting.
 
-All five are auto-invocable and doc only — no executable code.
+The five auto-invocable skills are doc only — no executable code. `aqr-cleanup` is manual-only (invoked by name).
+
+## Agents
+
+Read-only subagents that perform focused inspection tasks. Installed into a project's `.claude/agents/` folder; invoked by the host agent when their `description` matches the task.
+
+- `visual-inspection` — Visually verifies completed frontend work using browser screenshots at desktop and mobile viewport sizes. Read-only; returns PASS or FAIL with per-issue detail.
 
 ## Layout
 
@@ -23,6 +30,7 @@ All five are auto-invocable and doc only — no executable code.
 skills/<skill-name>/
   SKILL.md              # skill definition
   reference/            # explanatory docs loaded on demand
+agents/<agent-name>.md  # subagent definition
 ```
 
 See `CLAUDE.md` for editing and installation details.
