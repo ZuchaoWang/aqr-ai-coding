@@ -67,14 +67,3 @@ The domain concepts the project actively uses. Concepts considered but not adopt
 - **Used here** — where it shows up (a component, data model, algorithm, or user-facing term). If it has no use site, it belongs in background, not here.
 
 This is the active vocabulary, not a dictionary — list only what a reader needs to understand the rest of the docs.
-
-## 6. User interface design
-
-Purpose: when the project has a UI (web app, dashboard, visualization), state at the project level what the UI should be — a product decision, not implementation. The component build itself is a normal frontend module covered by a design doc.
-
-Content — state anything shared across screens once:
-
-1. **Screen structure and navigation** — the screens (pages / views) and panels the UI is built from; the URL scheme (routes, query params, redirects, defaults); navigation between screens; shared panels or chrome. State each screen or panel's role, not its layout code.
-2. **Interaction and behavior** — per screen or panel: what it shows, the user inputs and their effect, how state changes, and the input-to-result flow (e.g. an input cascade). Describe observable behavior, not implementation.
-3. **Visual language** — once, when shared: target viewport (fixed size or responsive breakpoints), palette (each color's role), typography (typefaces, roles, key sizes), shared component styling. Note a screen only where it overrides the shared style.
-4. **Visualization encoding** — for any chart: field types and the chart chosen, the field-to-channel mapping (x, y, color, size, …) and why, axes/scales/legends/labels, interaction (hover, filter, zoom, drill), and performance for large datasets.

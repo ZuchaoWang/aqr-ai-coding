@@ -27,6 +27,12 @@ docs/
     deploy.md             # deployment topology, runtime environment, ops notes
     tech_stack.md         # languages, frameworks, libraries, and rationale
 
+  uidesign/               # project-level UI design; omit for non-frontend projects
+    screens.md            # screens, panels, navigation, URL scheme
+    interactions.md       # per-screen behavior and input-to-result flow
+    visual_language.md    # palette, typography, shared component styling
+    visualization.md      # chart encoding; omit if no data visualization
+
   research/
     background.md         # background knowledge for concepts and motivations
     related_works.md      # existing works related
