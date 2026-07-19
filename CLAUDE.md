@@ -71,7 +71,7 @@ The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-do
 ## Conventions inside skill and agent files
 
 - Markdown files start with a top-level heading (`# Title`).
-- Reference docs use section headings and `-` bullets. No `---` horizontal separators.
+- Reference docs use numbered headings and `-` bullets. No `---` horizontal separators.
 - `SKILL.md` files use YAML frontmatter — they are skill definitions, distinct from project docs.
 - Agent files use the subagent frontmatter shown above.
 
@@ -80,7 +80,7 @@ The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-do
 When editing a skill:
 
 1. Read the existing `SKILL.md` first to understand the skill's scope and invocation policy.
-2. Match the conventions of existing files in the same skill (section headings, `-` bullets, no `---`, no `Status:` header).
+2. Match the conventions of existing files in the same skill (numbered headings, `-` bullets, no `---`, no `Status:` header).
 3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
 4. If a reference change affects invocation behavior, update `SKILL.md` accordingly.
 

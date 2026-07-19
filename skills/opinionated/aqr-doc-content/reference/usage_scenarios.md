@@ -1,17 +1,17 @@
 # Usage scenarios content criteria
 
-## Purpose
+## 1. Purpose
 
 A reviewer reads it and understands the concrete situations the project must handle, without reading code. Scenarios bridge the mission and the design by pinning down observable behavior the system must produce.
 
 For a system repo: user-facing scenarios. For a library repo: integration scenarios, told from the consumer's perspective. Omit for a noncode repo.
 
-## Content
+## 2. Content
 
 1. **Overview** — one paragraph: the user or consumer population and the range of situations this doc covers.
 2. **Scenarios** — one subsection per scenario. Each: a short title, a one-paragraph description of the situation, what the user or consumer does, and what the system or library must do in response — described as observable behavior, not implementation.
 
-## Constraints
+## 3. Constraints
 
 - Frame each scenario around a user or consumer and a goal; state the situation and the required response, not how the system achieves it.
 - Scenarios must be concrete, not abstract feature lists. "A researcher uploads a 500 MB CSV and expects row-level validation errors within 30 seconds" is a scenario; "support large files" is not. For a library: "A Python service calls `retry(fn, { attempts: 5 })` from an async context and expects no event-loop blocking" is a scenario; "support async" is not.

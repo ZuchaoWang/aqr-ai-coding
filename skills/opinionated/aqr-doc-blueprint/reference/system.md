@@ -2,7 +2,7 @@
 
 A deployed system: code that runs, with architecture, deployment, and runtime. Modules compose into layers, and layers into the system.
 
-## Recommended docs structure
+## 1. Recommended docs structure
 
 `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a reference: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead.
 

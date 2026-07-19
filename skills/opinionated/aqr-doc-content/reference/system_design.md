@@ -2,11 +2,11 @@
 
 Criteria for system design docs — design docs for system, layer, or module levels.
 
-## Purpose
+## 1. Purpose
 
 A reviewer reads it and can reproduce the design's shape from the text, without reading code.
 
-## Content
+## 2. Content
 
 Depth scales by level: a unit with children describes them as black boxes; a leaf carries the implementation detail. If the unit follows a well-known pattern, name it and state only where this unit deviates.
 
@@ -22,7 +22,7 @@ Depth scales by level: a unit with children describes them as black boxes; a lea
 - **Key design and implementation decisions** — decision records, one per entry.
 - **Testing approach** — behaviors and edge cases to cover; what to mock versus use real.
 
-## Constraints
+## 3. Constraints
 
 - Explicit boundaries — every unit states what is inside and outside its responsibility.
 - Conceptual only; implementation detail lives in code.

@@ -2,7 +2,7 @@
 
 A library or SDK published for other repos to depend on. Distribution is publish, not deploy. The public API surface — what consumers depend on — is the primary artifact.
 
-## Recommended docs structure
+## 1. Recommended docs structure
 
 `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a reference: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead.
 

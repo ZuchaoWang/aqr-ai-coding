@@ -2,11 +2,11 @@
 
 Criteria for frontend design docs — when the design describes a frontend (a whole app or a single module).
 
-## Purpose
+## 1. Purpose
 
 A reviewer reads it and understands the component structure, state ownership, and interaction flow without reading component code.
 
-## Content
+## 2. Content
 
 - **Summary** — what this design covers and explicitly what it does not.
 - **Component tree** — the component hierarchy; a reader can draw it from the text.
