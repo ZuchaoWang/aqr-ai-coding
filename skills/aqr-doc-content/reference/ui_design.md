@@ -1,24 +1,24 @@
 # UI design content criteria
 
-Criteria for the UI conceptual design doc — `ui_design.md`. Apply to frontend projects (web app, dashboard, visualization). This is the product-level UI requirement: what the UI must do for the user — screens, flows, behaviors. The visual style (palette, typography, components) lives separately in `style/`; the component build itself is a normal frontend module covered by a code design doc.
+Criteria for the UI conceptual design doc — `ui_design.md`. Apply to frontend projects (web app, dashboard, visualization). This is the product-level UI requirement: what the UI must do for the user — pages, flows, behaviors. The visual style lives separately in `styles/`. The component build itself is a normal frontend module covered by a system design doc.
 
-## 1. Screens
+## 1. Pages
 
 Purpose: a reviewer reads it and understands the UI's structure and navigation without reading component code.
 
 Content:
 
-1. **Screens and panels** — the screens (pages / views) and panels the UI is built from; each one's role, not its layout code.
+1. **Pages and panels** — the pages (screens / views) and panels the UI is built from; each one's role, not its layout code.
 2. **URL scheme** — routes, query params, redirects, defaults.
-3. **Navigation** — how the user moves between screens; shared panels or chrome.
+3. **Navigation** — how the user moves between pages; shared panels or chrome.
 
-Constraints: state each screen or panel's role; do not describe layout implementation.
+Constraints: state each page or panel's role; do not describe layout implementation.
 
 ## 2. Interactions
 
-Purpose: a reviewer reads it and understands, per screen, what the user can do and what happens.
+Purpose: a reviewer reads it and understands, per page, what the user can do and what happens.
 
-Content — per screen or panel:
+Content — per page or panel:
 
 1. **What it shows** — the data and state rendered.
 2. **User inputs and their effect** — what the user can do and what changes.

@@ -1,6 +1,6 @@
 ---
 name: aqr-doc-content
-description: Criteria for writing common documentation types (system design, project, UI design, UI style design, research, dataset). Use when writing or reviewing any such doc.
+description: Criteria for writing common documentation types (system design, project, UI design, research, dataset). Use when writing or reviewing any such doc.
 disable-model-invocation: false
 ---
 
@@ -15,8 +15,7 @@ Defines **what good content looks like** for common documentation types. When wr
 | Doc type | What it covers | Reference |
 | - | - | - |
 | System design doc | Module decomposition, public interface and API contract, data and control flow, data model and state, key algorithm, decisions, testing approach, with a UI/frontend overlay | `reference/system_design.md` |
-| UI design doc | Screen structure and navigation, per-screen interaction, chart visualization encoding | `reference/ui_design.md` |
-| UI style design doc | Palette, typography, shared component styling, mockups and visual references | `reference/style_design.md` |
+| UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/ui_design.md` |
 
 ### Project docs
 
