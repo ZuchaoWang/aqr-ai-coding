@@ -28,7 +28,7 @@ docs/
     deploy.md             # deployment topology, runtime environment, ops notes
     tech_stack.md         # languages, frameworks, libraries, and rationale
 
-  styles/                 # visual style guide, can hold any files; omit for non-frontend projects
+  ui_styles/              # visual style guide, can hold any files; omit for non-frontend projects
 
   research/
     background.md         # background knowledge for concepts and motivations
