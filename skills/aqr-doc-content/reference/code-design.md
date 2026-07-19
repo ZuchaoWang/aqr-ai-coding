@@ -1,6 +1,6 @@
 # Design content criteria
 
-Criteria for design docs. §1 lists the contents to include (universal, plus the UI overlay); §2 gives the design criteria.
+Criteria for design docs. §1 lists the contents to include (universal, plus the UI and library overlays); §2 gives the design criteria.
 
 ## 1. Contents by case
 
@@ -29,6 +29,17 @@ Apply when the design describes a frontend — a whole app or a single module. F
 - **Component tree** — the component hierarchy; a reader can draw it from the text.
 - **State list** — which component owns each piece of state; local, shared, server/cache.
 - **Interactions** — which component handles which event and where the state change lands.
+
+### 1.3 Library / SDK (overlay)
+
+Apply when the design describes a library or SDK published for other repos to depend on. The public API surface is the contract consumers depend on, so document it more fully than for an internal module.
+
+- **Public API surface, extended** — for each public symbol (function, type, trait, class, configuration surface), beyond the signature in §1.1:
+    - **Stability tag** — `stable`, `experimental`, or `deprecated`, with the version where the tag last changed.
+    - **Semver implications** — what kinds of changes to this symbol would require a major, minor, or patch release. State this even for `experimental` symbols (typically: "any change, no notice").
+- **Usage examples and integration patterns** — the canonical ways consumers use this surface, as runnable examples or recipes. Include the integration shape (initialization, lifecycle, teardown) when it is non-trivial.
+- **Versioning, backwards compatibility, and deprecation policy** — what the library guarantees across versions; how breaking changes are introduced (deprecation cycle, support windows, migration aids). If a published policy lives elsewhere (README, CHANGELOG), reference it; do not duplicate.
+- **Stability testing** — how the public surface is tested for stability: the consumer-relevant matrix (OS, language runtime, supported dependency versions) and any compatibility tests against prior published versions.
 
 ## 2. Design criteria
 
