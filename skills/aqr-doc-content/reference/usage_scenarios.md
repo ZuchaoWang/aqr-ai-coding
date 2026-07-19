@@ -4,7 +4,7 @@ Purpose: a reviewer reads it and understands the concrete situations the project
 
 For a system repo: user-facing scenarios. For a library repo: integration scenarios, told from the consumer's perspective. Omit for a noncode repo.
 
-Sections:
+Content:
 
 1. **Overview** — one paragraph: the user or consumer population and the range of situations this doc covers.
 2. **Scenarios** — one subsection per scenario. Each: a short title, a one-paragraph description of the situation, what the user or consumer does, and what the system or library must do in response — described as observable behavior, not implementation.

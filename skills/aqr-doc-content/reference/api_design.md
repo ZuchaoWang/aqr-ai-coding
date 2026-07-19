@@ -6,6 +6,6 @@ Content:
 
 1. **API signatures** — for each public symbol (function, type, trait, class, configuration surface): signature, behavior in one or two sentences, error cases.
 2. **Usage examples** — the canonical ways consumers use this surface, as runnable examples or recipes. Include the integration shape (initialization, lifecycle, teardown) when it is non-trivial.
-3. **Design decisions** — decision records for significant API choices (what was chosen, alternatives considered, why). Use the same decision-recording format as the system design reference.
+3. **Design decisions** — decision records for significant API choices (what was chosen, alternatives considered, why).
 
 Constraints: target a doc a consumer can scan. State the contract (parameters, return type, error cases); leave the implementation in code.

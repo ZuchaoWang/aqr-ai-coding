@@ -2,7 +2,7 @@
 
 Purpose: a new team member reads it and immediately understands what this project is for, who it serves, and (where relevant) what it replaces.
 
-Sections:
+Content:
 
 1. **Goal** — one paragraph: what this project does and for whom. For a library, also state what consumers can accomplish with it that they could not (or could not as easily) before. For a noncode repo, state what knowledge, decisions, or proposals it holds and what a reader can find here that they could not find elsewhere.
 2. **Problem statement** — what is broken or missing today, concretely. Reference prior work, incidents, or external context. For a library, reference the prior libraries, manual approaches, or workarounds it replaces. For a noncode repo, reference what was scattered, missing, or unrecoverable before.

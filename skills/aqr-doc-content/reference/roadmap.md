@@ -2,7 +2,7 @@
 
 Purpose: a reviewer reads it and understands where the project is heading, what is in flight now, and what comes next.
 
-Sections:
+Content:
 
 1. **Vision** — the long-term direction; where the project is heading qualitatively.
 2. **Now** — the current milestone; what is in flight.
