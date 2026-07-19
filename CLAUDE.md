@@ -50,19 +50,19 @@ permission:
 
 **General** — engineering and working floor, not taste. Typically installed at user scope:
 
-- `aqr-code-criteria` — Universal code quality principles that apply regardless of language or stack. Applied when writing or reviewing code; criteria are not copied into the project.
+- `aqr-code-criteria` — Universal code quality and design principles that apply regardless of language or stack. Applied when writing or reviewing code or design docs; criteria are not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
-- `aqr-cleanup` — Manual-only cleanup pass over an existing project: checks code/doc consistency, refactors code problems, verifies the refactor does not break behavior. Invoked by name only.
+- `aqr-cleanup` — Manual-only cleanup pass over an existing project: checks code/doc consistency, addresses code problems and quality risks (bugs, performance, security), and verifies fixes do not break behavior. Invoked by name only.
 
 **Opinionated** — taste-based choices. Typically installed at project scope:
 
 - `aqr-doc-blueprint` — Reference for the recommended docs layout: the `docs/` tree plus the root entry points that route into it. Describes what docs a project should have and where; not how to write them. Does not mention issues or workflow.
-- `aqr-doc-content` — Content criteria for every standard doc type in the blueprint layout (design, project, research, dataset). Applied when writing or reviewing docs; criteria are not copied into the project.
+- `aqr-doc-content` — Content criteria for every standard doc type in the blueprint layout (system design, frontend design, UI design, project, research, dataset). Applied when writing or reviewing docs; criteria are not copied into the project.
 - `aqr-style-rules` — Opinionated, stack-specific style defaults (code, tests, notebooks, presentations, doc formatting) layered on top of the code and doc criteria. Applied when writing or reviewing code, tests, notebooks, or decks; not copied into the project.
 
 The five auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
 
-The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code content (`aqr-code-criteria`), working principles (`aqr-project-principle`), opinionated style taste (`aqr-style-rules`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
+The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code quality and design principles (`aqr-code-criteria`), working principles (`aqr-project-principle`), opinionated style taste (`aqr-style-rules`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
 
 ## Agents currently in this repo
 
@@ -71,7 +71,7 @@ The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-do
 ## Conventions inside skill and agent files
 
 - Markdown files start with a top-level heading (`# Title`).
-- Reference docs use numbered headings and `-` bullets. No `---` horizontal separators.
+- Reference docs use section headings and `-` bullets. No `---` horizontal separators.
 - `SKILL.md` files use YAML frontmatter — they are skill definitions, distinct from project docs.
 - Agent files use the subagent frontmatter shown above.
 
@@ -80,8 +80,8 @@ The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-do
 When editing a skill:
 
 1. Read the existing `SKILL.md` first to understand the skill's scope and invocation policy.
-2. Match the conventions of existing files in the same skill (numbered headings, `-` bullets, no `---`, no `Status:` header).
-3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code content quality only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
+2. Match the conventions of existing files in the same skill (section headings, `-` bullets, no `---`, no `Status:` header).
+3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
 4. If a reference change affects invocation behavior, update `SKILL.md` accordingly.
 
 ## Editing agents
@@ -110,8 +110,8 @@ Skill auto-invocation is unreliable on its own, so the adopting project should a
 For software-development work, use the AQR skills under `.claude/skills/` and invoke the one that matches the task (do not invoke all of them):
 
 - `aqr-project-principle` — any non-trivial work (the quality bar for the work)
-- `aqr-code-criteria` — writing or reviewing source code
-- `aqr-doc-content` — writing or reviewing docs (design, project, research, dataset)
+- `aqr-code-criteria` — writing or reviewing source code or design docs
+- `aqr-doc-content` — writing or reviewing docs (system design, frontend design, UI design, project, research, dataset)
 - `aqr-doc-blueprint` — laying out or auditing the `docs/` tree
 - `aqr-style-rules` — formatting and style for code, tests, notebooks, decks, docs
 
