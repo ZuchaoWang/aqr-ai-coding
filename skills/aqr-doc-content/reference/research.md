@@ -2,9 +2,11 @@
 
 Criteria for research docs — notes that inform decisions but are not specs. These are often drafted by an AI and pasted in, so the bar is flexibility, not a fixed template.
 
-Purpose: a reader gets the takeaway without reading every source — the note informs a decision without being a spec.
+## Purpose
 
-Content:
+A reader gets the takeaway without reading every source — the note informs a decision without being a spec.
+
+## Content
 
 - State the question the note is answering, up front.
 - Keep references — every claim that is not common knowledge links its source.
