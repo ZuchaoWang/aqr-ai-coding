@@ -2,17 +2,6 @@
 
 A deployed system: code that runs, with architecture, deployment, and runtime. Modules compose into layers, and layers into the system.
 
-## Root entry points
-
-Two root files route readers and agents into the docs:
-
-```
-README.md                # what the project is and how to start; points at docs/index.md
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-```
-
-Top-level repo orientation — what each top-level directory is for — belongs here in CLAUDE.md/README, not in a separate layout doc. Stack-specific root files (version pins, manifests, editor and lint config) are per-stack conventions, outside this layout.
-
 ## Recommended docs structure
 
 `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a reference: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead.

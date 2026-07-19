@@ -1,17 +1,6 @@
 # Library code repo layout
 
-A library or SDK published for other repos to depend on. Distribution is publish, not deploy. The public API surface — what consumers depend on — is the primary artifact, so it gets first-class treatment.
-
-## Root entry points
-
-Two root files route readers and agents into the docs:
-
-```
-README.md                # what the library does, how to install it, a getting-started snippet; points at docs/index.md
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-```
-
-Top-level repo orientation — what each top-level directory is for — belongs here in CLAUDE.md/README, not in a separate layout doc. Stack-specific root files (version pins, manifests, editor and lint config) are per-stack conventions, outside this layout.
+A library or SDK published for other repos to depend on. Distribution is publish, not deploy. The public API surface — what consumers depend on — is the primary artifact.
 
 ## Recommended docs structure
 
@@ -23,21 +12,9 @@ docs/
 
   project/
     mission.md            # what the library does, who depends on it, what it replaces
-    usage_scenarios.md    # integration scenarios, told from the consumer's perspective
     roadmap.md            # the sequence of development objectives: order, target dates, owners
     concepts.md           # active vocabulary: concepts and API terms the library exposes
-
-  user_feedback/          # verbatim requests and feedback from consumers
-    {{date}}/             # snapshot of materials received on that date
-
-  architecture/
-    design.md             # library-level design: public API surface, module decomposition, key decisions
-    publish.md            # packaging, distribution channels, versioning and deprecation policy
-    tech_stack.md         # languages, frameworks, libraries, and rationale
-
-  api/                    # the public surface, first-class
-    reference.md          # generated or hand-written API reference
-    usage_examples.md     # canonical usage patterns and recipes
+    api.md                # the public API: reference and canonical usage examples
 
   research/
     background.md         # background knowledge for concepts and motivations
@@ -51,9 +28,6 @@ docs/
     {{module}}.md             # the implementation, if it is a single module
     index.md                  # the implementation, if it has several modules
     modules/{{module}}.md     #   one per module; recurses identically
-
-  data/
-    {{dataset}}.md        # one doc per dataset
 ```
 
 Not every library needs every file; add what applies.

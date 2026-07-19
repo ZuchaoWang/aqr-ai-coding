@@ -23,8 +23,8 @@ Defines **what good content looks like** for common documentation types. When wr
 | Repo type | What the project docs cover | Reference |
 | - | - | - |
 | System | Mission and scope, usage scenarios, roadmap, tech-stack rationale, active domain concepts, user interface design | `reference/project-system.md` |
-| Library | Mission framed as "what the library does and what it replaces", integration scenarios from the consumer's perspective, tech stack with supported-consumer matrix, API vocabulary, publishing and distribution policy | `reference/project-library.md` |
-| Noncode | Mission framed as "what knowledge or decisions this repo captures", scope, audience, roadmap of open decisions and pending docs | `reference/project-noncode.md` |
+| Library | Mission framed as "what the library does and what it replaces", roadmap, API vocabulary, API reference with usage examples and supported-consumer matrix | `reference/project-library.md` |
+| Noncode | Mission framed as "what knowledge or decisions this repo captures" with scope and audience folded in, roadmap of open decisions and pending docs | `reference/project-noncode.md` |
 
 ### Research and dataset docs (shared)
 

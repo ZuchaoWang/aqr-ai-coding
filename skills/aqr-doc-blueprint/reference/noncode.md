@@ -1,17 +1,6 @@
 # Noncode repo layout
 
-A repo whose primary output is documentation, not code — design proposals, decision records, research notes, specs. There is no `implementation/`, no `architecture/deploy.md`. Design docs read as proposals with alternatives and decisions; they may forward-reference where the design will eventually be implemented (often an external repo).
-
-## Root entry points
-
-Two root files route readers and agents into the docs:
-
-```
-README.md                # what this repo captures and who should read it; points at docs/index.md
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-```
-
-Top-level repo orientation — what each top-level directory is for — belongs here in CLAUDE.md/README, not in a separate layout doc.
+A repo whose primary output is documentation, not code — design proposals, decision records, research notes, specs. Design docs read as proposals with alternatives and decisions; they may forward-reference where the design will eventually be implemented (often an external repo).
 
 ## Recommended docs structure
 
@@ -22,9 +11,7 @@ docs/
   index.md                # documentation map: one section per top-level docs/ subdirectory
 
   project/
-    mission.md            # what knowledge or decisions this repo captures
-    scope.md              # which topics or projects the repo covers; in and out of scope
-    audience.md           # who reads these docs and why
+    mission.md            # what knowledge or decisions this repo captures; scope and audience
     roadmap.md            # open decisions and pending docs, in intended order
 
   research/
