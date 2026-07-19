@@ -1,6 +1,6 @@
 # UI style content criteria
 
-Criteria for the visual style guide in `style/`. Covers the visual language shared across the UI — the look and feel, not what the UI does. Separate from `ui_design.md` (conceptual design) because visual style changes at a different rate and is referenced across all features and screens.
+Criteria for the visual style guide in `styles/`. Covers the visual language shared across the UI — the look and feel, not what the UI does. Separate from `ui_design.md` (conceptual design) because visual style changes at a different rate and is referenced across all features and screens. The folder can hold any files: markdown for the criteria below, plus images, HTML mockups, or links to design files as concrete references.
 
 ## 1. Palette
 
@@ -38,3 +38,16 @@ Content — for each shared component (button, input, card, dialog, etc.):
 3. **Variants** — if applicable (primary, secondary, destructive, etc.).
 
 Constraints: cover only components shared across screens. One-off components belong in their feature's design doc.
+
+## 4. Mockups and visual references
+
+Purpose: an implementer sees the style applied concretely, not just described in prose. Visual references make the style unambiguous and catch drift early.
+
+Content:
+
+1. **Pictures and screenshots** — annotated images showing the style applied to real screens or components.
+2. **HTML mockups** — static HTML files demonstrating the style in a runnable form; useful for reviewing spacing, typography, and color in context.
+3. **Design file links** — links to Figma, Sketch, or other design tool files, if the source of truth lives there.
+4. **Annotations** — call out where the mockup deviates from the shared style, if anywhere.
+
+Constraints: mockups illustrate the style defined in §1–§3; they do not replace it. If a mockup and the written criteria disagree, one of them is wrong — resolve which.
