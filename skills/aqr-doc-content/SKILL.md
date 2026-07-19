@@ -22,13 +22,12 @@ Defines **what good content looks like** for common documentation types. When wr
 
 | Section | What it covers | Reference |
 | - | - | - |
-| Mission | Goal, problem statement, scope, stakeholders | `reference/project/mission.md` |
-| Usage scenarios | Concrete situations the project must handle | `reference/project/usage_scenarios.md` |
-| Roadmap | Vision, milestones, decisions log | `reference/project/roadmap.md` |
-| Tech stack | Languages, frameworks, toolchain, rationale | `reference/project/tech_stack.md` |
-| Concepts | Active domain vocabulary | `reference/project/concepts.md` |
-| API reference (libraries) | Public surface reference, stability, usage examples | `reference/project/api.md` |
-| API design (libraries) | Why the API is shaped this way, stability and versioning decisions | `reference/project/api_design.md` |
+| Mission | Goal, problem statement, scope, stakeholders | `reference/mission.md` |
+| Usage scenarios | Concrete situations the project must handle | `reference/usage_scenarios.md` |
+| Roadmap | Vision, milestones, decisions log | `reference/roadmap.md` |
+| Tech stack | Languages, frameworks, toolchain, rationale | `reference/tech_stack.md` |
+| Concepts | Active domain vocabulary | `reference/concepts.md` |
+| API design (libraries) | Public API signatures, usage examples, design decisions | `reference/api_design.md` |
 
 ### Other docs
 
