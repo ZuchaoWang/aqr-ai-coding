@@ -13,7 +13,7 @@ Opinionated style defaults — taste, not a quality floor. They layer on top of 
 | Area | What it covers | Reference |
 | - | - | - |
 | Code and tests (Python) | `TypedDict` over `dataclass`, `os.path` over `pathlib`, relative imports, naming, plain test functions, exact-equality assertions, ruff / pyright / pytest toolchain, `.python-version` / `pyproject.toml` config, editorconfig | `reference/code-python.md` |
-| Code and tests (JavaScript) | `.nvmrc` Node version pin, editorconfig, naming — minimal seed | `reference/code-javascript.md` |
+| Code and tests (JavaScript) | `.nvmrc` Node version pin, editorconfig, naming, frontend data flow (store / fetch-boundary transforms / container-presentational split), component internal ordering and controller extraction | `reference/code-javascript.md` |
 | Notebooks (Jupyter) | kernel pin, required header cells, root-finding boilerplate | `reference/notebooks.md` |
 | Presentations (PowerPoint) | 16:10 layout, bullet symbols and margins, render-and-inspect | `reference/presentation.md` |
 | Documentation (markdown) | summary paragraph, numbered headings, no separators, key: value lists, Mermaid for diagrams, `.markdownlint.json` lint config | `reference/documentation.md` |
