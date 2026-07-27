@@ -6,83 +6,45 @@ disable-model-invocation: false
 
 # aqr-project-principle
 
-These principles define the quality standards for work on a project. They describe **what good work looks like**, not a fixed workflow — the agent may choose any execution strategy that satisfies them.
+These principles describe **what good work looks like**, not a fixed workflow — the agent may choose any execution strategy that satisfies them.
 
-## 1. Batch Requirements
-
-Confirm the complete task scope before planning.
-
-- ask whether more requirements remain
-- encourage related requirements to be submitted together
-- hold planning until the scope is confirmed
-
-Proceed without confirmation only when explicitly instructed.
-
-## 2. Clarify Before Committing
-
-Never silently invent important requirements or design decisions. Clarifying means both asking about specific uncertainties and confirming the spec or plan before acting on it.
+## 1. Clarify Before Committing
 
 Before making significant semantic or architectural changes:
 
 - clarify ambiguous requirements
 - surface important assumptions and trade-offs
-- confirm the spec or plan, and obtain agreement when the change is significant
+- confirm no further requirements are pending
+- obtain agreement on the spec or plan
 
 Once clarified, announce that autonomous execution is beginning. Interrupt only for unforeseen blockers or decisions that materially affect the solution.
 
-## 3. Documentation Is the Project Memory
+## 2. Keep Documentation
 
-Project documentation records durable project knowledge.
+Documentation is the project's memory.
 
-Documentation should contain long-lived information such as:
+- record long-lived knowledge: architecture decisions, interface contracts, module responsibilities
+- follow documented decisions unless intentionally changing them
+- keep documents concise, with only information worth reviewing
+- exclude temporary reasoning or planning unless it provides long-term value
 
-- architecture decisions
-- interface contracts
-- module responsibilities
+## 3. Search Before Solving
 
-Follow documented decisions unless intentionally changing them.
+Search for an existing answer before working a hard problem out from scratch. For any hard problem or missing information — an unfamiliar algorithm, an unknown concept, details in 3rd party library API — use a found solution rather than reinventing it. Work through these sources in order:
 
-Do not preserve temporary reasoning or planning unless it provides long-term value.
+1. official documentation
+2. broader discussions (articles, Q&A, issues)
+3. library source code, as a last resort
+4. if it still does not solve, surface the blocker, skip the subtask and report it
 
-## 4. Optimize Documentation for Human Review
+Do not reverse-engineer long minified dependency code or a large dependency repo unless explicitly asked to.
 
-Documentation exists primarily for human review.
-
-Therefore:
-
-- keep documents concise
-- write only information worth reviewing
-- prefer updating existing documents over creating new ones
-
-Every document should remain practical to review.
-
-## 5. Avoid Dead Ends
-
-Do not persist in a direction that is unlikely to produce progress.
-
-- Do not put significant effort into reverse-engineering long minified dependency code or a large dependency repo unless explicitly asked to.
-- Use the appropriate information source first: official documentation for unfamiliar dependencies, and online discussions or examples for difficult programming problems.
-- After three significant unsuccessful attempts, simplify or relax the task, or skip it and move to the next job. Report the attempts, the skipped work, and the remaining limitation.
-
-## 6. Keep Solution Simple
-
-Prefer the simplest complete solution.
-
-Avoid:
-
-- over-engineering
-- speculative abstractions
-- unnecessary complexity
-
-At the same time, do not artificially limit the scope of changes. Make the smallest set of changes that completely and cleanly solves the intended problem.
-
-## 7. Verify Before Completion
+## 4. Verify Before Completion
 
 Before considering work complete:
 
-- verify important behavior
+- run appropriate tests, including visual tests if the project defines them
 - verify documentation consistency
-- run appropriate tests when practical
 - honestly report remaining limitations and uncertainties
 
 Never claim verification that was not actually performed.
