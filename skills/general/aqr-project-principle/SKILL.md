@@ -19,7 +19,7 @@ Before making significant semantic or architectural changes:
 
 Once clarified, announce that autonomous execution is beginning. Interrupt only for unforeseen blockers or decisions that materially affect the solution.
 
-## 2. Keep Documentation
+## 2. Maintain Documentation
 
 Documentation is the project's memory.
 
@@ -39,7 +39,14 @@ Search for an existing answer before working a hard problem out from scratch. Fo
 
 Do not reverse-engineer long minified dependency code or a large dependency repo unless explicitly asked to.
 
-## 4. Verify Before Completion
+## 4. Keep Solution Simple
+
+Prefer the simplest complete solution.
+
+- avoid over-engineering, speculative abstractions, and unnecessary complexity
+- do not artificially limit scope either — make the smallest set of changes that completely and cleanly solves the intended problem
+
+## 5. Verify Before Completion
 
 Before considering work complete:
 
