@@ -20,9 +20,9 @@ The five auto-invocable skills are doc only — no executable code. `aqr-cleanup
 
 ## Agents
 
-Read-only subagents that perform focused inspection tasks. Installed into a project's `.claude/agents/` folder; invoked by the host agent when their `description` matches the task.
+Read-only or scoped subagents with focused capabilities. Installed into a project's `.claude/agents/` folder; invoked by the host agent when their `description` matches the task.
 
-- `visual-inspection` — Visually verifies completed frontend work using browser screenshots at desktop and mobile viewport sizes. Expects the caller to provide routes/URLs, a change range or file list, and a reference image or spec when fidelity matters. Reads the diff and surrounding code to propose likely cause and suggested fix for each issue. Returns `CLARIFY` when required input is missing, otherwise `PASS` or `FAIL` with per-issue detail.
+- `visual` — General-purpose agent with vision: reads and edits code and can see screenshots, images, SVG/PNG, and rendered PDFs. Use for any task where pixels matter - investigating rendering bugs, verifying UI, reading diagrams, or repairing what it finds. Returns `CLARIFY` when context is insufficient, otherwise completes the task like any general agent. The vision-capable model is configured externally, not in the agent file.
 
 ## Layout
 

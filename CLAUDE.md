@@ -66,7 +66,7 @@ The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-do
 
 ## Agents currently in this repo
 
-- `visual-inspection` — Read-only visual frontend inspection. Dispatched after frontend work to verify the rendered result with browser screenshots at desktop and mobile viewport sizes. Expects the caller to provide routes/URLs, a change range or file list, and a reference image or spec when fidelity matters. Reads the diff and surrounding code to propose likely cause and suggested fix for each issue. Returns `CLARIFY` when required input is missing, otherwise `PASS` or `FAIL` with per-issue detail. Cannot edit files.
+- `visual` — General-purpose agent with vision. Dispatched for any task where pixels matter: investigating rendering bugs, verifying UI against a spec or reference image, reading diagrams, charts, or screenshots, or repairing what it finds. Reads and edits code and can see screenshots, images, SVG/PNG, and rendered PDFs. Returns `CLARIFY` when the provided context is insufficient, asking the caller for a complete re-brief. The vision-capable model is configured externally (e.g. `agent.visual.model`), not in the agent file.
 
 ## Conventions inside skill and agent files
 
