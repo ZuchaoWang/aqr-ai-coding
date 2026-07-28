@@ -59,10 +59,11 @@ permission:
 - `aqr-doc-blueprint` — Reference for the recommended docs layout: the `docs/` tree plus the root entry points that route into it. Describes what docs a project should have and where; not how to write them. Does not mention issues or workflow.
 - `aqr-doc-content` — Content criteria for every standard doc type in the blueprint layout (system design, frontend design, UI design, project, research, dataset). Applied when writing or reviewing docs; criteria are not copied into the project.
 - `aqr-style-rules` — Opinionated, stack-specific style defaults (code, tests, notebooks, presentations, doc formatting) layered on top of the code and doc criteria. Applied when writing or reviewing code, tests, notebooks, or decks; not copied into the project.
+- `aqr-frontend-patterns` — Opinionated, stack-specific frontend architecture patterns for the JavaScript/React stack (data flow and layering, component structure). Applied when writing or reviewing frontend code; not copied into the project.
 
-The five auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
+The six auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
 
-The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code quality and design principles (`aqr-code-criteria`), working principles (`aqr-project-principle`), opinionated style taste (`aqr-style-rules`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
+The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code quality and design principles (`aqr-code-criteria`), working principles (`aqr-project-principle`), opinionated style taste (`aqr-style-rules`), stack-specific frontend architecture (`aqr-frontend-patterns`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
 
 ## Agents currently in this repo
 
@@ -81,7 +82,7 @@ When editing a skill:
 
 1. Read the existing `SKILL.md` first to understand the skill's scope and invocation policy.
 2. Match the conventions of existing files in the same skill (numbered headings, `-` bullets, no `---`, no `Status:` header).
-3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
+3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-frontend-patterns` covers stack-specific frontend architecture and layering only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
 4. If a reference change affects invocation behavior, update `SKILL.md` accordingly.
 
 ## Editing agents
@@ -94,7 +95,9 @@ When editing an agent:
 
 ## Installing skills and agents
 
-These are opt-in. General skills are typically installed at user scope; opinionated skills at project scope, only in projects that want them. For Claude Code, copy or symlink each item:
+These are opt-in. General skills are typically installed at user scope; opinionated skills at project scope, only in projects that want them. Copy or symlink each item verbatim into the host's location.
+
+Claude Code:
 
 ```
 ~/.claude/skills/<skill-name>/               # general skills, user scope
@@ -102,7 +105,16 @@ These are opt-in. General skills are typically installed at user scope; opiniona
 <project>/.claude/agents/<agent-name>.md      # agents, project scope
 ```
 
-Copy the directory or file verbatim. The host agent reads the frontmatter to decide when to invoke; nothing else needs configuration.
+opencode (global config lives under `~/.config/opencode/`, not `~/.opencode/`):
+
+```
+~/.config/opencode/skills/<skill-name>/       # general skills, user scope
+<project>/.opencode/skills/<skill-name>/      # opinionated skills, project scope
+~/.config/opencode/agents/<agent-name>.md     # agents, user scope
+<project>/.opencode/agents/<agent-name>.md    # agents, project scope
+```
+
+The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model and permissions are typically set in `opencode.json` under `agent.<name>` rather than in the agent file.
 
 Skill auto-invocation is unreliable on its own, so the adopting project should also add a directive to its own `CLAUDE.md` telling the agent to use them. Example:
 
@@ -114,6 +126,7 @@ For software-development work, use the AQR skills under `.claude/skills/` and in
 - `aqr-doc-content` — writing or reviewing docs (system design, frontend design, UI design, project, research, dataset)
 - `aqr-doc-blueprint` — laying out or auditing the `docs/` tree
 - `aqr-style-rules` — formatting and style for code, tests, notebooks, decks, docs
+- `aqr-frontend-patterns` — frontend architecture and layering for the JavaScript/React stack
 
 `aqr-cleanup` and the agents under `.claude/agents/` are manual — invoke them by name when needed.
 ```
