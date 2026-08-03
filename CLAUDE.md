@@ -53,7 +53,7 @@ permission:
 - `aqr-code-criteria` — Universal code quality and design principles that apply regardless of language or stack. Applied when writing or reviewing code or design docs; criteria are not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
 - `aqr-design-system` — Apply an existing design system to a project by building new UI, extending features, restyling pages, or auditing design consistency. Applied when implementing, migrating, or auditing UI against a design system; criteria are not copied into the project.
-- `aqr-cleanup` — Manual-only cleanup pass over an existing project: checks code/doc consistency, addresses code problems and quality risks (bugs, performance, security), and verifies fixes do not break behavior. Invoked by name only.
+- `aqr-cleanup` — Manual-only cleanup pass over an existing project. Thorough mode: checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode: fixes only typos, stale references, and simple inconsistencies. Invoked by name only.
 
 **Opinionated** — taste-based choices. Typically installed at project scope:
 
