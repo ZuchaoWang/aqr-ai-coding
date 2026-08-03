@@ -52,6 +52,7 @@ permission:
 
 - `aqr-code-criteria` — Universal code quality and design principles that apply regardless of language or stack. Applied when writing or reviewing code or design docs; criteria are not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
+- `aqr-design-system` — Apply an existing design system to a project by building new UI, extending features, restyling pages, or auditing design consistency. Applied when implementing, migrating, or auditing UI against a design system; criteria are not copied into the project.
 - `aqr-cleanup` — Manual-only cleanup pass over an existing project: checks code/doc consistency, addresses code problems and quality risks (bugs, performance, security), and verifies fixes do not break behavior. Invoked by name only.
 
 **Opinionated** — taste-based choices. Typically installed at project scope:
@@ -61,9 +62,9 @@ permission:
 - `aqr-style-rules` — Opinionated, stack-specific style defaults (code, tests, notebooks, presentations, doc formatting) layered on top of the code and doc criteria. Applied when writing or reviewing code, tests, notebooks, or decks; not copied into the project.
 - `aqr-frontend-patterns` — Opinionated, stack-specific frontend architecture patterns for the JavaScript/React stack (data flow and layering, component structure). Applied when writing or reviewing frontend code; not copied into the project.
 
-The six auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
+The seven auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
 
-The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code quality and design principles (`aqr-code-criteria`), working principles (`aqr-project-principle`), opinionated style taste (`aqr-style-rules`), stack-specific frontend architecture (`aqr-frontend-patterns`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
+The split is deliberate: docs layout (`aqr-doc-blueprint`), doc content (`aqr-doc-content`), code quality and design principles (`aqr-code-criteria`), working principles (`aqr-project-principle`), design system implementation (`aqr-design-system`), opinionated style taste (`aqr-style-rules`), stack-specific frontend architecture (`aqr-frontend-patterns`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
 
 ## Agents currently in this repo
 
@@ -82,7 +83,7 @@ When editing a skill:
 
 1. Read the existing `SKILL.md` first to understand the skill's scope and invocation policy.
 2. Match the conventions of existing files in the same skill (numbered headings, `-` bullets, no `---`, no `Status:` header).
-3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-frontend-patterns` covers stack-specific frontend architecture and layering only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
+3. Cross-check the split: `aqr-doc-blueprint` covers docs layout only; `aqr-doc-content` covers doc content quality only; `aqr-code-criteria` covers code quality and design principles only; `aqr-project-principle` covers working standards only; `aqr-design-system` covers applying an existing design system to a project only; `aqr-style-rules` covers opinionated style taste on top of the code and doc criteria only; `aqr-frontend-patterns` covers stack-specific frontend architecture and layering only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
 4. If a reference change affects invocation behavior, update `SKILL.md` accordingly.
 
 ## Editing agents
@@ -123,6 +124,7 @@ For software-development work, use the AQR skills under `.claude/skills/` and in
 
 - `aqr-project-principle` — any non-trivial work (the quality bar for the work)
 - `aqr-code-criteria` — writing or reviewing source code or design docs
+- `aqr-design-system` — implementing, migrating, or auditing UI against a design system
 - `aqr-doc-content` — writing or reviewing docs (system design, frontend design, UI design, project, research, dataset)
 - `aqr-doc-blueprint` — laying out or auditing the `docs/` tree
 - `aqr-style-rules` — formatting and style for code, tests, notebooks, decks, docs
