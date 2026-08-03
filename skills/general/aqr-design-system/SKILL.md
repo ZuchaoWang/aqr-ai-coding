@@ -26,8 +26,12 @@ Supported actions:
 - Follow the project's existing architecture and coding conventions.
 - Make shared improvements before local fixes.
 - Produce a coherent design rather than pixel-perfect copies.
+- When safely possible, remove duplicated styles, eliminate obsolete CSS, and consolidate repeated patterns - leave the project cleaner than before.
+- When the design system lacks guidance for an area, identify the gap explicitly, make conservative decisions, and stay consistent with the existing design language.
 
 ## Workflow
+
+Steps 1-2 prepare for any action. Steps 3-6 apply to build, extend, and restyle actions; audit action skips them. Step 7 applies to all actions.
 
 ### 1. Learn the design system
 
@@ -59,7 +63,7 @@ Also infer implicit conventions from the example implementations.
 
 Summarize the design language before making changes.
 
-### 2. Audit the target project
+### 2. Inspect the target project
 
 Identify:
 
@@ -132,6 +136,14 @@ Every new token should have:
 
 ### 6. Implementation
 
+Implementation differs by action:
+
+- **Build** - compose new pages from layouts and components.
+- **Extend** - add features that match surrounding patterns.
+- **Restyle** - migrate existing UI toward the design system in layers.
+
+Audit action skips implementation entirely.
+
 #### Build
 
 - Compose pages using existing layouts and components.
@@ -158,58 +170,30 @@ Apply changes in this order:
 
 Replace hard-coded values with semantic tokens gradually.
 
-#### Audit
+### 7. Verification
 
-Report:
+First verify textually and visually. Then, depending on the action, either report findings or fix the problems.
 
-- inconsistencies
-- duplicated styles
-- missing tokens
-- architecture issues
-- recommended shared improvements
+#### Textual verification
 
-Avoid suggesting purely cosmetic local fixes when a systemic improvement exists.
+Inspect the code and tokens:
 
-### 7. Design debt
+- Compare project CSS and tokens against the design system's tokens (names, values, usage).
+- Confirm hard-coded values were replaced with semantic tokens.
+- Check for duplicated or obsolete styles.
 
-When safely possible:
+#### Visual verification
 
-- remove duplicated styles
-- eliminate obsolete CSS
-- consolidate repeated patterns
+Read a screenshot of the running project:
 
-Leave the project cleaner than before.
+- Capture or open a screenshot of the affected pages.
+- Interact with the page to show important non-default states (populated data, open menus, expanded panels, error states, etc.) and capture those too.
+- Look for bad spacing, alignment, depth, overflow, and other strange breakage.
 
-### 8. Gap analysis
+#### Depending on the action
 
-If the design system lacks guidance for an area (for example charts, tables, dialogs, mobile layouts, or animations):
-
-- identify the gap explicitly
-- make conservative decisions
-- stay consistent with the existing design language
-- avoid inventing an unrelated visual style
-
-### 9. Verification
-
-After implementation:
-
-Compare against the reference design.
-
-Verify:
-
-- spacing
-- alignment
-- typography
-- hierarchy
-- depth
-- component consistency
-- responsive layouts
-- overflow
-- visual balance
-
-Prefer fixing shared rules over page-specific overrides.
-
-Repeat until the interface appears visually coherent.
+- Audit action: verify then report findings.
+- Other actions: iterate verify and fix until clean. Prefer fixing shared rules over page-specific overrides.
 
 ## Success criteria
 
