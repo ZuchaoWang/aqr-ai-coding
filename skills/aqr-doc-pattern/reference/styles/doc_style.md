@@ -1,4 +1,4 @@
-# Documentation style (markdown)
+# Doc style (markdown)
 
 Opinionated markdown formatting defaults for project docs.
 
