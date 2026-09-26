@@ -1,12 +1,12 @@
 ---
 name: aqr-cleanup
-description: Use when manually invoked to clean up an existing project. Thorough mode checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode fixes only typos, stale references, and simple inconsistencies with no complexity analysis or refactoring.
+description: Use when manually invoked to clean up an existing code project. Thorough mode checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode fixes only typos, stale references, and simple inconsistencies with no complexity analysis or refactoring.
 disable-model-invocation: true
 ---
 
 # aqr-cleanup
 
-Manual-only cleanup pass over an existing project. Do not auto-invoke; run only when explicitly named. The user specifies the mode in their request (e.g. "aqr-cleanup quick mode"). Default to thorough if unspecified.
+Manual-only cleanup pass over an existing code project — a repo whose primary output is code, with docs that describe that code. A noncode repo (docs are the primary output) is out of scope: there is no code to clean, so review it with the normal doc criteria instead. Do not auto-invoke; run only when explicitly named. The user specifies the mode in their request (e.g. "aqr-cleanup quick mode"). Default to thorough if unspecified.
 
 After every non-trivial fix, verify it: run the project's tests if available, otherwise exercise the affected paths by hand. Stop and report if a fix cannot be verified.
 
