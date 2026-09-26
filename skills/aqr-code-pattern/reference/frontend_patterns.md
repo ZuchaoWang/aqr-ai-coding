@@ -1,10 +1,4 @@
----
-name: aqr-frontend-patterns
-description: Opinionated, stack-specific frontend architecture patterns for the JavaScript/React stack — data flow and layering (global store, fetch-boundary transforms, container/presentational split) and component structure (internal ordering, controller extraction). Use when writing or reviewing frontend code in a project that follows these defaults.
-disable-model-invocation: false
----
-
-# aqr-frontend-patterns
+# Frontend patterns (React / Redux Toolkit)
 
 Opinionated frontend architecture patterns for the JavaScript stack (React / Redux Toolkit) — design taste, not a universal quality floor. They cover architecture and layering only; formatting, naming, and universal code quality are out of scope. Apply unless the project records a different choice; not copied into the project.
 

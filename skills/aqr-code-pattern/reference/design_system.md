@@ -1,10 +1,4 @@
----
-name: aqr-design-system
-description: Apply an existing design system to a project by building new UI, extending existing features, restyling existing pages, or auditing design consistency. Use when implementing, migrating, or auditing UI against a design system, design tokens, or design guidelines.
-disable-model-invocation: false
----
-
-# aqr-design-system
+# Applying a design system
 
 Apply an existing design system to a project - building new UI, extending features, restyling pages, or auditing design consistency. Preserve functionality and business logic while producing a coherent design rather than pixel-perfect copies.
 
