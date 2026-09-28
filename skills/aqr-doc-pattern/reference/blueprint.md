@@ -12,7 +12,7 @@ docs/
 
   project/
     mission.md            # what the project is for; problem statement, scope, stakeholders
-    roadmap.md            # development objectives: order, target dates, current stage, important decisions made
+    status.md             # current stage, next tasks, and project-level decisions made
     usage_scenarios.md    # concrete situations the project must handle, more detailed than mission
     concepts.md           # optional; active domain vocabulary, with definitions
     ui_design.md          # optional; only for projects with frontend interfaces; pages with url, conceptual behavior

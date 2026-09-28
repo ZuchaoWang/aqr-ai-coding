@@ -10,12 +10,12 @@ Three layers: the blueprint says what docs a project should have and where (layo
 
 ## Blueprint: docs layout
 
-Every project — code or not — has two root files that route readers and agents into the docs:
+Every project — code or not — starts from this root layout:
 
 ```
 README.md                # what the project is and how to start 
 CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-docs/                    # detailed documentation
+docs/                    # the detailed documentation, including background, research, design, implementation, etc.
 ```
 
 For code project (systems and libraries), the recommended file structure under `docs/` folder can be found in `reference/blueprint.md`. Use it to bootstrap a new docs tree or to audit an existing one for drift. The blueprint is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead. We do not cover noncode projects because docs are their primary output and the structure varies too much to prescribe.
@@ -37,7 +37,7 @@ For code project (systems and libraries), the recommended file structure under `
 | - | - | - |
 | Mission | Goal, problem statement, scope, stakeholders | `reference/templates/mission.md` |
 | Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
-| Roadmap | Vision, milestones, decisions log | `reference/templates/roadmap.md` |
+| Status | Current stage, next tasks, decisions log | `reference/templates/status.md` |
 | Concepts | Active domain vocabulary | `reference/templates/concepts.md` |
 | API design | Public API: signatures and semantics, usage examples, decisions | `reference/templates/api_design.md` |
 
