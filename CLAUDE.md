@@ -46,7 +46,7 @@ permission:
 ## Skills currently in this repo
 
 - `aqr-code-pattern` — Universal code quality and design principles plus opinionated frontend architecture patterns, design-system application guidance, and stack style defaults for code, tests, and notebooks. Applied when writing or reviewing code, UI, or design docs; criteria are not copied into the project.
-- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode repos are a simple, free-form exception) plus content criteria for every standard doc type (design, frontend design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
+- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for every standard doc type (design, frontend design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
 - `aqr-presentation` — Opinionated PowerPoint style defaults for decks. Applied when creating or editing decks; not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
 - `aqr-cleanup` — Manual-only cleanup pass over a code project. Thorough mode: checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode: fixes only typos, stale references, and simple inconsistencies. Invoked by name only.

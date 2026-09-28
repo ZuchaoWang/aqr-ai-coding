@@ -10,7 +10,7 @@ Three layers: the blueprint says what docs a project should have and where (layo
 
 ## Blueprint: docs layout
 
-Root `README.md` and `CLAUDE.md` route readers and agents into the docs. `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. One recommended tree covers code projects — deployed systems and libraries — with optional files marked: `reference/blueprint.md`. Use it to bootstrap a new docs tree or to audit an existing one for drift. The blueprint is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead. Noncode repos are an exception: their docs are the primary output and the structure varies too much to prescribe — keep it simple, do not impose the blueprint.
+Root `README.md` and `CLAUDE.md` route readers and agents into the docs. `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. One recommended tree covers code projects — deployed systems and libraries — with optional files marked: `reference/blueprint.md`. Use it to bootstrap a new docs tree or to audit an existing one for drift. The blueprint is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead. We do not cover noncode projects because docs are their primary output and the structure varies too much to prescribe — keep it simple, do not impose the blueprint.
 
 ## Templates: content criteria by doc type
 

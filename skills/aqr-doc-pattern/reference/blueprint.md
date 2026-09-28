@@ -1,6 +1,6 @@
 # Blueprint: docs layout
 
-A reference tree for code projects — deployed systems and libraries — with optional files marked. Noncode repos are an exception: docs are their primary output, the structure is simple, and it varies too much to prescribe. Keep a noncode repo's docs minimal — `index.md` plus folders as they arise — and do not impose this blueprint on them.
+A reference tree for code projects — deployed systems and libraries — with optional files marked. We do not cover noncode projects because docs are their primary output and their structure varies too much to prescribe.
 
 ## 1. Root files
 
@@ -37,8 +37,8 @@ docs/
     tech_stack.md         # languages, frameworks, toolchain, rationale
     deploy.md             # optional; only for projects which run as independent services
 
-    modules/
-      {{module_name}}.md
+    modules/              # one design doc per module, named after the module
+      {{module_name}}.md  # that module's design doc: its public interface, basic design, and nontrivial implementation hints
 
   client_docs/            # optional; verbatim requirements and feedback from the client
     {{date}}/             # snapshot of client materials received on that date
@@ -49,5 +49,3 @@ docs/
   data/                   # optional; one doc per dataset
     {{dataset}}.md
 ```
-
-One design doc per module under `modules/`, named after the module. Libraries usually have one or two modules, so the folder stays shallow.

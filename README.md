@@ -5,7 +5,7 @@ Custom AI-coding skills and agents — two consolidated skills (code patterns, d
 ## Skills
 
 - `aqr-code-pattern` — Universal code quality principles plus opinionated frontend architecture patterns, design-system application guidance, and stack style defaults for code, tests, and notebooks.
-- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode repos are a simple, free-form exception) plus content criteria for common documentation types and markdown style defaults.
+- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for common documentation types and markdown style defaults.
 - `aqr-presentation` — Opinionated PowerPoint style defaults for decks.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow.
 - `aqr-cleanup` — Manual-only cleanup pass over a code project: checks code/doc consistency, refactors code problems, verifies the refactor does not break behavior.
