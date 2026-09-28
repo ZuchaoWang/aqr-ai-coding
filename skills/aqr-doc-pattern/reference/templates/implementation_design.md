@@ -1,6 +1,6 @@
 # Implementation design content criteria
 
-Criteria for implementation design docs — the top-level doc (`implementation/implementation_design.md`) and one design doc per module (`implementation/modules/`). Architecture and implementation shape are documented together; class- and function-level detail lives in code.
+Criteria for implementation design docs — the top-level doc (`implementation/design.md`) and one design doc per module (`implementation/modules/`). Architecture and implementation shape are documented together; class- and function-level detail lives in code. When the design describes a frontend, use the frontend implementation design criteria (`frontend_implementation_design.md`) instead.
 
 ## 1. Purpose
 
@@ -9,14 +9,12 @@ A reviewer reads it and can reproduce the design's shape from the text, without 
 ## 2. Content
 
 - **Summary** — what this design covers and explicitly what it does not.
-- **Public interface** — the contract this unit exposes upward, shown as implemented. At system level this is the external contract; point at `project/api_design.md` when the project documents one. At module level, shape it by unit type:
-  - Website / frontend — the URL route map: each route and what it shows.
-  - Network service — the endpoints: method, path, request/response fields, error shape.
-  - Other module — its conceptual contract: what it receives, returns, and guarantees. No signature lists.
-- **Basic design** — the shape of the implementation, at conceptual level:
-  - **Decomposition** — if the unit splits into children, name each child, its role and boundaries, and how the children compose and communicate. Component is the deepest documented level.
-  - **Data model and state** — the conceptual structures this unit owns; who owns the state and how it persists. Omit if stateless.
-  - **Data flow and control flow** — how data enters, is transformed, is stored, and leaves; request lifecycle, concurrency, failure and retry paths. Diagram when the flow is not obvious from prose, and describe it in prose first.
+- **Public interface** — the contract this system/module exposes upward:
+  - Network service — method, path, request/response fields, error shape.
+  - Other module — function/class name, arguments, return values, and guarantees.
+- **Basic design** — the shape of the implementation, at conceptual level. Include only the parts that apply:
+  - **Decomposition** — only for a system/module with child modules: name each child, its role and boundaries, and how the children compose and communicate.
+  - **Data model and state** — only for a system/module with complex state: state definition, owning component and persistency mechanism; how data enters, is transformed, is stored, and leaves.
 - **Nontrivial implementation hints** — only what an implementer could not infer from the interface and the basic design:
   - Key algorithms — a well-known algorithm or pattern → name it; otherwise brief pseudocode; trivial → nothing.
   - Key decisions — decision records, one per entry: what was chosen, alternatives considered, why.
