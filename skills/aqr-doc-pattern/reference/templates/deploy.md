@@ -2,15 +2,9 @@
 
 ## 1. Purpose
 
-An operator reads it and can take a fresh build to a running deployment, verify it, and revert if needed.
+A developer or operator reads it and can run the project in every mode it ships.
 
 ## 2. Content
 
-1. **Targets and configuration** — where the service runs; the configuration each environment needs. Secrets are referenced, never inlined.
-2. **Build and deploy** — how a build is produced and shipped to each target, as ordered steps.
-3. **Health and rollback** — how to verify a deployment works, and how to revert to the previous version.
-
-## 3. Constraints
-
-- Reference the pipeline and tooling by name rather than restating them.
-- Keep secrets out of the doc; point at where they live.
+1. **Configuration** — the env vars and what each does, per mode and variant; where secrets and credentials live — referenced, never inlined.
+2. **Instructions** — how to setup, build and run in each mode.

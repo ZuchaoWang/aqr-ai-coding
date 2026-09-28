@@ -41,7 +41,7 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 | - | - | - |
 | Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
 | Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
-| Deploy | Build, ship, verify, and roll back a service | `reference/templates/deploy.md` |
+| Deploy | Overview (modes and variants), configuration, run instructions per mode | `reference/templates/deploy.md` |
 
 ### Other docs
 
