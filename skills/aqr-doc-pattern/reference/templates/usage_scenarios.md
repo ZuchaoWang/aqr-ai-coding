@@ -4,7 +4,7 @@
 
 A reviewer reads it and understands the concrete situations the project must handle, without reading code. Scenarios bridge the mission and the design by pinning down observable behavior the system must produce.
 
-For a system repo: user-facing scenarios. For a library repo: integration scenarios, told from the consumer's perspective. Omit for a noncode repo.
+For a system repo: user-facing scenarios. For a library repo: integration scenarios, told from the consumer's perspective.
 
 ## 2. Content
 

@@ -1,31 +1,16 @@
 ---
 name: aqr-doc-pattern
-description: The recommended docs layout plus content criteria for common documentation types and markdown formatting defaults. Use when laying out a project's docs or deciding where a doc belongs; when writing or reviewing any project doc (system design, frontend design, UI design, project, research, dataset); or when applying this repo's markdown style defaults.
+description: The recommended docs layout plus content criteria for common documentation types and markdown formatting defaults. Use when laying out a project's docs or deciding where a doc belongs; when writing or reviewing any project doc (design, frontend design, UI design, project, research, dataset); or when applying this repo's markdown style defaults.
 disable-model-invocation: false
 ---
 
 # aqr-doc-pattern
 
-Three layers: the blueprint says what docs a project should have and where (layout only, not content); the templates define what good content looks like for each doc type; the styles set markdown formatting defaults. When writing or reviewing a doc, load the matching reference and apply the sections that fit.
+Three layers: the blueprint says what docs a project should have and where (layout only, not content); the templates define what good content looks like for each doc type; the style section below sets markdown formatting defaults. When writing or reviewing a doc, load the matching template and apply the sections that fit.
 
-## Blueprint: docs layout by repo type
+## Blueprint: docs layout
 
-Two root files route readers and agents into the docs:
-
-```
-README.md                # what the project is and how to start; points at docs/index.md
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-```
-
-`docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The recommended tree under it depends on the repo type. Use the matching reference to bootstrap a new docs tree or to audit an existing one for drift. The reference is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead.
-
-| Repo type | What it is | Reference |
-| - | - | - |
-| System code repo | A deployed system with architecture, deployment, and modules | `reference/blueprint/system.md` |
-| Library code repo | Code published for other repos to depend on; the public API surface is the primary artifact | `reference/blueprint/library.md` |
-| Noncode repo | Docs are the repo's primary output — proposals, decisions, research; no code to describe | `reference/blueprint/noncode.md` |
-
-Not every project needs every file in its reference tree; add what applies.
+Root `README.md` and `CLAUDE.md` route readers and agents into the docs. `docs/index.md` is the ground truth for a project's docs — the map of what actually exists. One recommended tree covers code projects — deployed systems and libraries — with optional files marked: `reference/blueprint.md`. Use it to bootstrap a new docs tree or to audit an existing one for drift. The blueprint is a baseline, not a prescription — do not impose it on a project that has diverged; report drift instead. Noncode repos are an exception: their docs are the primary output and the structure varies too much to prescribe — keep it simple, do not impose the blueprint.
 
 ## Templates: content criteria by doc type
 
@@ -33,13 +18,13 @@ Not every project needs every file in its reference tree; add what applies.
 
 | Doc type | What it covers | Reference |
 | - | - | - |
-| System design doc | Module decomposition, public interface, data and control flow, data model and state, key algorithms, decisions, system e2e tests | `reference/templates/system_design.md` |
+| Design doc (system, layer, or module) | Public interface, basic design, nontrivial implementation hints | `reference/templates/design.md` |
 | Frontend design doc | Component tree, global state, data flow — for designs describing a frontend | `reference/templates/frontend_design.md` |
 | UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
 
 ### Project docs
 
-| Section | What it covers | Reference |
+| Doc type | What it covers | Reference |
 | - | - | - |
 | Mission | Goal, problem statement, scope, stakeholders | `reference/templates/mission.md` |
 | Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
@@ -55,6 +40,13 @@ Not every project needs every file in its reference tree; add what applies.
 | Research docs | Domain background, related-work comparison, design-option brainstorm | `reference/templates/research.md` |
 | Dataset doc | Data acquisition, processing and description | `reference/templates/dataset.md` |
 
-## Styles: markdown formatting
+## Style: markdown formatting
 
-Opinionated doc formatting defaults — summary paragraph, numbered headings, no `---` separators, `-` bullets, key: value lists over two-column tables, Mermaid diagrams, `.markdownlint.json` — applied unless the project records different choices. Reference: `reference/styles/doc_style.md`.
+Opinionated formatting defaults, applied unless the project records different choices:
+
+- Place a summary paragraph after the title and before subsections in technical docs.
+- Use numbered headings (`## 1. Overview`, `### 1.1 Motivation`) so cross-references stay stable.
+- Do not use `---` horizontal separators; restructure instead. Use `-` for list items, not `*`.
+- For two-column tables, convert to key: value lists instead.
+- Render diagrams as Mermaid fenced blocks (` ```mermaid `), not ASCII art or image files, so they render inline and stay editable as text.
+- Enforce these in `.markdownlint.json` at the repo root, disabling any rule that conflicts with this style (for example, the horizontal-rule rule, since separators are disallowed, and any line-length rule).

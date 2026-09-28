@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-A reviewer reads it and understands what tools are in use and why those choices were made. Omit for a noncode repo.
+A reviewer reads it and understands what tools are in use and why those choices were made.
 
 ## 2. Content
 
