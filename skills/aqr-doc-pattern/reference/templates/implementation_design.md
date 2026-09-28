@@ -1,6 +1,6 @@
 # Implementation design content criteria
 
-Criteria for implementation design docs — the top-level doc for the system and one design doc per module. The doc does not define the public interface: at system level the interface is defined in the api design doc, at submodule level in the parent module's implementation design doc — this doc starts from the predefined interface and describes how it is implemented. Section 2 defines the general content; section 3 defines the variations for a frontend app. Architecture and implementation shape are documented together; class- and function-level detail lives in code.
+Criteria for implementation design docs — the top-level doc for the system and one design doc per module. The doc does not define the public interface: at system level the interface is defined in the api design doc, at submodule level in the parent module's implementation design doc — this doc starts from the predefined interface and describes how it is implemented at a high level. Class- and function-level detail lives in code.
 
 ## 1. Purpose
 

@@ -33,7 +33,7 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 | Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
 | Concepts | Active domain vocabulary | `reference/templates/concepts.md` |
 | UI design | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
-| API design | Project level public API: signatures and semantics, usage examples, decisions | `reference/templates/api_design.md` |
+| API design | Project level public API — a library's symbols, a pure data API, or a website's server-side API (B/S): signatures or endpoints, usage examples, decisions | `reference/templates/api_design.md` |
 
 ### Implementation docs
 
@@ -41,6 +41,7 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 | - | - | - |
 | Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
 | Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
+| Deploy | Build, ship, verify, and roll back a service | `reference/templates/deploy.md` |
 
 ### Other docs
 
