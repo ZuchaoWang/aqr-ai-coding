@@ -10,7 +10,7 @@ Three layers: the blueprint says what docs a project should have and where (layo
 
 ## 1. Blueprint: doc layout
 
-Every project — code or not — starts from this root layout:
+What docs a project has and where they live — the layout only, not content. Every project — code or not — starts from this root layout:
 
 ```
 README.md                # what the project is and how to start 
@@ -22,9 +22,11 @@ For code project (systems and libraries), the recommended file structure under `
 
 ## 2. Templates: doc content
 
-Groups follow the blueprint's docs tree (`project/`, `research/`, `implementation/`, `data/`; research and data share one group here); rows within a group follow the blueprint's file order.
+What good content looks like for each doc type. Groups follow the blueprint's docs tree (`project/`, `research/`, `implementation/`, `data/`; research and data share one group here); rows within a group follow the blueprint's file order.
 
 ### 2.1 Project docs
+
+Doc types every project shares: goal and scope, progress and decisions, vocabulary, and the project-level UI and API designs.
 
 | Doc type | What it covers | Reference |
 | - | - | - |
@@ -37,6 +39,8 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 
 ### 2.2 Implementation docs
 
+How the project is built: implementation design, tech stack, and deployment.
+
 | Doc type | What it covers | Reference |
 | - | - | - |
 | Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
@@ -44,6 +48,8 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 | Deploy | Overview (modes and variants), configuration, run instructions per mode | `reference/templates/deploy.md` |
 
 ### 2.3 Other docs
+
+Doc types a project may need beyond the shared tree: research and datasets.
 
 | Doc type | What it covers | Reference |
 | - | - | - |
@@ -56,11 +62,16 @@ Opinionated formatting defaults, applied unless the project records different ch
 
 ### 3.1 Structure
 
-- Place a summary paragraph after the title and before subsections in technical docs.
+How a document and its parts are organized.
+
+- Place a summary paragraph after the title and before subsections.
+- Organize exposition as summary plus list: each part first states the general idea in a paragraph, then gives the details as a list; if the details are few, the summary sentence alone suffices.
 - Use numbered headings (`## 1. Overview`, `### 1.1 Motivation`) so cross-references stay stable.
 - Parallel sections adopt a similar structure, field organization, and description order, so they compare side by side and stay easy to implement and maintain.
 
 ### 3.2 Markdown conventions
+
+Mechanical markdown choices — separators, lists, tables, diagrams, code, and links.
 
 - Do not use `---` horizontal separators; restructure instead. Use `-` for list items, not `*`.
 - For two-column tables, convert to key: value lists instead.
@@ -70,10 +81,15 @@ Opinionated formatting defaults, applied unless the project records different ch
 
 ### 3.3 Chinese text
 
+Typographic rules for Chinese text mixed with English.
+
 - Use full-width punctuation for Chinese sentences （，。：；、）.
 - Leave a space between Chinese and English words or numbers (e.g. `RPKI 风险`, `2026 年`).
+- In Chinese docs, annotate an important term with its English name in parentheses at first mention (e.g. `中文名（English Name）`).
 
 ### 3.4 Definitions
+
+How concepts and terms are introduced, reused, and varied.
 
 - Introduce concepts with positive definitions — responsibility, content, value — not long "what it is not" passages.
 - Define each term, metric, algorithm, UI element, or design concept at its first mention; later text reuses the meaning, and for a close variant says "similar to X" and states only the difference — no re-explaining common knowledge.
