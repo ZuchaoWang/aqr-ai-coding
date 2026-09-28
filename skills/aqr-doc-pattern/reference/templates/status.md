@@ -14,4 +14,4 @@ A reader or agent returning after time away understands where the project stands
 
 - Keep it current — a stale status misleads more than no status.
 - Decisions stay one line each; the full reasoning goes into the matching implementation design doc's decision records.
-- Long-term direction lives in mission.md — do not duplicate it here.
+- Long-term direction lives in the mission doc — do not duplicate it here.
