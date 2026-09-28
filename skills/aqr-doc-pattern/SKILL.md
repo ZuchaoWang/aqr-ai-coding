@@ -22,23 +22,25 @@ For code project (systems and libraries), the recommended file structure under `
 
 ## Templates: content criteria by doc type
 
-### Design docs
-
-| Doc type | What it covers | Reference |
-| - | - | - |
-| Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
-| Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
-| UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
+Groups follow the blueprint's docs tree (`project/`, `research/`, `implementation/`, `data/`; research and data share one group here); rows within a group follow the blueprint's file order.
 
 ### Project docs
 
 | Doc type | What it covers | Reference |
 | - | - | - |
 | Mission | Goal, problem statement, scope, stakeholders | `reference/templates/mission.md` |
-| Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
 | Status | Current stage, next tasks, decisions log | `reference/templates/status.md` |
+| Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
 | Concepts | Active domain vocabulary | `reference/templates/concepts.md` |
-| API design | Public API: signatures and semantics, usage examples, decisions | `reference/templates/api_design.md` |
+| UI design | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
+| API design | Project level public API: signatures and semantics, usage examples, decisions | `reference/templates/api_design.md` |
+
+### Implementation docs
+
+| Doc type | What it covers | Reference |
+| - | - | - |
+| Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
+| Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
 
 ### Other docs
 
