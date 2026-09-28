@@ -23,13 +23,13 @@ docs/
     related_works.md      # existing works related
     brainstorm.md         # discussion of possible designs
 
-  implementation/         # the repo's designs: system-level design plus one design doc per module
-    design.md             # top-level design: system decomposition, data flow
-    tech_stack.md         # languages, frameworks, toolchain, rationale
-    deploy.md             # optional; only for projects which run as independent services
+  implementation/         # the repo's implementation designs: system-level design plus one design doc per module
+    implementation_design.md  # top-level design: system decomposition, data flow
+    tech_stack.md             # languages, frameworks, toolchain, rationale
+    deploy.md                 # optional; only for projects which run as independent services
 
-    modules/              # one design doc per module, named after the module
-      {{module_name}}.md  # that module's design doc: its public interface, basic design, and nontrivial implementation hints
+    modules/              # one implementation design doc per module, named after the module
+      {{module_name}}.md  # that module's implementation design doc: its public interface, basic design, and nontrivial implementation hints
 
   client_docs/            # optional; verbatim requirements and feedback from the client
     {{date}}/             # snapshot of client materials received on that date

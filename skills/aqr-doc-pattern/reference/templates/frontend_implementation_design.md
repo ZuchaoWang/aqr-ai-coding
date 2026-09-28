@@ -1,6 +1,6 @@
-# Frontend design content criteria
+# Frontend implementation design content criteria
 
-Criteria for frontend design docs — when the design describes a frontend (a whole app or a single module).
+Criteria for frontend implementation design docs — when the implementation design describes a frontend (a whole app or a single module).
 
 ## 1. Purpose
 

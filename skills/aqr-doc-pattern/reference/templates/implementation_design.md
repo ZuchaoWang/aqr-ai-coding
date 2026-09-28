@@ -1,10 +1,10 @@
-# Design doc content criteria
+# Implementation design content criteria
 
-Criteria for design docs — the system-level design doc (`implementation/design.md`) and one design doc per module (`implementation/modules/`). Architecture and implementation shape are documented together; class- and function-level detail lives in code.
+Criteria for implementation design docs — the top-level doc (`implementation/implementation_design.md`) and one design doc per module (`implementation/modules/`). Architecture and implementation shape are documented together; class- and function-level detail lives in code.
 
 ## 1. Purpose
 
-A reviewer reads it and can reproduce the design's shape from the text, without reading code. Depth stops at child level: each child is a black box; what is inside a child lives in code and in the child's own design doc.
+A reviewer reads it and can reproduce the design's shape from the text, without reading code. Depth stops at child level: each child is a black box; what is inside a child lives in code and in the child's own implementation design doc.
 
 ## 2. Content
 

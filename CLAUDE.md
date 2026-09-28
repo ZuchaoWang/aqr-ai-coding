@@ -45,8 +45,8 @@ permission:
 
 ## Skills currently in this repo
 
-- `aqr-code-pattern` — Universal code quality and design principles plus opinionated frontend architecture patterns, design-system application guidance, and stack style defaults for code, tests, and notebooks. Applied when writing or reviewing code, UI, or design docs; criteria are not copied into the project.
-- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for every standard doc type (design, frontend design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
+- `aqr-code-pattern` — Universal code quality and design principles plus opinionated frontend architecture patterns, design-system application guidance, and stack style defaults for code, tests, and notebooks. Applied when writing or reviewing code, UI, or implementation design docs; criteria are not copied into the project.
+- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for every standard doc type (implementation design, frontend implementation design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
 - `aqr-presentation` — Opinionated PowerPoint style defaults for decks. Applied when creating or editing decks; not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
 - `aqr-cleanup` — Manual-only cleanup pass over a code project. Thorough mode: checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode: fixes only typos, stale references, and simple inconsistencies. Invoked by name only.
@@ -112,8 +112,8 @@ Skill auto-invocation is unreliable on its own, so the adopting project should a
 For software-development work, use the AQR skills under `.claude/skills/` and invoke the one that matches the task (do not invoke all of them):
 
 - `aqr-project-principle` — any non-trivial work (the quality bar for the work)
-- `aqr-code-pattern` — writing or reviewing source code or design docs; frontend (React) code; UI against a design system; stack style defaults
-- `aqr-doc-pattern` — laying out or auditing the `docs/` tree; writing or reviewing docs (design, frontend design, UI design, project, research, dataset); markdown style
+- `aqr-code-pattern` — writing or reviewing source code or implementation design docs; frontend (React) code; UI against a design system; stack style defaults
+- `aqr-doc-pattern` — laying out or auditing the `docs/` tree; writing or reviewing docs (implementation design, frontend implementation design, UI design, project, research, dataset); markdown style
 - `aqr-presentation` — creating or editing PowerPoint decks
 
 `aqr-cleanup` and the agents under `.claude/agents/` are manual — invoke them by name when needed.

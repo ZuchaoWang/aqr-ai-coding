@@ -17,4 +17,4 @@ Common types — pick the one that fits, or combine several in one doc divided b
 
 - **Background** — the domain, motivations, and context a reader needs before the design makes sense.
 - **Related work** — existing systems, papers, or products, and how this project relates (similar, complementary, superseded).
-- **Brainstorm** — the options considered and their trade-offs. It explores possibilities; it does not record the decision eventually adopted — that goes in the design doc's decision records.
+- **Brainstorm** — the options considered and their trade-offs. It explores possibilities; it does not record the decision eventually adopted — that goes in the implementation design doc's decision records.
