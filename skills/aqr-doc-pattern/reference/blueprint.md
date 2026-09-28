@@ -1,19 +1,10 @@
-# Blueprint: docs layout
+# Blueprint: docs tree
 
-A reference tree for code projects — deployed systems and libraries — with optional files marked. We do not cover noncode projects because docs are their primary output and their structure varies too much to prescribe.
+A reference structure for the `docs/` folder of code projects — deployed systems and libraries — with optional files marked. Not every project needs every file; add what applies.
 
-## 1. Root files
+## 1. Recommended docs structure
 
-Two root files route readers and agents into the docs:
-
-```
-README.md                # what the project is and how to start; points at docs/index.md
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
-```
-
-## 2. Recommended docs structure
-
-`docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a reference: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead. Files marked optional exist only when they apply; not every project needs every file — add what applies.
+`docs/index.md` is the ground truth for a project's docs — the map of what actually exists. The shape below is a baseline: use it to bootstrap a new docs tree or to audit an existing one for drift. It is not a prescription — do not impose it on a project that has diverged; report drift instead.
 
 ```
 docs/
