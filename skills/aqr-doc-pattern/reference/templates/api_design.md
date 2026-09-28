@@ -1,8 +1,8 @@
-# API design content criteria (libraries)
+# API design content criteria
 
 ## 1. Purpose
 
-A consumer or contributor reads it and understands the library's public API — what each symbol is, how to use it, and why the API is shaped this way.
+A consumer or contributor reads it and understands the project's public API — what each symbol or endpoint is, how to use it, and why the API is shaped this way.
 
 ## 2. Content
 

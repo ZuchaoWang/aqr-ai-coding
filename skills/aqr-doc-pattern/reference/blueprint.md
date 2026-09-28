@@ -21,28 +21,24 @@ docs/
 
   project/
     mission.md            # what the project is for; problem statement, scope, stakeholders
-    roadmap.md            # development objectives: order, target dates, owners
-    usage_scenarios.md    # optional; concrete situations the project must handle
+    roadmap.md            # development objectives: order, target dates, current stage, important decisions made
+    usage_scenarios.md    # concrete situations the project must handle, more detailed than mission
     concepts.md           # optional; active domain vocabulary, with definitions
-    ui_design.md          # optional; frontend projects; screens, flows, per-page behavior
+    ui_design.md          # optional; only for projects with frontend interfaces; pages with url, conceptual behavior
+    api_design.md         # optional; only for projects with public network/programming API: signatures and semantics
 
   research/               # optional; notes that inform decisions but are not specs
     background.md         # background knowledge for concepts and motivations
     related_works.md      # existing works related
     brainstorm.md         # discussion of possible designs
 
-  implementation/                 # the repo's designs: system-level design plus one design doc per module
-    design.md             # top-level design: public interface (incl. external API), decomposition, data flow, key decisions
-    deploy.md             # optional; deployment topology, runtime environment, ops notes
+  implementation/         # the repo's designs: system-level design plus one design doc per module
+    design.md             # top-level design: system decomposition, data flow
     tech_stack.md         # languages, frameworks, toolchain, rationale
+    deploy.md             # optional; only for projects which run as independent services
 
-    # Child design docs, by the recursion rule: a unit that is one design is one file;
-    # a unit with several children is a folder with index.md (children as black boxes)
-    # plus one design doc per child. The rule recurses at every level.
-    {{child}}.md          # a unit that is a single module
-    {{child}}/            # a unit with several children
-      index.md            #   the unit's overview: its children as black boxes
-      {{grandchild}}.md   #   one design doc per child; recurses identically
+    modules/
+      {{module_name}}.md
 
   client_docs/            # optional; verbatim requirements and feedback from the client
     {{date}}/             # snapshot of client materials received on that date
@@ -54,4 +50,4 @@ docs/
     {{dataset}}.md
 ```
 
-For code repos the design children are modules, each doc named after its module. Libraries usually have one or two layers, so the recursion is shallow.
+One design doc per module under `modules/`, named after the module. Libraries usually have one or two modules, so the folder stays shallow.

@@ -18,7 +18,8 @@ Root `README.md` and `CLAUDE.md` route readers and agents into the docs. `docs/i
 
 | Doc type | What it covers | Reference |
 | - | - | - |
-| Design doc (system, layer, or module) | Public interface, basic design, nontrivial implementation hints | `reference/templates/design.md` |
+| Design doc (system or module) | Public interface, basic design, nontrivial implementation hints | `reference/templates/design.md` |
+| Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
 | Frontend design doc | Component tree, global state, data flow — for designs describing a frontend | `reference/templates/frontend_design.md` |
 | UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
 
@@ -29,9 +30,8 @@ Root `README.md` and `CLAUDE.md` route readers and agents into the docs. `docs/i
 | Mission | Goal, problem statement, scope, stakeholders | `reference/templates/mission.md` |
 | Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
 | Roadmap | Vision, milestones, decisions log | `reference/templates/roadmap.md` |
-| Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
 | Concepts | Active domain vocabulary | `reference/templates/concepts.md` |
-| API design (libraries) | Public API signatures, usage examples, design decisions | `reference/templates/api_design.md` |
+| API design | Public API: signatures and semantics, usage examples, decisions | `reference/templates/api_design.md` |
 
 ### Other docs
 

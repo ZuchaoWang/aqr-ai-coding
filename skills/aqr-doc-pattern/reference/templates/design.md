@@ -1,6 +1,6 @@
 # Design doc content criteria
 
-Criteria for design docs at any level — the top-level design, a layer, or a module. Architecture and implementation shape are documented together; class- and function-level detail lives in code.
+Criteria for design docs — the system-level design doc (`implementation/design.md`) and one design doc per module (`implementation/modules/`). Architecture and implementation shape are documented together; class- and function-level detail lives in code.
 
 ## 1. Purpose
 
@@ -9,7 +9,7 @@ A reviewer reads it and can reproduce the design's shape from the text, without 
 ## 2. Content
 
 - **Summary** — what this design covers and explicitly what it does not.
-- **Public interface** — the contract this unit exposes upward, shown as implemented. Shape it by unit type:
+- **Public interface** — the contract this unit exposes upward, shown as implemented. At system level this is the external contract; point at `project/api_design.md` when the project documents one. At module level, shape it by unit type:
   - Website / frontend — the URL route map: each route and what it shows.
   - Network service — the endpoints: method, path, request/response fields, error shape.
   - Other module — its conceptual contract: what it receives, returns, and guarantees. No signature lists.
