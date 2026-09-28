@@ -8,13 +8,10 @@ A reviewer reads it and understands the UI's structure, navigation, and per-page
 
 ## 2. Content
 
-- **Pages and panels** — the pages (screens / views) and panels the UI is built from; each one's role, not its layout code.
-- **URL scheme** — routes, query params, redirects, defaults.
-- **Navigation** — how the user moves between pages; shared panels or chrome.
-- **Interactions** (per page or panel) — what it shows, the user inputs and their effect, how state changes, and the input-to-result flow (e.g. an input cascade where one input gates the next).
-- **Visualization encoding** (for charts) — field types and chart choice, field-to-channel mapping (x, y, color, size, …) and why, axes/scales/legends/labels, interaction (hover, filter, zoom, drill), and performance for large datasets. Omit if the project has no data visualization.
+1. **Page hierarchy** — the pages (screens / views) organized as a hierarchy; each page's URL scheme (routes, query params, defaults, redirects); how the user navigates between pages, including shared chrome.
+2. **Goals and rationale** — for each page, and for each UI within a page: what it is for and why it is shaped this way.
+3. **Visualization and user interaction** — for each UI: for data-driven UIs, the visualization encoding — field types, chart choice, field-to-channel mapping and why; then the user interaction — the user inputs and their effect, how state changes, and the input-to-result flow (e.g. an input cascade where one input gates the next). Omit encoding where the project has no visualization.
 
 ## 3. Constraints
 
-- State each page or panel's role; do not describe layout implementation.
-- Describe observable behavior, not implementation.
+- Describe goal and rationale before observable behavior, do not describe implementation.

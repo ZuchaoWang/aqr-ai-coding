@@ -32,7 +32,7 @@ Groups follow the blueprint's docs tree (`project/`, `research/`, `implementatio
 | Status | Current stage, next tasks, decisions log | `reference/templates/status.md` |
 | Usage scenarios | Concrete situations the project must handle | `reference/templates/usage_scenarios.md` |
 | Concepts | Active domain vocabulary | `reference/templates/concepts.md` |
-| UI design | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
+| UI design | Page hierarchy with URL scheme, per-page and per-UI goals and rationale, per-UI visualization encoding and user interaction | `reference/templates/ui_design.md` |
 | API design | Project level public API — a library's symbols, a pure data API, or a website's server-side API (B/S): signatures or endpoints, usage examples, decisions | `reference/templates/api_design.md` |
 
 ### Implementation docs

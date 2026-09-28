@@ -15,7 +15,7 @@ docs/
     status.md             # current stage, next tasks, and project-level decisions made
     usage_scenarios.md    # concrete situations the project must handle, more detailed than mission
     concepts.md           # optional; active domain vocabulary, with definitions
-    ui_design.md          # optional; only for projects with frontend interfaces; pages with url, conceptual behavior
+    ui_design.md          # optional; only for projects with frontend interfaces; page hierarchy with url scheme, per-UI goal, interaction, visualization
     api_design.md         # optional; only for projects with public network/programming API: signatures and semantics
 
   research/               # optional; notes that inform decisions but are not specs
