@@ -15,6 +15,7 @@ A reviewer reads it and can reproduce the design's shape from the text, without 
 - **Nontrivial implementation hints** — only what an implementer could not infer from the predefined interface and the content above:
   - Key algorithms — a well-known algorithm or pattern → name it; otherwise brief pseudocode; trivial → nothing.
   - Key decisions — decision records, one per entry: what was chosen, alternatives considered, why.
+  - End-to-end tests — the flows verified end to end: for each, the entry point, the expected outcome, and how it is exercised (e.g. via API or a browser). Unit-test design lives in code.
   - Gotchas — concurrency, caching, or failure behavior that would surprise an implementer.
 
 ## 3. Frontend app variations
@@ -23,6 +24,7 @@ For a frontend app or frontend module, section 2 applies with two variations:
 
 - **Data and state** — state which state is globally managed (the store: its slices, what each holds, and who reads each) and which is per component.
 - **Decomposition** — states the component tree: the hierarchy down to component level, a one-line role for each component; the component is the leaf, with no per-component state, data-fetching, or event-handler breakdowns.
+- **Testing** — the end-to-end tests take two forms for a frontend: a textual test that compares the dynamic HTML, and a visual test that compares screenshots or performs visual QA.
 
 ## 4. Constraints
 
