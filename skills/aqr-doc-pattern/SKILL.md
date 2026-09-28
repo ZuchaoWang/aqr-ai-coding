@@ -1,6 +1,6 @@
 ---
 name: aqr-doc-pattern
-description: The recommended docs layout plus content criteria for common documentation types and markdown formatting defaults. Use when laying out a project's docs or deciding where a doc belongs; when writing or reviewing any project doc (implementation design, frontend implementation design, UI design, project, research, dataset); or when applying this repo's markdown style defaults.
+description: The recommended docs layout plus content criteria for common documentation types and markdown formatting defaults. Use when laying out a project's docs or deciding where a doc belongs; when writing or reviewing any project doc (implementation design, UI design, project, research, dataset); or when applying this repo's markdown style defaults.
 disable-model-invocation: false
 ---
 
@@ -26,9 +26,8 @@ For code project (systems and libraries), the recommended file structure under `
 
 | Doc type | What it covers | Reference |
 | - | - | - |
-| Implementation design (system or module) | Public interface, basic design, nontrivial implementation hints | `reference/templates/implementation_design.md` |
+| Implementation design (system or module) | How a predefined interface is implemented: summary, data and state, decomposition, data and control flow, nontrivial implementation hints — frontend app variations included | `reference/templates/implementation_design.md` |
 | Tech stack | Languages, frameworks, toolchain, rationale | `reference/templates/tech_stack.md` |
-| Frontend implementation design | Component tree, global state, data flow — for implementation designs describing a frontend | `reference/templates/frontend_implementation_design.md` |
 | UI design doc | Page structure and navigation, per-page interaction, chart visualization encoding | `reference/templates/ui_design.md` |
 
 ### Project docs

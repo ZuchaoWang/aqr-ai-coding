@@ -24,12 +24,12 @@ docs/
     brainstorm.md         # discussion of possible designs
 
   implementation/         # the repo's implementation designs: system-level design plus one design doc per module
-    design.md             # top-level implementation design: system decomposition, data flow
+    design.md             # top-level implementation design: data and state, decomposition, data and control flow
     tech_stack.md         # languages, frameworks, toolchain, rationale
     deploy.md             # optional; only for projects which run as independent services
 
     modules/              # one implementation design doc per module, named after the module
-      {{module_name}}.md  # that module's implementation design doc: its public interface, basic design, and nontrivial implementation hints
+      {{module_name}}.md  # that module's implementation design doc: data and state, decomposition, data and control flow, nontrivial implementation hints
 
   client_docs/            # optional; verbatim requirements and feedback from the client
     {{date}}/             # snapshot of client materials received on that date
