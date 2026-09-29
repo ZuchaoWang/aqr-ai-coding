@@ -46,7 +46,7 @@ permission:
 ## Skills currently in this repo
 
 - `aqr-code-pattern` — Universal code quality and design principles plus opinionated frontend architecture patterns and stack style defaults for code, tests, and notebooks. Applied when writing or reviewing code or implementation design docs; criteria are not copied into the project.
-- `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, extending features, restyling pages, or auditing design consistency. Applied when implementing, migrating, or auditing UI against a design system; criteria are not copied into the project.
+- `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, restyling pages, or auditing design consistency. Applied when implementing, migrating, or auditing UI against a design system; criteria are not copied into the project.
 - `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for every standard doc type (implementation design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
 - `aqr-presentation` — Opinionated PowerPoint style defaults for decks. Applied when creating or editing decks; not copied into the project.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
@@ -114,7 +114,7 @@ For software-development work, use the AQR skills under `.claude/skills/` and in
 
 - `aqr-project-principle` — any non-trivial work (the quality bar for the work)
 - `aqr-code-pattern` — writing or reviewing source code or implementation design docs; frontend (React) code; stack style defaults
-- `aqr-design-system` — designing HTML+CSS mockups; building, extending, restyling, or auditing UI against a design system
+- `aqr-design-system` — designing HTML+CSS mockups; building, restyling, or auditing UI against a design system
 - `aqr-doc-pattern` — laying out or auditing the `docs/` tree; writing or reviewing docs (implementation design, UI design, project, research, dataset); markdown style
 - `aqr-presentation` — creating or editing PowerPoint decks
 

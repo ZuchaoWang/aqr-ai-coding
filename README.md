@@ -5,7 +5,7 @@ Custom AI-coding skills and agents — three pattern skills (code patterns, desi
 ## Skills
 
 - `aqr-code-pattern` — Universal code quality principles plus opinionated frontend architecture patterns and stack style defaults for code, tests, and notebooks.
-- `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, extending features, restyling pages, or auditing design consistency.
+- `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, restyling pages, or auditing design consistency.
 - `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for common documentation types and markdown style defaults.
 - `aqr-presentation` — Opinionated PowerPoint style defaults for decks.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow.
