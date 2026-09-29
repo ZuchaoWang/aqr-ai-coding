@@ -1,13 +1,20 @@
-# Applying a design system
+---
+name: aqr-design-system
+description: Apply an existing design system by designing pure HTML+CSS mockups, building new UI, extending existing features, restyling existing pages, or auditing design consistency. Use when implementing, migrating, or auditing UI against a design system, design tokens, or design guidelines, or when creating an HTML mockup or design preview.
+disable-model-invocation: false
+---
 
-Apply an existing design system to a project - building new UI, extending features, restyling pages, or auditing design consistency. Preserve functionality and business logic while producing a coherent design rather than pixel-perfect copies.
+# aqr-design-system
+
+Apply an existing design system - design pure HTML+CSS mockups, build new UI, extend features, restyle pages, or audit design consistency. Preserve functionality and business logic while producing a coherent design rather than pixel-perfect copies.
 
 ## Purpose
 
-Apply an existing design system to a project by building new UI, extending existing features, restyling existing pages, or auditing design consistency.
+Apply an existing design system by designing pure HTML+CSS mockups, building new UI, extending existing features, restyling existing pages, or auditing design consistency.
 
 Supported actions:
 
+- **design** - Create a pure HTML+CSS mockup of screens or components, without integrating it into a project.
 - **build** - Create new pages, components, or websites.
 - **extend** - Add new features while matching the design system.
 - **restyle** - Migrate an existing UI toward the design system.
@@ -25,7 +32,7 @@ Supported actions:
 
 ## Workflow
 
-Steps 1-2 prepare for any action. Steps 3-6 apply to build, extend, and restyle actions; audit action skips them. Step 7 applies to all actions.
+Steps 1-2 prepare for any action. Steps 3-5 apply to build, extend, and restyle actions; design and audit actions skip them. Step 6 applies to every action except audit. Step 7 applies to all actions.
 
 ### 1. Learn the design system
 
@@ -132,11 +139,17 @@ Every new token should have:
 
 Implementation differs by action:
 
+- **Design** - produce a standalone HTML+CSS mockup.
 - **Build** - compose new pages from layouts and components.
 - **Extend** - add features that match surrounding patterns.
 - **Restyle** - migrate existing UI toward the design system in layers.
 
 Audit action skips implementation entirely.
+
+#### Design
+
+- Produce a standalone HTML+CSS mockup: no framework, no build tooling, no project integration.
+- Apply the design system's tokens and component patterns so the mockup previews the real design language.
 
 #### Build
 
@@ -178,7 +191,7 @@ Inspect the code and tokens:
 
 #### Visual verification
 
-Read a screenshot of the running project:
+Read a screenshot of the running project or the opened mockup:
 
 - Capture or open a screenshot of the affected pages.
 - Interact with the page to show important non-default states (populated data, open menus, expanded panels, error states, etc.) and capture those too.

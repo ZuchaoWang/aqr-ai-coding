@@ -1,6 +1,6 @@
 ---
 name: aqr-code-pattern
-description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when implementing, migrating, or auditing UI against a design system; when writing or reviewing frontend code; or when applying this repo's code, test, or notebook style defaults.
+description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when writing or reviewing frontend code; or when applying this repo's code, test, or notebook style defaults.
 disable-model-invocation: false
 ---
 
@@ -15,7 +15,6 @@ Universal code quality and design principles — a floor, not a ceiling, applyin
 | Area | What it covers | Reference |
 | - | - | - |
 | Frontend architecture (React) | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend_patterns.md` |
-| Design system | Applying an existing design system to a project: build, extend, restyle, or audit UI | `reference/design_system.md` |
 
 ### Styles
 
