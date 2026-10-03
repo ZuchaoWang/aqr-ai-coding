@@ -28,62 +28,23 @@ Opinionated stack defaults — apply unless the project records a different choi
 
 ## 2. General criteria
 
-### 2.1 Decomposition and responsibility
+### Design
 
-- Keep business logic independent of frameworks, UI, and data access: do not mix business logic into UI components or put database queries in controllers. Separate domain from infrastructure.
-- One clear responsibility per unit; if its name needs "and", it is a candidate to split.
-- A unit owns its state and hides its internals; callers depend on the contract, not the implementation.
-- State lives with the unit that mutates it; lift shared state to the nearest common ancestor.
-- Separate what a unit *is* (pure transformation) from what it *does* (owns state and side effects); mixing both is a smell.
+- Keep business logic independent of frameworks, UI, and data access. Separate pure transformation from state and side effects.
+- Prefer an existing library for cross-cutting concerns (retry, validation, auth). Record the choice and rationale in the doc.
 - Do not abstract for fewer than three call sites; duplication is cheaper than a premature abstraction.
+- Past ~300 lines, reconsider a module's scope. Co-locate what changes together.
 
-### 2.2 Library-first
+### Configuration
 
-Prefer an existing library over hand-rolled code for cross-cutting concerns (retry, validation, state management, auth). Custom code is justified only for domain-specific logic, performance-critical paths, or security-sensitive control. Record the chosen library and rationale in the tech-stack doc; the manifest holds the version pin, not the reason.
+- Separate per-environment config (read at runtime) from true constants (defined in code). Secrets come from environment variables or out-of-tree config.
 
-### 2.3 Public surface
+### Testing
 
-- The public surface is a contract: cheap to propose, expensive to retract — default to exposing less.
-- Type-annotate public APIs; untyped internal helpers are fine. Keep internals out of the public surface.
-- If a caller needs to know an internal mechanism, that is a design problem, not a documentation problem.
+- Avoid conceptually duplicated tests
+- Keep existing tests intact when modifying.
+- Run linters, formatters, and the type checker on touched files only. Do not reformat the whole tree in an unrelated change.
 
-### 2.4 Naming
+### Documentation
 
-- Named constants, not magic numbers or strings. Names describe what a thing is, not how it is built.
-- Avoid dumping-ground names (`utils`, `helpers`, `common`, `shared`); name by domain responsibility so a file's purpose is clear from its name.
-- Keep names consistent across the design-to-code boundary unless there is a recorded reason not to.
-
-### 2.5 Error handling
-
-- Handle errors at the boundary where something meaningful can be done. Do not swallow silently or re-raise without adding information.
-- Validate at system boundaries; trust internal code and framework guarantees — do not defend against states that cannot occur.
-- Errors are part of the contract: a function states how it fails, and surprising failure modes are bugs. Prefer loud, early failures over silent defaults.
-
-### 2.6 Comments
-
-- Comments explain why, not what. Omit when the why is obvious; one line when it is not.
-- Do not reference issue numbers or PR titles in comments — they rot; they belong in commit messages.
-
-### 2.7 Secrets and configuration
-
-- Secrets are never hardcoded; read them from environment variables or out-of-tree config.
-- Separate per-environment config (read at runtime) from true constants (defined in code). Mixing them makes deployments fragile.
-
-### 2.8 File and module hygiene
-
-- Do not create empty files (`__init__.py` excepted).
-- Past ~300 lines, reconsider a module's scope before adding more.
-- Co-locate what changes together; prefer early returns and avoid nesting beyond ~3 levels.
-
-### 2.9 Testing
-
-- Cover every pure function, and at least one realistic (non-happy-path) test for each public function.
-- Test behavior, not implementation; mock slow, nondeterministic, or stateful dependencies and use real implementations for pure logic.
-- Boundary tests for system boundaries: invalid input, missing fields, empty collections, off-by-one, large inputs.
-- Avoid conceptually duplicated tests — combine minor input variations; split only when the logic path differs. Keep existing tests intact when modifying.
-
-### 2.10 Before committing
-
-- Run linters, formatters, and the type checker on touched files only — do not reformat the whole tree in an unrelated change.
-- A new public function is covered by at least one realistic test.
-- If the change affects a public surface or documented contract, update the matching implementation design doc in the same change.
+- If a change affects a public surface or involves a nontrivial decision or technique, update the doc to record that.
