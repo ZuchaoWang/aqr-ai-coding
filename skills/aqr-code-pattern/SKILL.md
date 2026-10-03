@@ -30,18 +30,19 @@ Opinionated stack defaults — apply unless the project records a different choi
 
 ### Design
 
-- Keep business logic independent of frameworks, UI, and data access. Separate pure transformation from state and side effects.
-- Prefer an existing library for cross-cutting concerns (retry, validation, auth). Record the choice and rationale in the doc.
+- Keep business logic independent of frameworks, UI, and data access.
+- Prefer an existing library for cross-cutting concerns (retry, validation, auth).
 - Do not abstract for fewer than three call sites; duplication is cheaper than a premature abstraction.
-- Past ~300 lines, reconsider a module's scope. Co-locate what changes together.
+- Past ~300 lines, a module is likely doing more than one thing: split it by responsibility instead of continuing to append.
 
 ### Configuration
 
-- Separate per-environment config (read at runtime) from true constants (defined in code). Secrets come from environment variables or out-of-tree config.
+- Keep secrets in environment variables or out-of-tree config.
 
 ### Testing
 
-- Avoid conceptually duplicated tests
+- Cover each user-facing flow with at least one end-to-end test through the real stack; mock only external services that are slow or costly.
+- Avoid conceptually duplicated tests.
 - Keep existing tests intact when modifying.
 - Run linters, formatters, and the type checker on touched files only. Do not reformat the whole tree in an unrelated change.
 
