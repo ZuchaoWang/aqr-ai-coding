@@ -1,6 +1,6 @@
-# Frontend patterns (React / Redux Toolkit)
+# Frontend patterns
 
-Opinionated frontend architecture patterns for the JavaScript stack (React / Redux Toolkit) — design taste, not a universal quality floor. They cover architecture and layering only; formatting, naming, and universal code quality are out of scope. Apply unless the project records a different choice; not copied into the project.
+Opinionated frontend architecture patterns — design taste, not a universal quality floor. React / Redux Toolkit is the example stack; translate to any comparable frontend stack. They cover architecture and layering only; formatting, naming, and universal code quality are out of scope. Apply unless the project records a different choice; not copied into the project.
 
 ## 1. Frontend data flow and layering
 

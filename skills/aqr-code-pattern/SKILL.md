@@ -6,27 +6,9 @@ disable-model-invocation: false
 
 # aqr-code-pattern
 
-Universal code quality and design principles — a floor, not a ceiling, applying regardless of language or stack. Apply at both design time and coding time. The references below layer stack-specific taste on top: architecture patterns and style defaults, opinionated rather than universal. Nothing here is copied into the project.
+Universal code quality and design principles — a floor, not a ceiling, applying regardless of language or stack. Apply at both design time and coding time. The sections below reference stack-specific taste layered on top: architecture patterns and style defaults, opinionated rather than universal. Nothing here is copied into the project.
 
-## 1. Reference index
-
-### Patterns
-
-| Area | What it covers | Reference |
-| - | - | - |
-| Frontend architecture (React) | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend_patterns.md` |
-
-### Styles
-
-Opinionated stack defaults — apply unless the project records a different choice.
-
-| Area | What it covers | Reference |
-| - | - | - |
-| Code and tests (Python) | `TypedDict` over `dataclass`, `os.path` over `pathlib`, relative imports, naming, plain test functions, exact-equality assertions, ruff / pyright / pytest toolchain, `.python-version` / `pyproject.toml` config, editorconfig | `reference/styles/code_python.md` |
-| Code and tests (JavaScript) | `.nvmrc` Node version pin, editorconfig, naming | `reference/styles/code_javascript.md` |
-| Notebooks (Jupyter) | kernel pin, required header cells, root-finding boilerplate | `reference/styles/notebooks.md` |
-
-## 2. General criteria
+## 1. General criteria
 
 ### Design
 
@@ -49,3 +31,21 @@ Opinionated stack defaults — apply unless the project records a different choi
 ### Documentation
 
 - If a change affects a public surface or involves a nontrivial decision or technique, update the doc to record that.
+
+## 2. Frontend patterns
+
+Opinionated architecture patterns for frontend code — apply unless the project records a different choice.
+
+| Area | What it covers | Reference |
+| - | - | - |
+| Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend_patterns.md` |
+
+## 3. Styles
+
+Opinionated stack defaults — apply unless the project records a different choice.
+
+| Area | What it covers | Reference |
+| - | - | - |
+| Code and tests (Python) | `TypedDict` over `dataclass`, `os.path` over `pathlib`, relative imports, naming, plain test functions, exact-equality assertions, ruff / pyright / pytest toolchain, `.python-version` / `pyproject.toml` config, editorconfig | `reference/styles/code_python.md` |
+| Code and tests (JavaScript) | `.nvmrc` Node version pin, editorconfig, naming | `reference/styles/code_javascript.md` |
+| Notebooks (Jupyter) | kernel pin, required header cells, root-finding boilerplate | `reference/styles/notebooks.md` |
