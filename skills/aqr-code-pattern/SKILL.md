@@ -38,7 +38,7 @@ Opinionated architecture patterns for frontend code — apply unless the project
 
 | Area | What it covers | Reference |
 | - | - | - |
-| Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend_patterns.md` |
+| Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend/architecture.md` |
 
 ## 3. Styles
 
