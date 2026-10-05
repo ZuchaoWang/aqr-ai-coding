@@ -10,17 +10,16 @@ Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (ca
 
 ### 1.1 Mock backend with deterministic fixtures
 
-- E2e never hits a real upstream. A lightweight server with the same API surface (FastAPI in the example) serves hardcoded fixture files from a data directory — no auth complexity, no network flake, identical data on every run.
+- E2e never hits a real upstream: a lightweight server with the same API surface (FastAPI in the example) serves hardcoded fixture files — identical data on every run, so tests can assert exact table-row content and counts, and screenshots stay identical run-to-run so a pixel diff fails only when something actually changed.
 - The dataset is canonical: tests read expected values straight from it (an entity's id, a filter value, a from/to pair) and export them as shared constants, instead of re-hardcoding them per spec.
-- Deterministic data lets tests assert exact table-row content and counts, and keeps screenshots identical run-to-run so a pixel diff fails only when something actually changed.
 
 ### 1.2 Runner script: servers, ports, teardown
 
-- The suite manages its own servers: starts the mock backend and the frontend dev server on free ports and tears them down when the run ends, so a run never conflicts with a running dev environment or leaves processes behind.
+- The suite manages its own servers: a runner script starts the mock backend and the frontend dev server on free ports (never conflicting with a running dev environment), waits for both to accept TCP connections, runs the suite, and tears both down via an exit trap; the frontend port is passed to the test config.
 
 ### 1.3 Serial Playwright config
 
-- Choose a fixed viewport that matches the design (1920×1080 for example) and use it for every test. Run the suite serially — one worker, no retries, no parallelism — so runs are deterministic and tests cannot interfere with each other. Set explicit action and navigation timeouts (10s / 30s in the example).
+- Choose a fixed viewport that matches the design (1920×1080 for example) and use it for every test. Run the suite serially — one worker, no retries, no parallelism — so runs are deterministic and tests cannot interfere with each other.
 
 ## 2. Conventions the app must honor
 
@@ -31,8 +30,7 @@ Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (ca
 
 ### 2.2 ARIA contracts for interactive state
 
-- Toggles render as radios with accessible names; tests assert the active one via `getByRole('radio', {name}).toHaveAttribute('aria-checked', 'true')`.
-- Icon-only buttons expose state through `aria-label` (`Play`/`Pause`, `Expand`/`Collapse`), so tests assert state through the accessibility contract, never CSS classes.
+- Tests assert interactive state through the accessibility contract, never CSS classes: toggles are radios with accessible names (`getByRole('radio', {name})` plus `aria-checked`), and icon-only buttons expose state via `aria-label` (`Play`/`Pause`, `Expand`/`Collapse`).
 
 ### 2.3 URL as state
 
@@ -40,90 +38,28 @@ Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (ca
 
 ### 2.4 Clean-console gate
 
-- Every test fails on any `console.error` or uncaught `pageerror`. Attach at test start; assert when the returned function is awaited at test end.
-
-```ts
-export function expectCleanConsole(page: Page) {
-    const errors: string[] = [];
-    page.on('console', msg => {
-        if (msg.type() === 'error') errors.push(`console.error: ${msg.text()}`);
-    });
-    page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
-    return async () => {
-        await page.waitForTimeout(0); // flush pending console output
-        expect(errors, errors.join('\n')).toEqual([]);
-    };
-}
-```
+- Every test fails on any `console.error` or uncaught `pageerror`: attach page listeners at test start, assert the collected list is empty at test end (one tick of flush first).
 
 ## 3. Textual tests — assert on the HTML/DOM
 
 ### 3.1 Page-load contract (existence of UI)
 
-- One test per URL: deep-link in, wait for the major regions to settle, then assert which regions are in and out of the viewport, selector values, the active radio, and row counts where the contract specifies. Shared header assertions live in one helper used by every case.
-
-```ts
-test('orders/table — selection in URL', async ({page}) => {
-    const clean = expectCleanConsole(page);
-    // ORDER_QUERY: query string built from fixture constants (1.1)
-    await page.goto(`/#/orders/table?${ORDER_QUERY}`);
-    await expect(page.getByTestId('orders-map')).toBeInViewport();
-    await expect(page.getByTestId('orders-table-view')).toBeInViewport();
-    await expect(page.getByTestId('orders-chart')).not.toBeInViewport();
-    await expect(page.getByTestId('orders-customer-select').locator('input')).toHaveValue(/Acme/);
-    await clean();
-});
-```
+- One test per URL: deep-link in, wait for the major regions to settle, then assert which regions are in and out of the viewport with `toBeInViewport()` / `not.toBeInViewport()`. Several matchers look similar (`toBeVisible`, `toBeAttached`), but viewport containment is the contract: at a fixed design viewport, a visible-yet-offscreen region is a layout bug. Also assert selector values, the active radio, and row counts where the contract specifies. Shared header assertions live in one helper used by every case.
 
 ### 3.2 Interaction scenarios
 
-- Click through tabs, toggles, and selectors; assert the URL synced and the right regions swapped in/out. Comboboxes are driven as a user would: `fill('Acme')` then `press('Enter')`.
-
-```ts
-test('page tabs: dashboard <-> orders', async ({page}) => {
-    const clean = expectCleanConsole(page);
-    await page.goto('/#/dashboard');
-    await page.getByTestId('app-page-tabs').getByRole('radio', {name: 'Orders'}).click();
-    await expect(page).toHaveURL(/\/orders\/table/);
-    await expect(page.getByTestId('orders-page')).toBeInViewport();
-    await expect(page.getByTestId('dashboard-page')).not.toBeInViewport();
-    await clean();
-});
-```
+- Click through tabs, toggles, and selectors; assert the URL synced and the right regions swapped in/out. Comboboxes are driven as a user would: `fill(...)` then `press('Enter')`.
 
 ### 3.3 Round-trip stability
 
-- Capture an in-memory screenshot, navigate away and back, capture again, and compare with `pixelmatch`. No committed baseline — the comparison is purely in-session, so it fails only when state actually leaks across a navigation cycle.
-- Before each capture, mask non-deterministic regions — hide the clock and animated canvases via inline `visibility:hidden` and pause animations; the diff ratio tolerance is tiny (0.1%). Masking serves this in-session pixel comparison only; the visual suite instead tells its comparison prompt to ignore those regions (§4.2).
-
-```ts
-const mismatched = pixelmatch(a.data, b.data, diff.data, width, height, {threshold: 0.1});
-expect(mismatched / (width * height)).toBeLessThanOrEqual(0.001);
-```
+- Capture an in-memory screenshot, navigate away and back, capture again, and compare with `pixelmatch` at a tiny diff tolerance (0.1%). No committed baseline — the comparison is purely in-session, so it fails only when state actually leaks across a navigation cycle.
+- Before each capture, mask non-deterministic regions — hide the clock and animated canvases via inline `visibility:hidden` and pause animations. Masking serves this in-session pixel comparison only; the visual suite instead tells its comparison prompt to ignore those regions (§4.2).
 
 ### 3.4 Geometry comparison against the mockup (optional)
 
 - When static HTML mockups exist: for each canonical state, open the mockup via `file://` and the live page at the same fixed viewport, collect `getBoundingClientRect()` of every `data-testid` element (rounded to 0.1px), and assert zero drift against the mockup.
 - Per-state config carries the mockup file, the URL, a `setup` function to reproduce the state (expand a collapsed panel, switch view, pause animation), and an `exclude` list for elements that legitimately differ (e.g. controls the mockup renders always but the app hides at defaults).
 - Write a JSON report per state; the failure message prints per-element deltas (`Δdx Δdy Δdw Δdh`) with both rects.
-
-```ts
-async function collectRects(page: Page): Promise<Record<string, Rect>> {
-    return page.evaluate(() => {
-        const rects: Record<string, Rect> = {};
-        document.querySelectorAll('[data-testid]').forEach(el => {
-            const r = el.getBoundingClientRect();
-            rects[el.getAttribute('data-testid')!] = {
-                x: Math.round(r.x * 10) / 10,
-                y: Math.round(r.y * 10) / 10,
-                w: Math.round(r.width * 10) / 10,
-                h: Math.round(r.height * 10) / 10,
-            };
-        });
-        return rects;
-    });
-}
-```
 
 ## 4. Visual tests — assert on screenshots
 
@@ -145,17 +81,3 @@ Canvas charts (2D or WebGL) expose no DOM elements to select or hover, yet both 
 
 - Scan the canvas for the pixel nearest in RGB to the marker's fill color and move the mouse there; wrap in a retry (`expect(async () => {...}).toPass()`) so a cold, not-yet-painted canvas eventually passes.
 - A color match can sit on a non-interactive overlay whose hover never engages the tooltip — exclude the area around each failed candidate and try the next. Exhaustion is a hard error, not a silent skip: a tooltip-less hover makes a textual assertion vacuous and produces a screenshot the visual comparison flags as drift.
-
-```ts
-export async function hoverCanvasColor(
-    page: Page, canvas: Locator,
-    target: [number, number, number], timeout = 10_000,
-) {
-    await expect(async () => {
-        // findCanvasPixel: scan the canvas for the pixel nearest in RGB to
-        // `target` (the marker's fill color); returns page coordinates.
-        const pt = await findCanvasPixel(canvas, target);
-        await page.mouse.move(pt.x, pt.y);
-    }).toPass({timeout});
-}
-```
