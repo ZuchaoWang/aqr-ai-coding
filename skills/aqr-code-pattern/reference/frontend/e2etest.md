@@ -2,7 +2,7 @@
 
 Opinionated end-to-end testing pattern for frontend apps — Playwright is the example toolchain; the pattern applies to any comparable setup. The e2e suite runs the real frontend against a mock backend serving deterministic fixtures and drives it like a user. It comes in two forms: textual tests assert on the DOM/HTML, and visual tests compare screenshots of the live app against the design mockups — static HTML+CSS pages, one per canonical screen, kept in the repo as the design intent — to catch both drift from the design and unexpected breakage. Apply unless the project records a different choice; not copied into the project.
 
-A canonical state is a URL plus the data and interaction state the design specifies (e.g. "route query page, geo view, a route selected, animation paused"). The mockups each depict one canonical state; the tests reproduce the same states in the live app.
+A canonical state is a URL plus the data and interaction state the design specifies (e.g. "orders page, table view, one order selected, animation paused"). The mockups each depict one canonical state; the tests reproduce the same states in the live app.
 
 Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (capture script + comparison prompt), `scripts/` (runner scripts), `design/` (static HTML mockups), `test-output/` (gitignored results).
 
@@ -26,7 +26,7 @@ Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (ca
 
 ### 2.1 Semantic `data-testid` on every major region
 
-- Name by role and scope: `app-*` for app-global regions (header, tabs, view toggle), `<page>-<region>` for page regions (`monitor-map`, `route-table-view`). A region shared across pages keeps one id (`foo-map` appears on every foo page).
+- Name by role and scope: `app-*` for app-global regions (header, tabs, view toggle), `<page>-<region>` for page regions (`dashboard-map`, `orders-table-view`). A region shared across pages keeps one id (`foo-map` appears on every foo page).
 - The design mockup HTML (if available) carries the same testids — this shared vocabulary is what makes the geometry and visual comparisons possible.
 
 ### 2.2 ARIA contracts for interactive state
@@ -36,7 +36,7 @@ Example layout: `tests/e2e-textual/` (Playwright specs), `tests/e2e-visual/` (ca
 
 ### 2.3 URL as state
 
-- SPA state is deep-linkable (hash routes + query params), so every test starts from `page.goto('/#/route/table?asn=…')` and interaction tests assert URL sync after clicks.
+- SPA state is deep-linkable (hash routes + query params), so every test starts from `page.goto('/#/orders/table?customer=…')` and interaction tests assert URL sync after clicks.
 
 ### 2.4 Clean-console gate
 
@@ -63,30 +63,30 @@ export function expectCleanConsole(page: Page) {
 - One test per URL: deep-link in, wait for the major regions to settle, then assert which regions are in and out of the viewport, selector values, the active radio, and row counts where the contract specifies. Shared header assertions live in one helper used by every case.
 
 ```ts
-test('route/table — selection in URL', async ({page}) => {
+test('orders/table — selection in URL', async ({page}) => {
     const clean = expectCleanConsole(page);
-    // VP_QUERY: query string built from fixture constants (1.1)
-    await page.goto(`/#/route/table?${VP_QUERY}`);
-    await expect(page.getByTestId('route-map')).toBeInViewport();
-    await expect(page.getByTestId('route-table-view')).toBeInViewport();
-    await expect(page.getByTestId('route-as-ring')).not.toBeInViewport();
-    await expect(page.getByTestId('route-vp-select').locator('input')).toHaveValue(/AS3130/);
+    // ORDER_QUERY: query string built from fixture constants (1.1)
+    await page.goto(`/#/orders/table?${ORDER_QUERY}`);
+    await expect(page.getByTestId('orders-map')).toBeInViewport();
+    await expect(page.getByTestId('orders-table-view')).toBeInViewport();
+    await expect(page.getByTestId('orders-chart')).not.toBeInViewport();
+    await expect(page.getByTestId('orders-customer-select').locator('input')).toHaveValue(/Acme/);
     await clean();
 });
 ```
 
 ### 3.2 Interaction scenarios
 
-- Click through tabs, toggles, and selectors; assert the URL synced and the right regions swapped in/out. Comboboxes are driven as a user would: `fill('AS3130 147.28.0.3')` then `press('Enter')`.
+- Click through tabs, toggles, and selectors; assert the URL synced and the right regions swapped in/out. Comboboxes are driven as a user would: `fill('Acme')` then `press('Enter')`.
 
 ```ts
-test('page tabs: monitor <-> route', async ({page}) => {
+test('page tabs: dashboard <-> orders', async ({page}) => {
     const clean = expectCleanConsole(page);
-    await page.goto('/#/monitor');
-    await page.getByTestId('app-page-tabs').getByRole('radio', {name: 'Route'}).click();
-    await expect(page).toHaveURL(/\/route\/table/);
-    await expect(page.getByTestId('route-page')).toBeInViewport();
-    await expect(page.getByTestId('monitor-page')).not.toBeInViewport();
+    await page.goto('/#/dashboard');
+    await page.getByTestId('app-page-tabs').getByRole('radio', {name: 'Orders'}).click();
+    await expect(page).toHaveURL(/\/orders\/table/);
+    await expect(page.getByTestId('orders-page')).toBeInViewport();
+    await expect(page.getByTestId('dashboard-page')).not.toBeInViewport();
     await clean();
 });
 ```
@@ -94,7 +94,7 @@ test('page tabs: monitor <-> route', async ({page}) => {
 ### 3.3 Round-trip stability
 
 - Capture an in-memory screenshot, navigate away and back, capture again, and compare with `pixelmatch`. No committed baseline — the comparison is purely in-session, so it fails only when state actually leaks across a navigation cycle.
-- Before each capture, hide non-deterministic regions (clock, animated canvases) via inline `visibility:hidden` and pause animations; the diff ratio tolerance is tiny (0.1%).
+- Before each capture, mask non-deterministic regions — hide the clock and animated canvases via inline `visibility:hidden` and pause animations; the diff ratio tolerance is tiny (0.1%). Masking serves this in-session pixel comparison only; the visual suite instead tells its comparison prompt to ignore those regions (§4.2).
 
 ```ts
 const mismatched = pixelmatch(a.data, b.data, diff.data, width, height, {threshold: 0.1});
@@ -130,11 +130,21 @@ async function collectRects(page: Page): Promise<Record<string, Rect>> {
 ### 4.1 Capture mockup and live screenshots per state
 
 - For each canonical state: screenshot the static mockup page and the live page in the same browser context (same viewport, `deviceScaleFactor: 1`), after `document.fonts.ready` and a settle wait, with `animations: 'disabled'`. Write `mockups/<state>.png`, `live/<state>.png`, and a `manifest.json` listing the pairs.
-- The per-state `setup` reproduces the mockup's exact state in the live app — expand a collapsed panel, pause the animation, hover the marker that the mockup shows hovered.
+- The per-state `setup` reproduces the mockup's exact state in the live app — expand a collapsed panel, pause the animation, hover the marker that the mockup shows hovered (§5.1).
 
-### 4.2 Canvas interaction by pixel color
+### 4.2 Comparison by a vision agent
 
-- Canvas charts have no DOM targets, so hover a marker by scanning the canvas for its fill color and moving the mouse to the nearest match; wrap in a retry (`expect(async () => {...}).toPass()`) so a cold, not-yet-painted canvas eventually passes; treat candidate exhaustion (tooltip never engages) as a hard error, not a silent skip.
+- The comparison itself is delegated to a vision-capable agent run once per manifest entry. The prompt is predefined — written once, kept in the suite (e.g. `compare-prompt.md`), and sent unchanged for every state alongside the two screenshots and the project's design documentation (tokens, layout dimensions, component specs). It states, in order: the app context, what to compare (color palette, typography, spacing, layout, text content, chart rendering), what to ignore (anti-aliasing, non-deterministic regions such as a ticking clock, tooltip position, known mockup limitations), pass criteria (no drift a human would notice at arm's length), and failure reporting (element by `data-testid` or location, property, direction, severity).
+- The unexpected-breakage clause matters most: flag any defect in the live screenshot that the mockup does not show — clipped or overflowing text, elements escaping their parent, unintended overlap, misalignment, raw unstyled HTML, stray scrollbars. These are real bugs, not acceptable drift.
+
+## 5. Shared patterns
+
+### 5.1 Canvas interaction by pixel color
+
+Canvas charts (2D or WebGL) expose no DOM elements to select or hover, yet both suites must interact with them — textual tests hover a marker to assert its tooltip, and the visual capture hovers one to reproduce the mockup's state. The shared technique: drive the canvas by pixel color. In the example, the helper lives with the textual helpers and the visual capture imports it.
+
+- Scan the canvas for the pixel nearest in RGB to the marker's fill color and move the mouse there; wrap in a retry (`expect(async () => {...}).toPass()`) so a cold, not-yet-painted canvas eventually passes.
+- A color match can sit on a non-interactive overlay whose hover never engages the tooltip — exclude the area around each failed candidate and try the next. Exhaustion is a hard error, not a silent skip: a tooltip-less hover makes a textual assertion vacuous and produces a screenshot the visual comparison flags as drift.
 
 ```ts
 export async function hoverCanvasColor(
@@ -149,9 +159,3 @@ export async function hoverCanvasColor(
     }).toPass({timeout});
 }
 ```
-
-### 4.3 Comparison by a vision agent
-
-- The comparison itself is delegated to a vision-capable agent run once per manifest entry, with a structured prompt alongside both screenshots and the project's design documentation (tokens, layout dimensions, component specs). The prompt states, in order: the app context, what to compare (color palette, typography, spacing, layout, text content, chart rendering), what to ignore (anti-aliasing, masked regions, tooltip position, known mockup limitations), pass criteria (no drift a human would notice at arm's length), and failure reporting (element by `data-testid` or location, property, direction, severity).
-- The unexpected-breakage clause matters most: flag any defect in the live screenshot that the mockup does not show — clipped or overflowing text, elements escaping their parent, unintended overlap, misalignment, raw unstyled HTML, stray scrollbars. These are real bugs, not acceptable drift.
-- Non-deterministic regions (a ticking clock) are masked with a solid patch before capture, and the prompt says to ignore them.
