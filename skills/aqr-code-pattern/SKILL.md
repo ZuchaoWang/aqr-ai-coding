@@ -10,25 +10,25 @@ Universal code quality and design principles — a floor, not a ceiling, applyin
 
 ## 1. General criteria
 
-### Design
+### 1.1 Design
 
 - Keep business logic independent of frameworks, UI, and data access.
 - Prefer a well-maintained library over hand-rolled code whenever one fits.
 - Do not abstract for fewer than three call sites; duplication is cheaper than a premature abstraction.
 - Past ~300 lines, a module is likely doing more than one thing: split it by responsibility instead of continuing to append.
 
-### Configuration
+### 1.2 Configuration
 
 - Keep secrets out of the code and the repository — read them from environment variables or out-of-tree config.
 
-### Testing
+### 1.3 Testing
 
 - Cover each user-facing flow with at least one end-to-end test through the real stack; mock only external services that are slow or costly.
 - Avoid conceptually duplicated tests — combine minor input variations into one test instead of adding near-copies.
 - Keep existing tests intact when modifying — a test function might cover multiple cases; update only the cases the change affects and keep the rest.
 - Run linters, formatters, and the type checker on touched files only. Do not reformat the whole tree in an unrelated change.
 
-### Documentation
+### 1.4 Documentation
 
 - If a change affects a public surface or involves a nontrivial decision or technique, update the doc to record that.
 
@@ -39,6 +39,7 @@ Opinionated architecture patterns for frontend code — apply unless the project
 | Area | What it covers | Reference |
 | - | - | - |
 | Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend/architecture.md` |
+| Frontend e2e testing | Mock backend with deterministic fixtures, semantic `data-testid` shared with the design mockups, ARIA contracts, textual tests (page-load, interaction, round-trip, geometry) and vision-agent visual comparison | `reference/frontend/e2etest.md` |
 
 ## 3. Styles
 
