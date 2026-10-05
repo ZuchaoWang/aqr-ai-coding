@@ -38,7 +38,7 @@ Opinionated architecture patterns for frontend code — apply unless the project
 
 | Area | What it covers | Reference |
 | - | - | - |
-| Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction | `reference/frontend/architecture.md` |
+| Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction, hash routing and relative asset and API paths for mount-anywhere deployment | `reference/frontend/architecture.md` |
 | Frontend e2e testing | Mock backend with deterministic fixtures, semantic `data-testid` shared with the design mockups, ARIA contracts, textual tests (page-load, interaction, round-trip, geometry) and vision-agent visual comparison | `reference/frontend/e2etest.md` |
 
 ## 3. Styles

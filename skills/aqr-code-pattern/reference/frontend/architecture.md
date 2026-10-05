@@ -2,7 +2,7 @@
 
 Opinionated frontend architecture — design taste, not a universal quality floor. React / Redux Toolkit is the example stack; translate to any comparable frontend stack. Scope is architecture and layering only; formatting, naming, and universal code quality are out of scope. Apply unless the project records a different choice; not copied into the project.
 
-## 1. Frontend data flow and layering
+## 1. Data flow and layering
 
 Shared state belongs in a global store, data transforms at the fetch boundary, and data ownership in containers - not scattered across components.
 
@@ -20,7 +20,7 @@ The component should use fetched data directly as much as possible. Do transform
 
 Page-level components are containers: they read the store, call the data-fetching layer, pass props down, and define the layout. Reusable components are presentational: props in, events out, no fetching or dispatching. A presentational component does not define its own absolute position; that is set by its parent's layout - it only sizes and lays out its own children. Mixing the two is a smell - pull fetching/state up into a container and keep the presentational UI pure. Extract a component when the same UI is needed a second time; also split a component that mixes the two roles.
 
-## 2. Frontend component structure
+## 2. Component structure
 
 A component should have a consistent internal structure - ordered sections and extracted controllers only when complex.
 
@@ -43,3 +43,12 @@ Mark each section boundary with a comment header (e.g. `// --- event handlers --
 ### 2.2 Extract complex controllers, leave simple ones inline
 
 Extract a component's orchestration (data fetching, state, effects) into a custom hook (e.g. `useRouteTableData`) when it is independent and complex enough that the split makes the component clearer. Otherwise keep the logic inline with the §2.1 sectioned ordering and named handlers.
+
+## 3. Routing and relative paths
+
+The same build should be mountable at any URL prefix without a rebuild.
+
+- Use a hash router (`/#/path?query`), not the history API: the server only ever sees `/`, so no SPA rewrite rules are needed and deep links keep working under any mount point. In React, `HashRouter`.
+- Reference static assets with relative paths, never a leading `/`, so the bundle resolves under any base path; in Vite, set `base: './'`.
+- Call the API with a relative base too (`fetch('api/...')`, no leading `/`): with a hash router the document path never changes, so calls resolve under the mount prefix (`/foo/bar/api/...`). Each mount then owns its API via proxy routing — two apps at `/foo/bar` and `/goo/baz` each reach their own backend without coordinating the origin root.
+- The server serves the app at a trailing-slash URL (`/foo/bar/`) and redirects `/foo/bar` to it, so relative resolution is stable.
