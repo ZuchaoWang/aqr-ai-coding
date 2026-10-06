@@ -1,0 +1,351 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "{env:OC_MAIN_MODEL}",
+  "small_model": "{env:OC_SMALL_MODEL}",
+  "default_agent": "build",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "agent": {
+    "plan": {
+      "model": "{env:OC_PLAN_MODEL}"
+    },
+    "visual": {
+      "model": "{env:OC_VISUAL_MODEL}"
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "reserved": 20000
+  },
+  "permission": {
+    "*": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "external_directory": {
+      "*": "ask",
+      "{env:HOME}/projects/**": "allow",
+      "{env:HOME}/.config/opencode/**": "allow",
+      "/tmp/**": "allow"
+    },
+    "edit": {
+      "{env:HOME}/projects/**": "deny",
+      "{env:HOME}/.config/opencode/**": "ask"
+    }
+  },
+  "provider": {
+    "ark-agent-plan": {
+      "models": {
+        "deepseek-v4-flash": {
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "deepseek-v4-flash"
+        },
+        "deepseek-v4-pro": {
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "deepseek-v4-pro"
+        },
+        "glm-latest": {
+          "name": "glm-latest",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "kimi-k3": {
+          "name": "kimi-k3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "minimax-m3": {
+          "name": "minimax-m3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      },
+      "name": "Ark Agent Plan",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://ark.cn-beijing.volces.com/api/plan/v3"
+      }
+    },
+    "ark-coding-plan": {
+      "models": {
+        "deepseek-v4-flash": {
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "deepseek-v4-flash"
+        },
+        "deepseek-v4-pro": {
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "deepseek-v4-pro"
+        },
+        "glm-latest": {
+          "name": "glm-latest",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "minimax-m3": {
+          "name": "minimax-m3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      },
+      "name": "Ark Coding Plan",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://ark.cn-beijing.volces.com/api/coding/v3"
+      }
+    },
+    "clinepass": {
+      "models": {
+        "cline-pass/minimax-m3": {
+          "name": "minimax-m3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cline-pass/kimi-k3": {
+          "name": "kimi-k3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cline-pass/deepseek-v4-flash": {
+          "name": "deepseek-v4-flash",
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cline-pass/deepseek-v4-pro": {
+          "name": "deepseek-v4-pro",
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cline-pass/glm-5.3": {
+          "name": "glm-5.3",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cline-pass/glm-5.3-flash": {
+          "name": "glm-5.3-flash",
+          "limit": {
+            "context": 200000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      },
+      "name": "ClinePass",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.cline.bot/api/v1"
+      }
+    }
+  },
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": ["{env:NVM_BIN}/playwright-mcp", "--output-dir", ".playwright-mcp"],
+      "enabled": true
+    },
+    "chrome-devtools-mcp": {
+      "type": "local",
+      "command": ["{env:NVM_BIN}/chrome-devtools-mcp"],
+      "enabled": true
+    },
+    "tavily": {
+      "type": "remote",
+      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}",
+      "enabled": true
+    },
+    "firecrawl": {
+      "type": "remote",
+      "url": "https://mcp.firecrawl.dev/{env:FIRECRAWL_API_KEY}/v2/mcp",
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      },
+      "enabled": true
+    },
+    "zai-vision": {
+      "type": "local",
+      "command": ["{env:NVM_BIN}/zai-mcp-server"],
+      "environment": {
+        "Z_AI_API_KEY": "{env:Z_AI_API_KEY}",
+        "Z_AI_MODE": "ZAI"
+      }
+    },
+    "zai-web-reader": {
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:Z_AI_API_KEY}"
+      }
+    },
+    "zai-web-search": {
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+      "headers": {
+          "Authorization": "Bearer {env:Z_AI_API_KEY}"
+      }
+    }
+  }
+}

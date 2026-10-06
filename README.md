@@ -26,6 +26,7 @@ skills/<skill-name>/
   SKILL.md              # skill definition
   reference/            # explanatory docs loaded on demand
 agents/<agent-name>.md  # subagent definition
+configs/                # opencode global config, managed here and symlinked into ~/.config/opencode/
 ```
 
 See `CLAUDE.md` for editing and installation details.
