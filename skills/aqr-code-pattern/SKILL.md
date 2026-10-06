@@ -6,7 +6,7 @@ disable-model-invocation: false
 
 # aqr-code-pattern
 
-Universal code quality and design principles — a floor, not a ceiling, applying regardless of language or stack. Apply at both design time and coding time. The sections below reference stack-specific taste layered on top: architecture patterns and style defaults, opinionated rather than universal. Nothing here is copied into the project.
+Universal code quality and design principles — a floor, not a ceiling, applying regardless of language or stack. Apply at both design time and coding time. The sections below reference stack-specific taste layered on top: project layout, architecture patterns, and style defaults, opinionated rather than universal. Nothing here is copied into the project.
 
 ## 1. General criteria
 
@@ -32,7 +32,15 @@ Universal code quality and design principles — a floor, not a ceiling, applyin
 
 - If a change affects a public surface or involves a nontrivial decision or technique, update the doc to record that.
 
-## 2. Frontend patterns
+## 2. Project layout
+
+Opinionated repo layout defaults — apply unless the project records a different choice.
+
+| Area | What it covers | Reference |
+| - | - | - |
+| Repo layout | Frontend app as `frontend/` + `backend/` (mock or real server, or both, behind one API contract) plus `scripts/`; pure backend app as top-level `src/` + `tests/` + `scripts/`; implementation files only | `reference/layout.md` |
+
+## 3. Frontend patterns
 
 Opinionated architecture patterns for frontend code — apply unless the project records a different choice.
 
@@ -41,7 +49,7 @@ Opinionated architecture patterns for frontend code — apply unless the project
 | Frontend architecture | Global store vs component state, transforms at the fetch boundary, container/presentational split, component internal ordering, controller extraction, hash routing and relative asset and API paths for mount-anywhere deployment | `reference/frontend/architecture.md` |
 | Frontend e2e testing | Mock backend with deterministic fixtures, semantic `data-testid` shared with the design mockups, ARIA contracts, textual tests (page-load, interaction, round-trip, geometry) and vision-agent visual comparison | `reference/frontend/e2etest.md` |
 
-## 3. Styles
+## 4. Styles
 
 Opinionated stack defaults — apply unless the project records a different choice.
 
