@@ -300,11 +300,13 @@
     "playwright": {
       "type": "local",
       "command": ["{env:NVM_BIN}/playwright-mcp", "--output-dir", ".playwright-mcp"],
+      "timeout": 30000,
       "enabled": true
     },
     "chrome-devtools-mcp": {
       "type": "local",
       "command": ["{env:NVM_BIN}/chrome-devtools-mcp"],
+      "timeout": 30000,
       "enabled": true
     },
     "tavily": {
@@ -328,6 +330,7 @@
     "zai-vision": {
       "type": "local",
       "command": ["{env:NVM_BIN}/zai-mcp-server"],
+      "timeout": 30000,
       "environment": {
         "Z_AI_API_KEY": "{env:Z_AI_API_KEY}",
         "Z_AI_MODE": "ZAI"
