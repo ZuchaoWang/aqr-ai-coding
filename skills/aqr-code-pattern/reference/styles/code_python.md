@@ -19,6 +19,7 @@ Opinionated Python-stack style defaults for code and tests. Apply these unless t
 
 ### 1.3 Toolchain
 
+- Python 3.12 — pinned via `.python-version`.
 - Format: `ruff format <file>`.
 - Lint: `ruff check --fix <file>`.
 - Type check: `pyright <file>` (or `mypy <file>`).
@@ -28,7 +29,7 @@ Run on touched files only — do not reformat the whole tree as part of an unrel
 
 ### 1.4 Project files and editor config
 
-- `.python-version` — pins the Python version (e.g. `3.12`); read by pyenv and other version managers.
+- `.python-version` — pins the Python version; default to `3.12`. Read by pyenv and other version managers.
 - `pyproject.toml` — project metadata, build system, and tool config. The toolchain above (`ruff`, `pyright` / `mypy`, `pytest`) reads its settings from here.
 - `.editorconfig` for Python (`[*.py]`): `indent_style = space`, `indent_size = 4`, `end_of_line = lf`, `charset = utf-8`, `insert_final_newline = true`, `trim_trailing_whitespace = true`. Line length is set via `ruff` (`line-length` in `pyproject.toml`), not in `.editorconfig`.
 

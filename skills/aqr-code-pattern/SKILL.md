@@ -55,6 +55,6 @@ Opinionated stack defaults — apply unless the project records a different choi
 
 | Area | What it covers | Reference |
 | - | - | - |
-| Code and tests (Python) | `TypedDict` over `dataclass`, `os.path` over `pathlib`, relative imports, naming, plain test functions, exact-equality assertions, ruff / pyright / pytest toolchain, `.python-version` / `pyproject.toml` config, editorconfig | `reference/styles/code_python.md` |
-| Code and tests (JavaScript) | `.nvmrc` Node version pin, editorconfig, naming | `reference/styles/code_javascript.md` |
+| Code and tests (Python) | Python 3.12, `TypedDict` over `dataclass`, `os.path` over `pathlib`, relative imports, naming, plain test functions, exact-equality assertions, ruff / pyright / pytest toolchain, `.python-version` / `pyproject.toml` config, editorconfig | `reference/styles/code_python.md` |
+| Code and tests (JavaScript) | TypeScript 7 (native port), Node 24 (Active LTS) pinned via `.nvmrc`, Biome lint + format toolchain (over ESLint+Prettier), editorconfig, naming | `reference/styles/code_javascript.md` |
 | Notebooks (Jupyter) | kernel pin, required header cells, root-finding boilerplate | `reference/styles/notebooks.md` |
