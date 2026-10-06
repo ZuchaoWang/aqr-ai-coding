@@ -16,6 +16,7 @@ skills/
     SKILL.md                  # skill definition: YAML frontmatter + body
     reference/                # explanatory docs loaded on demand; subfolders allowed
 agents/<agent-name>.md        # subagent definition: YAML frontmatter + body
+configs/                      # opencode global config (AGENTS.md, opencode.json)
 ```
 
 Each `SKILL.md` starts with YAML frontmatter:
@@ -43,22 +44,9 @@ permission:
 
 `mode: subagent` runs the agent as an isolated subagent dispatched by the host. `permission.edit: deny` makes it read-only.
 
-## Skills currently in this repo
+## Skills and agents currently in this repo
 
-- `aqr-code-pattern` — Universal code quality and design principles plus opinionated repo layout defaults, frontend architecture patterns, and stack style defaults for code, tests, and notebooks. Applied when writing or reviewing code or implementation design docs; criteria are not copied into the project.
-- `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, restyling pages, or auditing design consistency. Applied when implementing, migrating, or auditing UI against a design system; criteria are not copied into the project.
-- `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for every standard doc type (implementation design, UI design, project, research, dataset) and markdown formatting defaults. Applied when laying out, writing, or reviewing docs; criteria are not copied into the project.
-- `aqr-presentation` — Opinionated PowerPoint deck rules and style defaults: enforced content-per-slide rules and a render-and-inspect done gate, plus slide, text, and bullet defaults that yield to explicit choices. Applied when creating or editing decks; not copied into the project.
-- `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow. Applied during work; not copied into the project.
-- `aqr-cleanup` — Manual-only cleanup pass over a code project. Thorough mode: checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes. Quick mode: fixes only typos, stale references, and simple inconsistencies. Invoked by name only.
-
-The five auto-invocable skills may be invoked by the host based on context, and the user can also name one directly via slash command. `aqr-cleanup` is manual-only.
-
-The split is deliberate: code quality plus project layout plus frontend architecture plus stack styles (`aqr-code-pattern`), design-system application (`aqr-design-system`), docs layout plus content criteria plus doc formatting (`aqr-doc-pattern`), deck style (`aqr-presentation`), working principles (`aqr-project-principle`), and an on-demand cleanup pass (`aqr-cleanup`) are independent concerns. A project can adopt any combination.
-
-## Agents currently in this repo
-
-- `visual` — General-purpose agent with vision. Dispatched for any task where pixels matter: investigating rendering bugs, verifying UI against a spec or reference image, reading diagrams, charts, or screenshots, or repairing what it finds. Reads and edits code and can see screenshots, images, SVG/PNG, and rendered PDFs. Returns `CLARIFY` when the provided context is insufficient, asking the caller for a complete re-brief. The vision-capable model is configured externally (e.g. `agent.visual.model`), not in the agent file.
+See `README.md` — it is the single source for the skill and agent lists, their descriptions, and the auto-invocable vs manual-only split.
 
 ## Conventions inside skill and agent files
 
@@ -107,19 +95,11 @@ opencode (global config lives under `~/.config/opencode/`, not `~/.opencode/`):
 
 The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model and permissions are typically set in `opencode.json` under `agent.<name>` rather than in the agent file.
 
-Skill auto-invocation is unreliable on its own, so the adopting project should also add a directive to its own `CLAUDE.md` telling the agent to use them. Example:
+The live opencode config at `~/.config/opencode/` holds **copies** of this repo's skills, agents, and `configs/` files (not symlinks). After changing this repo, re-copy the changed items there.
 
-```md
-For software-development work, use the AQR skills under `.claude/skills/` and invoke the one that matches the task (do not invoke all of them):
+## Keeping README in sync
 
-- `aqr-project-principle` — any non-trivial work (the quality bar for the work)
-- `aqr-code-pattern` — writing or reviewing source code or implementation design docs; repo layout; frontend (React) code; stack style defaults
-- `aqr-design-system` — designing HTML+CSS mockups; building, restyling, or auditing UI against a design system
-- `aqr-doc-pattern` — laying out or auditing the `docs/` tree; writing or reviewing docs (implementation design, UI design, project, research, dataset); markdown style
-- `aqr-presentation` — creating or editing PowerPoint decks
-
-`aqr-cleanup` and the agents under `.claude/agents/` are manual — invoke them by name when needed.
-```
+`README.md` is self-contained and does not refer to this file. When a change here affects the skill list, the layout, or the install/sync workflow, update `README.md` to match.
 
 ## Verifying changes
 
