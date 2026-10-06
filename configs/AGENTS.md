@@ -1,3 +1,21 @@
+## Execution modes
+
+The agent runs in one of two modes. Interactive mode is the default; switch to autonomous mode when the user says something like "run to the end, do not stop".
+
+- Interactive mode — a human is available:
+  - Prefer quick response over perfection.
+  - Do not run visual checks.
+  - Ask the user when unsure.
+- Autonomous mode — run to the end without stopping:
+  - Prefer perfection over quick response.
+  - When unsure, use the default simplest method.
+  - When blocked, skip the affected subtasks or features.
+  - Report uncertainties and skips at the end.
+
+## Limited network access
+
+The agent may run in an environment with limited network access. In interactive mode, when a network problem is likely due to this limitation, ask the user to allow the network access before working around the problem. In autonomous mode, work around it directly.
+
 ## Tool Usage Guide
 
 For 3rd-party libraries:
