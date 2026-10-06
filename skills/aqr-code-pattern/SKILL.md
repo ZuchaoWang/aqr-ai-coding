@@ -1,6 +1,6 @@
 ---
 name: aqr-code-pattern
-description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when writing or reviewing frontend code; or when applying this repo's code, test, or notebook style defaults.
+description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when writing or reviewing frontend code; when laying out a code repo; or when applying this repo's code, test, or notebook style defaults.
 disable-model-invocation: false
 ---
 
