@@ -20,11 +20,12 @@ The agent may run in an environment with limited network access. In interactive 
 
 This workflow applies to code projects. In doc-only projects (docs/markdown only, no runnable code), committing directly to the default branch is acceptable.
 
-Never commit directly to the default branch (`main` or `master`) and never merge anything into it automatically. All changes go through branches:
+Never commit directly to the default branch (`main` or `master`) and never merge anything into it automatically. All changes land in `dev`:
 
 - Keep a long-lived `dev` branch as the integration target. If it does not exist, create it from the default branch.
-- For any change, create a `feat/<name>` branch off `dev` (use `fix/<name>` for bug fixes).
-- When the work is finished and verified, merge the feature branch into `dev`, then delete the feature branch.
+- Single-commit changes may be committed directly to `dev` — no feature branch needed.
+- For multi-commit tasks, create a `feat/<name>` branch off `dev` (use `fix/<name>` for bug fixes). When the work is finished and verified, merge it into `dev`, then delete the feature branch.
+- When merging into `dev`, fast-forward if possible; do not create a merge commit unless the branches have diverged.
 - Never create, rewrite, or delete the default branch, and never merge `dev` into it — promoting `dev` to the default branch is done by the human, outside the agent.
 
 ## Tool Usage Guide
