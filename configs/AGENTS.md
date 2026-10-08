@@ -22,7 +22,7 @@ This workflow applies to code projects. In doc-only projects (docs/markdown only
 
 Never commit directly to the default branch (`main` or `master`) and never merge anything into it automatically. All changes land in `dev`:
 
-- Keep a long-lived `dev` branch as the integration target. If it does not exist, create it from the default branch.
+- Keep a long-lived dev branch as the integration target — named `dev`, or a `dev-<name>` / `dev/<name>` variant if the repo already uses one. If none exists, create `dev` from the default branch.
 - Single-commit changes may be committed directly to `dev` — no feature branch needed.
 - For multi-commit tasks, create a `feat/<name>` branch off `dev` (use `fix/<name>` for bug fixes). When the work is finished and verified, merge it into `dev`, then delete the feature branch.
 - When merging into `dev`, fast-forward if possible; do not create a merge commit unless the branches have diverged.
