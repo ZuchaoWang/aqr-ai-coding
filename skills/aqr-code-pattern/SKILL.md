@@ -1,6 +1,6 @@
 ---
 name: aqr-code-pattern
-description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when writing or reviewing frontend code; when laying out a code repo; or when applying this repo's code, test, or notebook style defaults.
+description: Universal code quality and design principles plus opinionated stack patterns and styles. Use when writing or reviewing source code or design docs; when writing or reviewing frontend code; when laying out a code repo; when configuring builds or deployment; or when applying this repo's code, test, or notebook style defaults.
 disable-model-invocation: false
 ---
 
@@ -31,6 +31,12 @@ Universal code quality and design principles — a floor, not a ceiling, applyin
 ### 1.4 Documentation
 
 - If a change affects a public surface or involves a nontrivial decision or technique, update the doc to record that.
+
+### 1.5 Deployment
+
+- Build into a self-contained `dist/` directory — it carries everything deployment needs and requires nothing else from the repo.
+- Static output only (e.g. a frontend-only app): `dist/` holds the compiled static assets, deployed behind any static file server.
+- Output includes server code: deploy via Docker — `dist/` is the complete image build context: backend code with its dependency metadata, compiled frontend assets, runtime data files, the nginx config serving the frontend and proxying the API, and the docker config (Dockerfile, compose file, entrypoint).
 
 ## 2. Project layout
 
