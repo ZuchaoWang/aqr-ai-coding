@@ -44,7 +44,22 @@ Mark each section boundary with a comment header (e.g. `// --- event handlers --
 
 Extract a component's orchestration (data fetching, state, effects) into a custom hook (e.g. `useRouteTableData`) when it is independent and complex enough that the split makes the component clearer. Otherwise keep the logic inline with the §2.1 sectioned ordering and named handlers.
 
-## 3. Routing and relative paths
+## 3. Visualization
+
+Choose the charting library by visualization type - AntV L7 for geo, ECharts for everything else.
+
+### 3.1 Geo visualization
+
+Use AntV L7 for maps and geo layers such as points, lines, polygons, heat grids, and 3D scenes; its layer/scene model is built around geo data and projections, which generic chart libraries only approximate.
+
+- Normal case: plot the GeoJSON of country boundaries directly - no base map, no tile service.
+- When a base map is needed: ask the server for the map tiles - the server serves or proxies them - and never fetch third-party tiles from the browser directly.
+
+### 3.2 Other visualization
+
+Use ECharts for line/bar/pie and other statistical charts and dashboards; one declarative option object covers the common chart types, interactions, and theming.
+
+## 4. Routing and relative paths
 
 The same build should be mountable at any URL prefix without a rebuild.
 
