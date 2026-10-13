@@ -195,7 +195,7 @@
     },
     "clinepass": {
       "models": {
-        "cline-pass/minimax-m3": {
+        "minimax/minimax-m3": {
           "name": "minimax-m3",
           "limit": {
             "context": 200000,
@@ -211,7 +211,7 @@
             ]
           }
         },
-        "cline-pass/kimi-k3": {
+        "moonshotai/kimi-k3": {
           "name": "kimi-k3",
           "limit": {
             "context": 200000,
@@ -227,8 +227,8 @@
             ]
           }
         },
-        "cline-pass/deepseek-v4-flash": {
-          "name": "deepseek-v4-flash",
+        "deepseek/deepseek-v4.1-flash": {
+          "name": "deepseek-v4.1-flash",
           "limit": {
             "context": 200000,
             "output": 4096
@@ -242,7 +242,7 @@
             ]
           }
         },
-        "cline-pass/deepseek-v4-pro": {
+        "deepseek/deepseek-v4-pro": {
           "name": "deepseek-v4-pro",
           "limit": {
             "context": 200000,
@@ -257,7 +257,7 @@
             ]
           }
         },
-        "cline-pass/glm-5.3": {
+        "z-ai/glm-5.3": {
           "name": "glm-5.3",
           "limit": {
             "context": 200000,
@@ -272,7 +272,7 @@
             ]
           }
         },
-        "cline-pass/glm-5.3-flash": {
+        "z-ai/glm-5.3-flash": {
           "name": "glm-5.3-flash",
           "limit": {
             "context": 200000,
