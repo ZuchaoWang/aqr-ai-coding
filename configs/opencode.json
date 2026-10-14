@@ -29,6 +29,7 @@
       "*": "ask",
       "{env:HOME}/projects/**": "allow",
       "{env:HOME}/.config/opencode/**": "allow",
+      "{env:HOME}/.cache/opencode/**": "allow",
       "/tmp/**": "allow"
     },
     "edit": {
