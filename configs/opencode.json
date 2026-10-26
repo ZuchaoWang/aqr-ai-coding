@@ -30,7 +30,10 @@
     { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
     { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
     { "action": "edit", "resource": "{env:HOME}/projects/**", "effect": "deny" },
-    { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "ask" }
+    { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "ask" },
+    { "action": "read", "resource": "~/.local/share/opencode/**", "effect": "ask" },
+    { "action": "edit", "resource": "~/.local/share/opencode/**", "effect": "ask" },
+    { "action": "edit", "resource": "~/.cache/opencode/**", "effect": "ask" }
   ],
   "providers": {
     "ark-agent-plan": {
