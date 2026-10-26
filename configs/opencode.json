@@ -1,354 +1,195 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "{env:OC_MAIN_MODEL}",
-  "small_model": "{env:OC_SMALL_MODEL}",
   "default_agent": "build",
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
-  "agent": {
+  "plugins": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "agents": {
     "plan": {
       "model": "{env:OC_PLAN_MODEL}"
     },
     "visual": {
       "model": "{env:OC_VISUAL_MODEL}"
+    },
+    "title": {
+      "model": "{env:OC_SMALL_MODEL}"
     }
   },
   "compaction": {
     "auto": true,
-    "prune": false,
-    "reserved": 20000
+    "buffer": 20000
   },
-  "permission": {
-    "*": "allow",
-    "read": {
-      "*": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny",
-      "*.env.example": "allow"
-    },
-    "external_directory": {
-      "*": "ask",
-      "{env:HOME}/projects/**": "allow",
-      "{env:HOME}/.config/opencode/**": "allow",
-      "{env:HOME}/.cache/opencode/**": "allow",
-      "/tmp/**": "allow"
-    },
-    "edit": {
-      "{env:HOME}/projects/**": "deny",
-      "{env:HOME}/.config/opencode/**": "ask"
-    }
-  },
-  "provider": {
+  "permissions": [
+    { "action": "*", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*.env", "effect": "deny" },
+    { "action": "read", "resource": "*.env.*", "effect": "deny" },
+    { "action": "read", "resource": "*.env.example", "effect": "allow" },
+    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "external_directory", "resource": "{env:HOME}/projects/**", "effect": "allow" },
+    { "action": "external_directory", "resource": "{env:HOME}/.config/opencode/**", "effect": "allow" },
+    { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
+    { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
+    { "action": "edit", "resource": "{env:HOME}/projects/**", "effect": "deny" },
+    { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "ask" }
+  ],
+  "providers": {
     "ark-agent-plan": {
+      "name": "Ark Agent Plan",
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
+        "baseURL": "https://ark.cn-beijing.volces.com/api/plan/v3"
+      },
       "models": {
         "deepseek-v4-flash": {
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "name": "deepseek-v4-flash"
+          "name": "deepseek-v4-flash",
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "deepseek-v4-pro": {
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "name": "deepseek-v4-pro"
+          "name": "deepseek-v4-pro",
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "glm-latest": {
           "name": "glm-latest",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "kimi-k3": {
           "name": "kimi-k3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         },
         "minimax-m3": {
           "name": "minimax-m3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         }
-      },
-      "name": "Ark Agent Plan",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "https://ark.cn-beijing.volces.com/api/plan/v3"
       }
     },
     "ark-coding-plan": {
+      "name": "Ark Coding Plan",
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
+        "baseURL": "https://ark.cn-beijing.volces.com/api/coding/v3"
+      },
       "models": {
         "deepseek-v4-flash": {
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "name": "deepseek-v4-flash"
+          "name": "deepseek-v4-flash",
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "deepseek-v4-pro": {
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "name": "deepseek-v4-pro"
+          "name": "deepseek-v4-pro",
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "glm-latest": {
           "name": "glm-latest",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "minimax-m3": {
           "name": "minimax-m3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         }
-      },
-      "name": "Ark Coding Plan",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "https://ark.cn-beijing.volces.com/api/coding/v3"
       }
     },
     "clinepass": {
+      "name": "ClinePass",
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
+        "baseURL": "https://api.cline.bot/api/v1"
+      },
       "models": {
         "minimax/minimax-m3": {
           "name": "minimax-m3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         },
         "moonshotai/kimi-k3": {
           "name": "kimi-k3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         },
         "deepseek/deepseek-v4.1-flash": {
           "name": "deepseek-v4.1-flash",
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "deepseek/deepseek-v4-pro": {
           "name": "deepseek-v4-pro",
-          "limit": {
-            "context": 200000,
-            "output": 4096
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 4096 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "z-ai/glm-5.3": {
           "name": "glm-5.3",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
         },
         "z-ai/glm-5.3-flash": {
           "name": "glm-5.3-flash",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "limit": { "context": 200000, "output": 65536 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         }
-      },
-      "name": "ClinePass",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "https://api.cline.bot/api/v1"
       }
     }
   },
   "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": ["{env:NVM_BIN}/playwright-mcp", "--output-dir", ".playwright-mcp"],
-      "timeout": 30000,
-      "enabled": true
-    },
-    "chrome-devtools-mcp": {
-      "type": "local",
-      "command": ["{env:NVM_BIN}/chrome-devtools-mcp"],
-      "timeout": 30000,
-      "enabled": true
-    },
-    "tavily": {
-      "type": "remote",
-      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}",
-      "enabled": true
-    },
-    "firecrawl": {
-      "type": "remote",
-      "url": "https://mcp.firecrawl.dev/{env:FIRECRAWL_API_KEY}/v2/mcp",
-      "enabled": true
-    },
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": ["{env:NVM_BIN}/playwright-mcp", "--output-dir", ".playwright-mcp"],
+        "disabled": false,
+        "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 }
       },
-      "enabled": true
-    },
-    "zai-vision": {
-      "type": "local",
-      "command": ["{env:NVM_BIN}/zai-mcp-server"],
-      "timeout": 30000,
-      "environment": {
-        "Z_AI_API_KEY": "{env:Z_AI_API_KEY}",
-        "Z_AI_MODE": "ZAI"
-      }
-    },
-    "zai-web-reader": {
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
-      "headers": {
-        "Authorization": "Bearer {env:Z_AI_API_KEY}"
-      }
-    },
-    "zai-web-search": {
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
-      "headers": {
+      "chrome-devtools-mcp": {
+        "type": "local",
+        "command": ["{env:NVM_BIN}/chrome-devtools-mcp"],
+        "disabled": false,
+        "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 }
+      },
+      "tavily": {
+        "type": "remote",
+        "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}",
+        "disabled": false
+      },
+      "firecrawl": {
+        "type": "remote",
+        "url": "https://mcp.firecrawl.dev/{env:FIRECRAWL_API_KEY}/v2/mcp",
+        "disabled": false
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "headers": {
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        },
+        "disabled": false
+      },
+      "zai-vision": {
+        "type": "local",
+        "command": ["{env:NVM_BIN}/zai-mcp-server"],
+        "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 },
+        "environment": {
+          "Z_AI_API_KEY": "{env:Z_AI_API_KEY}",
+          "Z_AI_MODE": "ZAI"
+        }
+      },
+      "zai-web-reader": {
+        "type": "remote",
+        "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+        "headers": {
           "Authorization": "Bearer {env:Z_AI_API_KEY}"
+        }
+      },
+      "zai-web-search": {
+        "type": "remote",
+        "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+        "headers": {
+          "Authorization": "Bearer {env:Z_AI_API_KEY}"
+        }
       }
     }
   }

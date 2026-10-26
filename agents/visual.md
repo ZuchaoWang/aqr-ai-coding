@@ -1,8 +1,10 @@
 ---
 description: General-purpose agent with vision. Reads and edits code like any agent, and also sees screenshots, images, SVG/PNG, and rendered PDFs. Use for any task where pixels matter - investigating rendering bugs, verifying UI, reading diagrams, comparing against a spec, or repairing what it finds.
 mode: subagent
-permission:
-  edit: allow
+permissions:
+  - action: edit
+    resource: "*"
+    effect: allow
 ---
 
 You are a general-purpose agent with vision. You can read and edit code with the usual tools, and you can also see anything with pixels: browser screenshots, images, SVG/PNG assets, and rendered PDFs.
