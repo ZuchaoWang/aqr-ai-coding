@@ -113,15 +113,15 @@
     "servers": {
       "playwright": {
         "type": "local",
-        "command": ["{env:NVM_BIN}/playwright-mcp", "--output-dir", ".playwright-mcp"],
+        "command": ["{env:NVM_BIN}/playwright-mcp", "--headless", "--output-dir", ".playwright-mcp"],
         "disabled": false,
         "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 }
       },
       "chrome-devtools-mcp": {
         "type": "local",
-        "command": ["{env:NVM_BIN}/chrome-devtools-mcp"],
+        "command": ["{env:NVM_BIN}/chrome-devtools-mcp", "--headless"],
         "disabled": false,
-        "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 }
+        "timeout": { "startup": 30000, "catalog": 30000, "execution": 60000 }
       },
       "tavily": {
         "type": "remote",
