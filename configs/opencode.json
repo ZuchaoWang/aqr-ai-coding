@@ -40,10 +40,10 @@
         "baseURL": "https://ark.cn-beijing.volces.com/api/plan/v3"
       },
       "models": {
-        "deepseek-v4-flash": {
-          "name": "deepseek-v4-flash",
+        "deepseek-v4.1-flash": {
+          "name": "deepseek-v4.1-flash",
           "limit": { "context": 200000, "output": 4096 },
-          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         },
         "glm-latest": {
           "name": "glm-latest",
@@ -64,10 +64,10 @@
         "baseURL": "https://ark.cn-beijing.volces.com/api/coding/v3"
       },
       "models": {
-        "deepseek-v4-flash": {
-          "name": "deepseek-v4-flash",
+        "deepseek-v4.1-flash": {
+          "name": "deepseek-v4.1-flash",
           "limit": { "context": 200000, "output": 4096 },
-          "capabilities": { "tools": true, "input": ["text"], "output": ["text"] }
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
         },
         "glm-latest": {
           "name": "glm-latest",
