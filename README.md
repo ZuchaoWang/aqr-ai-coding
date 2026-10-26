@@ -26,7 +26,7 @@ skills/<skill-name>/
   SKILL.md              # skill definition
   reference/            # explanatory docs loaded on demand
 agents/<agent-name>.md  # subagent definition
-configs/                # opencode global config, managed here and copied into ~/.config/opencode/
+configs/                # opencode v2 global config, managed here and copied into ~/.config/opencode/
 ```
 
 ## Installing
@@ -39,7 +39,7 @@ Copy the item verbatim into the host's location:
 <project>/.claude/skills/<skill-name>/        # project scope
 <project>/.claude/agents/<agent-name>.md      # agents, project scope
 
-# opencode (global config under ~/.config/opencode/, not ~/.opencode/)
+# opencode v2 (config uses v2 fields: permissions, plugins, providers, mcp.servers; global config under ~/.config/opencode/, not ~/.opencode/)
 ~/.config/opencode/skills/<skill-name>/       # user scope
 <project>/.opencode/skills/<skill-name>/      # project scope
 ~/.config/opencode/agents/<agent-name>.md     # agents, user scope
