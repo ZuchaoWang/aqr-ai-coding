@@ -22,8 +22,48 @@
     "plan": {
       "model": "{env:OC_PLAN_MODEL}"
     },
+    "general": {
+      "permissions": [
+        { "action": "question", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "{env:HOME}/projects/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.config/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
+        { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "deny" },
+        { "action": "read", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.cache/opencode/**", "effect": "deny" }
+      ]
+    },
+    "explore": {
+      "permissions": [
+        { "action": "question", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "{env:HOME}/projects/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.config/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
+        { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "deny" },
+        { "action": "read", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.cache/opencode/**", "effect": "deny" }
+      ]
+    },
     "visual": {
-      "model": "{env:OC_VISUAL_MODEL}"
+      "model": "{env:OC_VISUAL_MODEL}",
+      "permissions": [
+        { "action": "question", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "{env:HOME}/projects/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.config/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
+        { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "deny" },
+        { "action": "read", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.cache/opencode/**", "effect": "deny" }
+      ]
     },
     "title": {
       "model": "{env:OC_SMALL_MODEL}"
