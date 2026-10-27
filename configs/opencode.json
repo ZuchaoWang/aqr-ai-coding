@@ -22,6 +22,8 @@
     { "action": "read", "resource": "*.env", "effect": "deny" },
     { "action": "read", "resource": "*.env.*", "effect": "deny" },
     { "action": "read", "resource": "*.env.example", "effect": "allow" },
+    { "action": "read", "resource": "~/.local/share/opencode/auth.json", "effect": "deny" },
+    { "action": "read", "resource": "~/.local/share/opencode/account.json", "effect": "deny" },
     { "action": "edit", "resource": "~/projects/**", "effect": "deny" }
   ],
   "providers": {
