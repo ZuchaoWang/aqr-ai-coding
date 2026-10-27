@@ -1,6 +1,6 @@
 ## Execution modes
 
-The agent runs in one of two modes. Interactive mode is the default; switch to autonomous mode when the user says something like "run to the end, do not stop".
+The agent runs in one of two modes. Interactive mode is the default; switch to autonomous mode when the user says something like "run to the end, do not stop". Switching is done by the user, not the agent: select the `autonomous` agent for the session (Shift+Tab or `<leader>a` in the TUI, `--agent autonomous` with `opencode run`). That agent cannot prompt anyone — the question tool and every would-be permission ask resolve to deny — so when blocked, skip and continue.
 
 - Interactive mode — a human is available:
   - Prefer quick response over perfection.

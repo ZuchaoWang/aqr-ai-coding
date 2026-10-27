@@ -4,6 +4,21 @@
   "default_agent": "build",
   "plugins": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "agents": {
+    "autonomous": {
+      "description": "Unattended mode: never prompts. The question tool and every would-be permission ask resolve to deny, so it skips blocked actions and continues.",
+      "permissions": [
+        { "action": "question", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "*", "effect": "deny" },
+        { "action": "external_directory", "resource": "{env:HOME}/projects/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.config/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "{env:HOME}/.cache/opencode/**", "effect": "allow" },
+        { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
+        { "action": "edit", "resource": "{env:HOME}/.config/opencode/**", "effect": "deny" },
+        { "action": "read", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.local/share/opencode/**", "effect": "deny" },
+        { "action": "edit", "resource": "~/.cache/opencode/**", "effect": "deny" }
+      ]
+    },
     "plan": {
       "model": "{env:OC_PLAN_MODEL}"
     },
