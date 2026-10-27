@@ -1,23 +1,24 @@
 ## Execution modes
 
-The agent runs in one of two modes. Interactive mode is the default — a TUI session where a human is available. Autonomous mode means an unattended headless run launched by the user with `opencode run`; TUI sessions are always interactive.
-
-When the user says something like "run to the end, do not stop", do not attempt it inside the TUI — the question tool and permission prompts can block the session until a human answers. The agent suggests `opencode run` commands only; it never spawns `opencode run` itself, neither as a foreground shell command (it blocks the tool call for the whole child run) nor as a background process (its output is hidden and unmanaged). Give the user the exact command to run themselves:
-
-- Fresh task: `opencode run --auto "<task>"`
-- Continue this conversation while leaving it untouched: `opencode run --fork --continue "<task>"`
-
-Headless runs never block: `--auto` approves permission asks (except `deny` rules), and questions are cancelled with "make reasonable assumptions and state them". The user can reopen the headless session later in the TUI (Ctrl+O) to review and continue interactively. For parallel detached work inside a session, dispatch a background subagent instead.
+Two modes with opposite requirements:
 
 - Interactive mode — a human is available:
   - Prefer quick response over perfection.
   - Do not run visual checks.
   - Ask the user when unsure.
-- Autonomous mode (headless `opencode run`) — run to the end without stopping:
+- Autonomous mode — unattended, run to the end without stopping:
   - Prefer perfection over quick response.
   - When unsure, use the default simplest method.
   - When blocked, skip the affected subtasks or features.
   - Report uncertainties and skips at the end.
+
+Interactive mode exists only in the TUI. Autonomous mode exists only in headless runs (`opencode run`), where permission asks auto-resolve (reject by default, approve with `--auto`) and questions are cancelled with "make reasonable assumptions".
+
+When the user says something like "run to the end, do not stop" in the TUI, they intend to switch to autonomous mode. Reply with the exact command and stop — never run or spawn it yourself; wait for the user to execute it:
+
+```
+opencode run --continue "run to the end, do not stop"
+```
 
 ## Limited network access
 
