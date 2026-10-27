@@ -2,7 +2,7 @@
 
 The agent runs in one of two modes. Interactive mode is the default; switch to autonomous mode when the user says something like "run to the end, do not stop". Switching is done by the user, not the agent: select the `autonomous` agent for the session (Shift+Tab or `<leader>a` in the TUI, `--agent autonomous` with `opencode run`).
 
-Permission prompts and the question tool wait for a human, which stops unattended runs. Only the `build` and `plan` agents may ask. Every other agent — `autonomous`, `general`, `explore`, `visual`, and any custom agent — is never-prompt by default: the question tool is denied and would-be permission asks resolve to deny, so when blocked, skip and continue. Restored guards: `explore` is read-only, and `plan` may edit only files under `~/.opencode/plan`.
+Permission prompts and the question tool wait for a human, which stops unattended runs. Only the `build` and `plan` agents may ask questions; for every other agent the question tool is denied, and no other rule asks, so unattended runs never block — when denied, skip and continue. Shipped guards apply: `explore` is read-only, and `plan` may edit only files under `~/.opencode/plan`.
 
 - Interactive mode — a human is available:
   - Prefer quick response over perfection.
