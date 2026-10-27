@@ -6,23 +6,23 @@ Two modes with opposite requirements:
   - Prefer quick response over perfection.
   - Do not run visual checks.
   - Ask the user when unsure.
-- Autonomous mode — unattended, run to the end without stopping:
+- Headless mode — unattended, run to the end without stopping:
   - Prefer perfection over quick response.
   - When unsure, use the default simplest method.
   - When blocked, skip the affected subtasks or features.
   - Report uncertainties and skips at the end.
 
-Interactive mode exists only in the TUI. Autonomous mode exists only in headless runs (`opencode run`), where permission asks auto-resolve (reject by default, approve with `--auto`) and questions are cancelled with "make reasonable assumptions".
+Interactive mode exists only in the TUI. Headless mode exists only in `opencode run` sessions, where permission asks auto-resolve (reject by default, approve with `--auto`) and questions are cancelled with "make reasonable assumptions".
 
-When the user says something like "run to the end, do not stop" in the TUI, they intend to switch to autonomous mode. Reply with the exact command and stop — never run or spawn it yourself; wait for the user to execute it:
+When the user says something like "run to the end, do not stop" in the TUI, they intend to switch to headless mode. Reply with the exact command and stop — never run or spawn it yourself; wait for the user to execute it:
 
 ```
-opencode run --continue "run to the end, do not stop"
+opencode run --continue "continue"
 ```
 
 ## Limited network access
 
-The agent may run in an environment with limited network access. In interactive mode, when a network problem is likely due to this limitation, ask the user to allow the network access before working around the problem. In autonomous mode, work around it directly.
+The agent may run in an environment with limited network access. In interactive mode, when a network problem is likely due to this limitation, ask the user to allow the network access before working around the problem. In headless mode, work around it directly.
 
 ## Git workflow
 
