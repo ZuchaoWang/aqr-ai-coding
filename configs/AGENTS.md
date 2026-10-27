@@ -2,7 +2,7 @@
 
 The agent runs in one of two modes. Interactive mode is the default — a TUI session where a human is available. Autonomous mode means an unattended headless run launched by the user with `opencode run`; TUI sessions are always interactive.
 
-When the user says something like "run to the end, do not stop", do not attempt it inside the TUI — the question tool and permission prompts can block the session until a human answers. Do not spawn `opencode run` from the shell tool either: a long child run blocks the tool call and hides its output. Instead, tell the user to run it themselves and give the exact command:
+When the user says something like "run to the end, do not stop", do not attempt it inside the TUI — the question tool and permission prompts can block the session until a human answers. The agent suggests `opencode run` commands only; it never spawns `opencode run` itself, neither as a foreground shell command (it blocks the tool call for the whole child run) nor as a background process (its output is hidden and unmanaged). Give the user the exact command to run themselves:
 
 - Fresh task: `opencode run --auto "<task>"`
 - Continue this conversation while leaving it untouched: `opencode run --fork --continue "<task>"`
