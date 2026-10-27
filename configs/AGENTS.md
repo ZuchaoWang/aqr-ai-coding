@@ -1,14 +1,19 @@
 ## Execution modes
 
-The agent runs in one of two modes. Interactive mode is the default; switch to autonomous mode when the user says something like "run to the end, do not stop". Switching is done by the user, not the agent: select the `autonomous` agent for the session (Shift+Tab or `<leader>a` in the TUI, `--agent autonomous` with `opencode run`).
+The agent runs in one of two modes. Interactive mode is the default — a TUI session where a human is available. Autonomous mode means an unattended headless run launched by the user with `opencode run`; TUI sessions are always interactive.
 
-Permission prompts and the question tool wait for a human, which stops unattended runs. Only the `build` and `plan` agents may ask questions; for every other agent the question tool is denied, and no other rule asks, so unattended runs never block — when denied, skip and continue. Shipped guards apply: `explore` is read-only, and `plan` may edit only files under `~/.opencode/plan`.
+When the user says something like "run to the end, do not stop", do not attempt it inside the TUI — the question tool and permission prompts can block the session until a human answers. Do not spawn `opencode run` from the shell tool either: a long child run blocks the tool call and hides its output. Instead, tell the user to run it themselves and give the exact command:
+
+- Fresh task: `opencode run --auto "<task>"`
+- Continue this conversation while leaving it untouched: `opencode run --fork --continue "<task>"`
+
+Headless runs never block: `--auto` approves permission asks (except `deny` rules), and questions are cancelled with "make reasonable assumptions and state them". The user can reopen the headless session later in the TUI (Ctrl+O) to review and continue interactively. For parallel detached work inside a session, dispatch a background subagent instead.
 
 - Interactive mode — a human is available:
   - Prefer quick response over perfection.
   - Do not run visual checks.
   - Ask the user when unsure.
-- Autonomous mode — run to the end without stopping:
+- Autonomous mode (headless `opencode run`) — run to the end without stopping:
   - Prefer perfection over quick response.
   - When unsure, use the default simplest method.
   - When blocked, skip the affected subtasks or features.

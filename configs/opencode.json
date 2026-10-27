@@ -4,19 +4,8 @@
   "default_agent": "build",
   "plugins": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "agents": {
-    "build": {
-      "permissions": [
-        { "action": "question", "resource": "*", "effect": "allow" }
-      ]
-    },
     "plan": {
-      "model": "{env:OC_PLAN_MODEL}",
-      "permissions": [
-        { "action": "question", "resource": "*", "effect": "allow" }
-      ]
-    },
-    "autonomous": {
-      "description": "Unattended mode: never prompts. When blocked by a deny, skip and continue."
+      "model": "{env:OC_PLAN_MODEL}"
     },
     "visual": {
       "model": "{env:OC_VISUAL_MODEL}"
@@ -33,8 +22,7 @@
     { "action": "read", "resource": "*.env", "effect": "deny" },
     { "action": "read", "resource": "*.env.*", "effect": "deny" },
     { "action": "read", "resource": "*.env.example", "effect": "allow" },
-    { "action": "edit", "resource": "~/projects/**", "effect": "deny" },
-    { "action": "question", "resource": "*", "effect": "deny" }
+    { "action": "edit", "resource": "~/projects/**", "effect": "deny" }
   ],
   "providers": {
     "ark-agent-plan": {
