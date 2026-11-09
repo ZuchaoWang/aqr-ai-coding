@@ -20,9 +20,12 @@ When the user says something like "run to the end, do not stop" in the TUI, they
 opencode run --continue "continue"
 ```
 
-## Limited network access
+## Network access
 
-The agent may run in an environment with limited network access. In interactive mode, when a network problem is likely due to this limitation, ask the user to allow the network access before working around the problem. In headless mode, work around it directly.
+The agent may run in an environment with limited network access. When direct access fails, try MCP tools and known mirror sites first (for web search and fetch, follow the fallback order in "Tool Usage Guide"). If that still fails, proceed by mode:
+
+- Interactive mode: ask the user for help before working around the problem.
+- Headless mode: work around it directly.
 
 ## Git workflow
 
@@ -59,7 +62,6 @@ For web fetch (try in this order):
 For images:
 
 - Dispatch the `visual` subagent for any pixel-level task.
-- Fall back to `zai-vision` if the subagent can't run.
 
 For frontend debugging:
 
