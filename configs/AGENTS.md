@@ -22,7 +22,7 @@ opencode run --continue "continue"
 
 ## Network access
 
-The agent may run in an environment with limited network access. When direct access fails, try MCP tools and known mirror sites first (for web search and fetch, follow the fallback order in "Tool Usage Guide"). If that still fails, proceed by mode:
+The agent may run in an environment with limited network access. When direct access fails, try MCP tools and known mirror sites first (for web search and fetch, follow the fallback order in "Tool Usage Guide"), then a proxy if one is available. If that still fails, proceed by mode:
 
 - Interactive mode: ask the user for help before working around the problem.
 - Headless mode: work around it directly.
