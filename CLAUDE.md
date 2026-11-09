@@ -93,7 +93,7 @@ opencode (global config lives under `~/.config/opencode/`, not `~/.opencode/`):
 <project>/.opencode/agents/<agent-name>.md    # agents, project scope
 ```
 
-The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model and permissions are typically set in `opencode.json` under `agent.<name>` rather than in the agent file.
+The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model and permissions are typically set in `opencode.json` under `agents.<name>` rather than in the agent file.
 
 The live opencode config at `~/.config/opencode/` holds **copies** of this repo's skills, agents, and `configs/` files (not symlinks). After changing this repo, re-copy the changed items there.
 

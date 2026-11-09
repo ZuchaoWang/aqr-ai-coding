@@ -39,7 +39,7 @@ Copy the item verbatim into the host's location:
 <project>/.claude/skills/<skill-name>/        # project scope
 <project>/.claude/agents/<agent-name>.md      # agents, project scope
 
-# opencode v2 (config uses v2 fields: permissions, plugins, providers, mcp.servers; global config under ~/.config/opencode/, not ~/.opencode/)
+# opencode v2 (config uses v2 fields: permissions, plugins, instructions, providers, mcp.servers; global config under ~/.config/opencode/, not ~/.opencode/)
 ~/.config/opencode/skills/<skill-name>/       # user scope
 <project>/.opencode/skills/<skill-name>/      # project scope
 ~/.config/opencode/agents/<agent-name>.md     # agents, user scope
@@ -47,6 +47,8 @@ Copy the item verbatim into the host's location:
 ```
 
 The host reads each file's frontmatter to decide when to invoke; nothing else needs configuration. After changing this repo, re-copy changed items into `~/.config/opencode/` — the live config holds copies, not symlinks.
+
+`opencode.json` references `~/.config/opencode/machine.md` for machine-specific instructions. That file is intentionally outside this repo — each machine keeps its own, and OpenCode silently skips it when absent.
 
 ## Editing
 
