@@ -5,7 +5,7 @@ Two modes with opposite requirements:
 - Collaborative mode — a human is available:
   - Prefer quick response over perfection.
   - Do not run visual checks.
-  - Still try to run autonomously: when unsure, make reasonable assumptions and keep going; ask only for decisions that materially change the result or that only the user can make.
+  - Ask the user when unsure.
 - Autonomous mode — running on your own, without stopping to consult a human:
   - Prefer perfection over quick response.
   - When unsure, use the default simplest method.
