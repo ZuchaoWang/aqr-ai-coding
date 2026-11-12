@@ -2,30 +2,24 @@
 
 Two modes with opposite requirements:
 
-- Interactive mode — a human is available:
+- Collaborative mode — a human is available:
   - Prefer quick response over perfection.
   - Do not run visual checks.
-  - Ask the user when unsure.
-- Headless mode — unattended, run to the end without stopping:
+  - Still try to run autonomously: when unsure, make reasonable assumptions and keep going; ask only for decisions that materially change the result or that only the user can make.
+- Autonomous mode — running on your own, without stopping to consult a human:
   - Prefer perfection over quick response.
   - When unsure, use the default simplest method.
   - When blocked, skip the affected subtasks or features.
   - Report uncertainties and skips at the end.
 
-Interactive mode exists only in the TUI. Headless mode exists only in `opencode run` sessions, where permission asks auto-resolve (reject by default, approve with `--auto`) and questions are cancelled with "make reasonable assumptions".
-
-When the user says something like "run to the end, do not stop" in the TUI, they intend to switch to headless mode. Reply with the exact command and stop — never run or spawn it yourself; wait for the user to execute it:
-
-```
-opencode run --continue "continue"
-```
+Collaborative mode is the default. The mode changes only when the user asks for it — either explicitly by naming the mode, or with phrases like "run to the end, do not stop", which mean switching to autonomous mode. When that happens, switch immediately and keep working in the current session — in autonomous mode, never stop, ask, or hand off.
 
 ## Network access
 
 The agent may run in an environment with limited network access. When direct access fails, try MCP tools and known mirror sites first (for web search and fetch, follow the fallback order in "Tool Usage Guide"), then a proxy if one is available. If that still fails, proceed by mode:
 
-- Interactive mode: ask the user for help before working around the problem.
-- Headless mode: work around it directly.
+- Collaborative mode: ask the user for help before working around the problem.
+- Autonomous mode: work around it directly.
 
 ## Git workflow
 
