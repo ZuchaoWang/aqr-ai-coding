@@ -59,13 +59,13 @@ For web fetch (try in this order):
 
 For images:
 
-- Primary agents should dispatch the `visual` subagent for any pixel-level task; a subagent with native visual ability may handle it directly instead.
+- Primary agents should dispatch the `visual` subagent for any pixel-level task; a subagent with native visual ability may do the work itself.
 
 For frontend debugging:
 
 - Use `playwright` MCP with the **chromium** browser to run the code and inspect the result.
 - Use `chrome-devtools-mcp` for deep inspection (network, console, elements, traces).
-- Primary agents should use the `visual` subagent to verify the rendered result when needed; a subagent with native visual ability may do this directly.
+- Primary agents should use the `visual` subagent to verify the rendered result when needed; a subagent with native visual ability may verify it itself.
 
 ## Long-running processes
 
