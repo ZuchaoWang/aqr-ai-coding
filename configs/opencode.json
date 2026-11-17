@@ -8,10 +8,19 @@
     "plan": {
       "model": "{env:OC_PLAN_MODEL}"
     },
+    "general": {
+      "model": "{env:OC_SMALL_MODEL}"
+    },
+    "explore": {
+      "model": "{env:OC_SMALL_MODEL}"
+    },
     "visual": {
       "model": "{env:OC_VISUAL_MODEL}"
     },
     "title": {
+      "model": "{env:OC_SMALL_MODEL}"
+    },
+    "summary": {
       "model": "{env:OC_SMALL_MODEL}"
     }
   },
