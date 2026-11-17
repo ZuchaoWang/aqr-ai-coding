@@ -31,18 +31,20 @@ disable-model-invocation: <true | false | omit>
 
 `disable-model-invocation: true` marks a skill manual-only (the host agent will not auto-invoke it based on context; the user must name it explicitly). Omit the field or set it `false` for auto-invocable skills.
 
-Each agent file uses the Claude Code subagent frontmatter:
+Each agent file uses the opencode v2 subagent frontmatter:
 
 ```yaml
 ---
 description: <one-line description used by the host to decide dispatch>
 mode: subagent
-permission:
-  edit: <allow | deny>
+permissions:
+  - action: edit
+    resource: "*"
+    effect: <allow | deny>
 ---
 ```
 
-`mode: subagent` runs the agent as an isolated subagent dispatched by the host. `permission.edit: deny` makes it read-only.
+`mode: subagent` runs the agent as an isolated subagent dispatched by the host. An `effect: deny` rule on the `edit` action makes it read-only.
 
 ## Skills and agents currently in this repo
 
@@ -93,7 +95,7 @@ opencode (global config lives under `~/.config/opencode/`, not `~/.opencode/`):
 <project>/.opencode/agents/<agent-name>.md    # agents, project scope
 ```
 
-The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model and permissions are typically set in `opencode.json` under `agents.<name>` rather than in the agent file.
+The host reads the frontmatter to decide when to invoke; nothing else needs configuration. In opencode, an agent's model is set in `opencode.json` under `agents.<name>`; its permissions may live in the agent file or in that entry.
 
 The live opencode config at `~/.config/opencode/` holds **copies** of this repo's skills, agents, and `configs/` files (not symlinks). After changing this repo, re-copy the changed items there.
 
