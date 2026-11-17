@@ -1,6 +1,6 @@
 # aqr-ai-coding
 
-Custom AI-coding skills and agents — three pattern skills (code patterns, design system, doc patterns), a presentation style skill, one cross-cutting working-principles skill, one manual-only cleanup skill, and one visual inspection subagent. Source repository — install by copying the relevant directory into the host's skills or agents location (user or project scope), then point the agent at it from that project's instructions file. Universal-floor items typically go at user scope; taste-based items at project scope, only in projects that want them.
+Custom AI-coding skills and agents — three pattern skills (code patterns, design system, doc patterns), a presentation style skill, one cross-cutting working-principles skill, one manual-only cleanup skill, and one visual inspection subagent. Source repository — install by copying the relevant directory into the host's skills or agents location (user or project scope), then point the agent at it from the project's `AGENTS.md`. Universal-floor items typically go at user scope; taste-based items at project scope, only in projects that want them.
 
 ## Skills
 

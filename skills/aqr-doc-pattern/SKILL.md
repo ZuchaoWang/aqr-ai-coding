@@ -14,7 +14,7 @@ What docs a project has and where they live — the layout only, not content. Ev
 
 ```
 README.md                # what the project is and how to start 
-CLAUDE.md                # agent instructions and toolchain specifics; also a brief top-level directory map
+AGENTS.md                # agent instructions and toolchain specifics; also a brief top-level directory map
 docs/                    # the detailed documentation, including background, research, design, implementation, etc.
 ```
 

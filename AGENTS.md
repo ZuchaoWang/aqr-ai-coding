@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to the coding agent when working with code in this repository.
 
 ## Repository purpose
 
@@ -99,7 +99,7 @@ The live opencode config at `~/.config/opencode/` holds **copies** of this repo'
 
 ## Keeping README in sync
 
-`README.md` is self-contained and does not refer to this file. When a change here affects the skill list, the layout, or the install/sync workflow, update `README.md` to match.
+`README.md` is self-contained and does not duplicate this file. When a change here affects the skill list, the layout, or the install/sync workflow, update `README.md` to match.
 
 ## Verifying changes
 
