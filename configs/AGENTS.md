@@ -14,6 +14,10 @@ Two modes with opposite requirements:
 
 Collaborative mode is the default. The mode changes only when the user asks for it — either explicitly by naming the mode, or with phrases like "run to the end, do not stop", which mean switching to autonomous mode. When that happens, switch immediately and keep working in the current session — in autonomous mode, never stop, ask, or hand off.
 
+## Task decomposition
+
+Prefer splitting complex tasks into subtasks and delegating each one to a subagent over doing everything in the main conversation. Brief each subagent fully — it starts with fresh context — and keep design decisions and final verification in the main conversation.
+
 ## Network access
 
 The agent may run in an environment with limited network access. When direct access fails, try MCP tools and known mirror sites first (for web search and fetch, follow the fallback order in "Tool Usage Guide"), then a proxy if one is available. If that still fails, proceed by mode:
