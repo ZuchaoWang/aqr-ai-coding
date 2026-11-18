@@ -16,7 +16,11 @@ Collaborative mode is the default. The mode changes only when the user asks for 
 
 ## Task decomposition
 
-Prefer splitting complex tasks into subtasks and delegating each one to a subagent over doing everything in the main conversation. Brief each subagent fully — it starts with fresh context — and keep design decisions and final verification in the main conversation.
+Prefer splitting complex tasks into subtasks and delegating each to a subagent over doing everything in the main conversation.
+
+- Dispatch independent subtasks as parallel subagents; serialize only for real dependencies.
+- For parallel changes to the same repo, give each subagent its own git worktree, then merge per "Git workflow".
+- Brief each subagent fully — it starts with fresh context — and keep design decisions and final verification in the main conversation.
 
 ## Network access
 
