@@ -112,36 +112,6 @@
   },
   "mcp": {
     "servers": {
-      "playwright": {
-        "type": "local",
-        "command": ["{env:NVM_BIN}/playwright-mcp", "--headless", "--output-dir", ".playwright-mcp"],
-        "disabled": false,
-        "timeout": { "startup": 30000, "catalog": 30000, "execution": 30000 }
-      },
-      "chrome-devtools-mcp": {
-        "type": "local",
-        "command": ["{env:NVM_BIN}/chrome-devtools-mcp", "--headless"],
-        "disabled": false,
-        "timeout": { "startup": 30000, "catalog": 30000, "execution": 60000 }
-      },
-      "tavily": {
-        "type": "remote",
-        "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}",
-        "disabled": false
-      },
-      "firecrawl": {
-        "type": "remote",
-        "url": "https://mcp.firecrawl.dev/{env:FIRECRAWL_API_KEY}/v2/mcp",
-        "disabled": false
-      },
-      "context7": {
-        "type": "remote",
-        "url": "https://mcp.context7.com/mcp",
-        "headers": {
-          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-        },
-        "disabled": false
-      },
       "zai-web-reader": {
         "type": "remote",
         "url": "https://api.z.ai/api/mcp/web_reader/mcp",
