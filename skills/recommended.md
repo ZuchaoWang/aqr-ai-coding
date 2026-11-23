@@ -114,9 +114,10 @@ path requires a Parallel account (`PARALLEL_API_KEY`).
 
 No authentication is needed. The skill writes `.mmd` diagram text and exports
 it to PNG, SVG, or PDF through the Kroki API over plain HTTP, or locally with
-the `mmdc` CLI (`npm install -g @mermaid-js/mermaid-cli`). Install the skill
-from the `Agents365-ai/creating-mermaid-diagrams` repo.
+the `mmdc` CLI (`npm install -g @mermaid-js/mermaid-cli`). Install the
+`mermaid-skill` skill from the `plugins/mermaid/skills/mermaid-skill` folder
+of the `Agents365-ai/365-skills` repo; upstream marks it manual-only.
 
-- `creating-mermaid-diagrams` — create Mermaid diagrams with automatic
-  layout: flowcharts, sequence and class diagrams, ER diagrams, state
-  machines, and architecture overviews.
+- `mermaid-skill` — create Mermaid diagrams with automatic layout:
+  flowcharts, sequence and class diagrams, ER diagrams, state machines, and
+  architecture overviews.
