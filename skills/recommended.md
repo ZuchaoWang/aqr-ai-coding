@@ -2,12 +2,15 @@
 
 Third-party skills worth installing for opencode. Section 1 covers installing
 skills through an opencode plugin; the remaining sections list standalone
-skills grouped by tool. Install each standalone skill with
-`npx skills add <repo> --skill <skill-id> -g`, or by copying the skill folder
-into `~/.agents/skills/`. Each CLI is installed with npm and authenticated
-through an environment variable; in this setup the API keys are exported by
-the `opencode-slow` and `opencode-fast` launchers, so no credentials are
-stored in tool configuration.
+skills grouped by tool. Install a standalone skill by copying its folder into
+`~/.config/opencode/skills/`. The standard installer
+`npx skills add <repo> --skill <skill-id> -g` copies into `~/.agents/skills/`
+instead, which opencode also reads, but it clones from GitHub, which is
+unreachable in this environment, so the manual copy — fetching through the
+`https://gh-proxy.com` mirror when needed — is the reliable path. Each CLI is
+installed with npm and authenticated through an environment variable; in this
+setup the API keys are exported by the `opencode-slow` and `opencode-fast`
+launchers, so no credentials are stored in tool configuration.
 
 ## 1. plugins
 
@@ -91,9 +94,8 @@ No CLI is involved; install these skills from the `anthropics/skills` repo.
 
 ## 8. K-Dense
 
-Scientific-research skills from the `K-Dense-AI/scientific-agent-skills` repo,
-installed with `npx skills add K-Dense-AI/scientific-agent-skills --skill
-<skill-id> -g`. There is no CLI to install: the skills run bundled Python
+Scientific-research skills from the `K-Dense-AI/scientific-agent-skills` repo.
+There is no CLI to install: the skills run bundled Python
 scripts against public research APIs, and the API keys they mention are
 optional, read from the environment only to raise rate limits or unlock
 optional features. The exception is `research-lookup`, whose default search
