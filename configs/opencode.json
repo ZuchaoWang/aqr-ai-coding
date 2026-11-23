@@ -111,21 +111,22 @@
     }
   },
   "mcp": {
-    "timeout": { "execution": 10000 },
     "servers": {
       "zai-web-reader": {
         "type": "remote",
         "url": "https://api.z.ai/api/mcp/web_reader/mcp",
         "headers": {
           "Authorization": "Bearer {env:Z_AI_API_KEY}"
-        }
+        },
+        "timeout": { "execution": 10000 }
       },
       "zai-web-search": {
         "type": "remote",
         "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
         "headers": {
           "Authorization": "Bearer {env:Z_AI_API_KEY}"
-        }
+        },
+        "timeout": { "execution": 10000 }
       }
     }
   }
