@@ -1,13 +1,39 @@
 # Recommended third-party skills
 
-Third-party skills worth installing for opencode, grouped by tool. Install each
-skill with `npx skills add <repo> --skill <skill-id> -g`, or by copying the
-skill folder into `~/.agents/skills/`. Each CLI is installed with npm and
-authenticated through an environment variable; in this setup the API keys are
-exported by the `opencode-slow` and `opencode-fast` launchers, so no
-credentials are stored in tool configuration.
+Third-party skills worth installing for opencode. Section 1 covers installing
+skills through an opencode plugin; the remaining sections list standalone
+skills grouped by tool. Install each standalone skill with
+`npx skills add <repo> --skill <skill-id> -g`, or by copying the skill folder
+into `~/.agents/skills/`. Each CLI is installed with npm and authenticated
+through an environment variable; in this setup the API keys are exported by
+the `opencode-slow` and `opencode-fast` launchers, so no credentials are
+stored in tool configuration.
 
-## 1. tavily
+## 1. plugins
+
+Skills can also arrive as part of an opencode plugin, which bundles skills
+with code that hooks into every session: add the plugin to the `plugins`
+array in `~/.config/opencode/opencode.json`, and opencode fetches it on its
+next start. Two plugins provide an agent-wide working process this way, and
+they overlap, so install at most one of them; the default for this setup is
+superpowers.
+
+- `superpowers` — process skills for a coding agent: brainstorming before
+  building, systematic debugging before fixing, test-driven development,
+  writing and executing plans, and verifying work before claiming it is
+  done. Install by adding
+  `"superpowers@git+https://github.com/obra/superpowers.git"` to the
+  `plugins` array.
+- `opencode-planning-with-files` — file-based planning for a pure research
+  agent: the plan lives in `task_plan.md`, `progress.md`, and `findings.md`,
+  and the plugin injects it into every turn, reminds the agent after file
+  writes, carries the plan through compaction, and adds the `pwf_init`,
+  `pwf_status`, and `pwf_check` tools. Install by adding
+  `"opencode-planning-with-files"` to the `plugins` array and installing its
+  companion skill with `npx skills add OthmanAdi/planning-with-files --skill
+  planning-with-files -g`.
+
+## 2. tavily
 
 Install the CLI with `npm install -g @tavily/cli` and authenticate by setting
 the `TAVILY_API_KEY` environment variable.
@@ -17,7 +43,7 @@ the `TAVILY_API_KEY` environment variable.
 - `tavily-entity` — fill in a company, person, or organization record for a CRM
   from authoritative web sources through the `tvly` CLI.
 
-## 2. firecrawl
+## 3. firecrawl
 
 Install the CLI with `npm install -g firecrawl-cli` and authenticate by setting
 the `FIRECRAWL_API_KEY` environment variable.
@@ -26,7 +52,7 @@ the `FIRECRAWL_API_KEY` environment variable.
   optional full-page content through the `firecrawl` CLI. Use as the fallback
   when tavily fails.
 
-## 3. context7
+## 4. context7
 
 Install the CLI with `npm install -g ctx7` (or run it ad hoc with
 `npx ctx7@latest`) and authenticate by setting the `CONTEXT7_API_KEY`
@@ -35,7 +61,7 @@ environment variable.
 - `find-docs` — retrieve up-to-date documentation, API references, and code
   examples for any library or framework through the `ctx7` CLI.
 
-## 4. playwright
+## 5. playwright
 
 Install the CLI with `npm install -g @playwright/cli`; no authentication is
 needed. The skill ships inside that npm package — copy its
@@ -45,7 +71,7 @@ needed. The skill ships inside that npm package — copy its
   navigate and interact with pages, take snapshots and screenshots, and inspect
   console output and network traffic.
 
-## 5. chrome devtools
+## 6. chrome devtools
 
 Install the CLI with `npm install -g chrome-devtools-mcp`; no authentication is
 needed. The skill ships inside the same npm package — copy its
@@ -56,14 +82,14 @@ whenever the CLI is updated because command syntax may change.
   `chrome-devtools` CLI: network activity, console output, performance traces,
   memory, and Lighthouse audits.
 
-## 6. anthropic skills
+## 7. anthropic skills
 
 No CLI is involved; install these skills from the `anthropics/skills` repo.
 
 - `docx`, `pdf`, `pptx`, `xlsx` — create and edit Office documents.
 - `skill-creator` — guidance for writing new skills.
 
-## 7. K-Dense
+## 8. K-Dense
 
 Scientific-research skills from the `K-Dense-AI/scientific-agent-skills` repo,
 installed with `npx skills add K-Dense-AI/scientific-agent-skills --skill
