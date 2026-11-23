@@ -47,9 +47,10 @@ Never commit directly to the default branch (`main` or `master`) and never merge
 
 For web search (try in this order):
 
-1. Websearch-related skills — primary tool.
-2. `zai-web-search` MCP — fallback when the skills are unsuitable.
-3. If you need more detail from a specific page, fetch the webpage directly (see "For web fetch" below).
+1. `tavily-search` skill — primary.
+2. `firecrawl-search` skill — fallback when tavily fails; switch after one clear provider failure (quota, rate limit, auth, outage); never run both for one search or retry indefinitely.
+3. `zai-web-search` MCP — fallback when the skills are unsuitable.
+4. If you need more detail from a specific page, fetch the webpage directly (see "For web fetch" below).
 
 For web fetch (try in this order):
 
