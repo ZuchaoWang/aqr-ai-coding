@@ -3,10 +3,7 @@
 Third-party skills worth installing for opencode. Section 1 covers installing
 skills through an opencode plugin; the remaining sections list standalone
 skills grouped by tool. Install each standalone skill by copying its folder
-into `~/.config/opencode/skills/`. Each CLI is installed with npm and
-authenticated through an environment variable; in this setup the API keys are
-exported by the `opencode-slow` and `opencode-fast` launchers, so no
-credentials are stored in tool configuration.
+into `~/.config/opencode/skills/`.
 
 ## 1. plugins
 
