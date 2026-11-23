@@ -63,7 +63,7 @@ When editing a skill:
 
 1. Read the existing `SKILL.md` first to understand the skill's scope and invocation policy.
 2. Match the conventions of existing files in the same skill (numbered headings, `-` bullets, no `---`, no `Status:` header).
-3. Cross-check the split: `aqr-code-pattern` covers code quality, project layout, frontend architecture, and stack styles; `aqr-design-system` covers design-system application; `aqr-doc-pattern` covers docs layout, doc content, and doc formatting; `aqr-presentation` covers deck style only; `aqr-project-principle` covers working standards only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
+3. Cross-check the split: `aqr-code-pattern` covers code quality, project layout, frontend architecture, and stack styles; `aqr-design-system` covers design-system application; `aqr-doc-pattern` covers docs layout, doc content, and doc formatting; `aqr-project-principle` covers working standards only; `aqr-cleanup` is an on-demand action, not a standing criterion. None of the standing criteria should overlap.
 4. If a reference change affects invocation behavior, update `SKILL.md` accordingly.
 
 ## Editing agents

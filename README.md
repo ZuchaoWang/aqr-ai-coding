@@ -1,13 +1,12 @@
 # aqr-ai-coding
 
-Custom AI-coding skills and agents — three pattern skills (code patterns, design system, doc patterns), a presentation style skill, one cross-cutting working-principles skill, one manual-only cleanup skill, and one visual inspection subagent. Source repository — install by copying the relevant directory into the host's skills or agents location (user or project scope), then point the agent at it from the project's `AGENTS.md`. Universal-floor items typically go at user scope; taste-based items at project scope, only in projects that want them.
+Custom AI-coding skills and agents — three pattern skills (code patterns, design system, doc patterns), one cross-cutting working-principles skill, one manual-only cleanup skill, and one visual inspection subagent. Source repository — install by copying the relevant directory into the host's skills or agents location (user or project scope), then point the agent at it from the project's `AGENTS.md`. Universal-floor items typically go at user scope; taste-based items at project scope, only in projects that want them.
 
 ## Skills
 
 - `aqr-code-pattern` — Universal code quality principles plus opinionated repo layout defaults, frontend architecture patterns, and stack style defaults for code, tests, and notebooks.
 - `aqr-design-system` — Applying an existing design system: designing pure HTML+CSS mockups, building new UI, restyling pages, or auditing design consistency.
 - `aqr-doc-pattern` — The recommended docs layout (one blueprint for code repos — system and library; noncode projects are out of scope) plus content criteria for common documentation types and markdown style defaults.
-- `aqr-presentation` — Opinionated PowerPoint style defaults for decks.
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow.
 - `aqr-cleanup` — Manual-only cleanup pass over a code project. Thorough mode checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes; quick mode fixes only typos, stale references, and simple inconsistencies.
 
