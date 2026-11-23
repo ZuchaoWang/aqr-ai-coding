@@ -2,15 +2,11 @@
 
 Third-party skills worth installing for opencode. Section 1 covers installing
 skills through an opencode plugin; the remaining sections list standalone
-skills grouped by tool. Install a standalone skill by copying its folder into
-`~/.config/opencode/skills/`. The standard installer
-`npx skills add <repo> --skill <skill-id> -g` copies into `~/.agents/skills/`
-instead, which opencode also reads, but it clones from GitHub, which is
-unreachable in this environment, so the manual copy — fetching through the
-`https://gh-proxy.com` mirror when needed — is the reliable path. Each CLI is
-installed with npm and authenticated through an environment variable; in this
-setup the API keys are exported by the `opencode-slow` and `opencode-fast`
-launchers, so no credentials are stored in tool configuration.
+skills grouped by tool. Install each standalone skill by copying its folder
+into `~/.config/opencode/skills/`. Each CLI is installed with npm and
+authenticated through an environment variable; in this setup the API keys are
+exported by the `opencode-slow` and `opencode-fast` launchers, so no
+credentials are stored in tool configuration.
 
 ## 1. plugins
 
@@ -32,9 +28,9 @@ superpowers.
   and the plugin injects it into every turn, reminds the agent after file
   writes, carries the plan through compaction, and adds the `pwf_init`,
   `pwf_status`, and `pwf_check` tools. Install by adding
-  `"opencode-planning-with-files"` to the `plugins` array and installing its
-  companion skill with `npx skills add OthmanAdi/planning-with-files --skill
-  planning-with-files -g`.
+  `"opencode-planning-with-files"` to the `plugins` array and copying its
+  companion skill, `planning-with-files`, from the same repo into
+  `~/.config/opencode/skills/`.
 
 ## 2. tavily
 
@@ -68,7 +64,7 @@ environment variable.
 
 Install the CLI with `npm install -g @playwright/cli`; no authentication is
 needed. The skill ships inside that npm package — copy its
-`skills/playwright-cli/` folder into `~/.agents/skills/`.
+`skills/playwright-cli/` folder into `~/.config/opencode/skills/`.
 
 - `playwright-cli` — automate a browser through the `playwright-cli` CLI:
   navigate and interact with pages, take snapshots and screenshots, and inspect
@@ -78,8 +74,8 @@ needed. The skill ships inside that npm package — copy its
 
 Install the CLI with `npm install -g chrome-devtools-mcp`; no authentication is
 needed. The skill ships inside the same npm package — copy its
-`skills/chrome-devtools-cli/` folder into `~/.agents/skills/`, and re-copy it
-whenever the CLI is updated because command syntax may change.
+`skills/chrome-devtools-cli/` folder into `~/.config/opencode/skills/`, and
+re-copy it whenever the CLI is updated because command syntax may change.
 
 - `chrome-devtools-cli` — inspect a browser in depth through the
   `chrome-devtools` CLI: network activity, console output, performance traces,
