@@ -111,6 +111,7 @@
     }
   },
   "mcp": {
+    "timeout": { "execution": 10000 },
     "servers": {
       "zai-web-reader": {
         "type": "remote",
