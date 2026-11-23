@@ -25,6 +25,7 @@ Read-only or scoped subagents with focused capabilities. Installed into the host
 skills/<skill-name>/
   SKILL.md              # skill definition
   reference/            # explanatory docs loaded on demand
+skills/recommended.md   # third-party skills worth installing (doc, not a skill)
 agents/<agent-name>.md  # subagent definition
 configs/                # opencode v2 global config, managed here and copied into ~/.config/opencode/
 ```

@@ -1,0 +1,90 @@
+# Recommended third-party skills
+
+Third-party skills worth installing for opencode, grouped by tool. Install each
+skill with `npx skills add <repo> --skill <skill-id> -g`, or by copying the
+skill folder into `~/.agents/skills/`. Each CLI is installed with npm and
+authenticated through an environment variable; in this setup the API keys are
+exported by the `opencode-slow` and `opencode-fast` launchers, so no
+credentials are stored in tool configuration.
+
+## 1. tavily
+
+Install the CLI with `npm install -g @tavily/cli` and authenticate by setting
+the `TAVILY_API_KEY` environment variable.
+
+- `tavily-search` — search the web, extract page content, map site structure,
+  and crawl sites through the `tvly` CLI. Use as the primary web search.
+- `tavily-entity` — fill in a company, person, or organization record for a CRM
+  from authoritative web sources through the `tvly` CLI.
+
+## 2. firecrawl
+
+Install the CLI with `npm install -g firecrawl-cli` and authenticate by setting
+the `FIRECRAWL_API_KEY` environment variable.
+
+- `firecrawl-search` — web search with query-relevant page excerpts and
+  optional full-page content through the `firecrawl` CLI. Use as the fallback
+  when tavily fails.
+
+## 3. context7
+
+Install the CLI with `npm install -g ctx7` (or run it ad hoc with
+`npx ctx7@latest`) and authenticate by setting the `CONTEXT7_API_KEY`
+environment variable.
+
+- `find-docs` — retrieve up-to-date documentation, API references, and code
+  examples for any library or framework through the `ctx7` CLI.
+
+## 4. playwright
+
+Install the CLI with `npm install -g @playwright/cli`; no authentication is
+needed. The skill ships inside that npm package — copy its
+`skills/playwright-cli/` folder into `~/.agents/skills/`.
+
+- `playwright-cli` — automate a browser through the `playwright-cli` CLI:
+  navigate and interact with pages, take snapshots and screenshots, and inspect
+  console output and network traffic.
+
+## 5. chrome devtools
+
+Install the CLI with `npm install -g chrome-devtools-mcp`; no authentication is
+needed. The skill ships inside the same npm package — copy its
+`skills/chrome-devtools-cli/` folder into `~/.agents/skills/`, and re-copy it
+whenever the CLI is updated because command syntax may change.
+
+- `chrome-devtools-cli` — inspect a browser in depth through the
+  `chrome-devtools` CLI: network activity, console output, performance traces,
+  memory, and Lighthouse audits.
+
+## 6. anthropic skills
+
+No CLI is involved; install these skills from the `anthropics/skills` repo.
+
+- `docx`, `pdf`, `pptx`, `xlsx` — create and edit Office documents.
+- `skill-creator` — guidance for writing new skills.
+
+## 7. K-Dense
+
+Scientific-research skills from the `K-Dense-AI/scientific-agent-skills` repo,
+installed with `npx skills add K-Dense-AI/scientific-agent-skills --skill
+<skill-id> -g`. There is no CLI to install: the skills run bundled Python
+scripts against public research APIs, and the API keys they mention are
+optional, read from the environment only to raise rate limits or unlock
+optional features. The exception is `research-lookup`, whose default search
+path requires a Parallel account (`PARALLEL_API_KEY`).
+
+- `paper-lookup`, `research-lookup` — find scientific papers and compile
+  current scholarly evidence for a research question.
+- `literature-review` — conduct a comprehensive literature review.
+- `scientific-critical-thinking`, `peer-review`, `scholar-evaluation` —
+  evaluate scientific claims and evidence, review papers and manuscripts, and
+  assess scholarly works.
+- `hypothesis-generation`, `experimental-design` — develop testable research
+  hypotheses and design rigorous experiments.
+- `scientific-writing`, `citation-management` — write academic papers and
+  manage references and citations.
+- `statistical-analysis` — perform statistical analysis and interpret results.
+- `scientific-slides`, `scientific-visualization`, `scientific-schematics` —
+  create research presentations, publication-quality figures, and scientific
+  diagrams.
+- `markitdown` — convert PDFs and other documents into Markdown.
