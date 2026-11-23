@@ -109,3 +109,14 @@ path requires a Parallel account (`PARALLEL_API_KEY`).
   create research presentations, publication-quality figures, and scientific
   diagrams.
 - `markitdown` — convert PDFs and other documents into Markdown.
+
+## 9. mermaid
+
+No authentication is needed. The skill writes `.mmd` diagram text and exports
+it to PNG, SVG, or PDF through the Kroki API over plain HTTP, or locally with
+the `mmdc` CLI (`npm install -g @mermaid-js/mermaid-cli`). Install the skill
+from the `Agents365-ai/creating-mermaid-diagrams` repo.
+
+- `creating-mermaid-diagrams` — create Mermaid diagrams with automatic
+  layout: flowcharts, sequence and class diagrams, ER diagrams, state
+  machines, and architecture overviews.
