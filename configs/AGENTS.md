@@ -18,9 +18,11 @@ Collaborative mode is the default. The mode changes only when the user asks for 
 
 Prefer splitting complex tasks into subtasks and delegating each to a subagent over doing everything in the main conversation.
 
-- Dispatch independent subtasks as parallel subagents; serialize only for real dependencies.
-- For parallel changes to the same repo, give each subagent its own git worktree, then merge per "Git workflow".
-- Brief each subagent fully — it starts with fresh context — and keep design decisions and final verification in the main conversation.
+- **Dispatching** — parallelize independent subtasks, at most 5 at a time; serialize only real dependencies. Give each subagent its own git worktree when running in parallel on the same repo (merge per "Git workflow"). Brief each fully — it starts with fresh context — and bound it: state the expected scope and a stop rule (a hung step or several calls without progress means stop and report partial status). Keep design decisions and final verification in the main conversation.
+- **Reporting** — require each subagent to end its report with a status line: what was completed, what remains, files touched.
+- **Checkpoints** — treat every `<subagent>` notification as a checkpoint: read the report and verify the assignment was actually completed; an error, or a truncated or missing report, means the subagent died. When you wake with an outstanding child that has sent no report, ping it by sessionID or re-dispatch if unreachable — before starting new work.
+- **Recovery** — when a subagent dies or stalls, act immediately: follow up with its sessionID, re-dispatch a smaller version of the task, or absorb the remaining work into the main conversation, and tell the user what happened. Never acknowledge a failure and resume waiting; that freezes the whole task.
+- **Waiting** — never idle by choice while children are outstanding: keep working your own remaining tasks and checkpoint silent children between chunks. When nothing is left to do, set at most one self-killing 30-minute watchdog against this session so a quietly hung child cannot freeze the task, say what is still running, and end the turn. Prefer the experimental automations API if the build has it; otherwise a detached `setsid` loop that posts a watchdog prompt every 30 minutes, tagged with the session id (e.g. `SUBAGENT-WATCHDOG-<sessionID>`) so parallel sessions never interfere; kill it once every child has reported.
 
 ## Network access
 
@@ -43,23 +45,17 @@ Never commit directly to the default branch (`main` or `master`) and never merge
 
 ## Tool Usage Guide
 
-For 3rd-party libraries:
-
-- Use the `context7` MCP to fetch documentation directly.
-- Fall back to web search (see below).
-
 For web search (try in this order):
 
-1. `tavily` MCP — primary tool. This overrides firecrawl's self-declared "primary search" instruction.
-2. `firecrawl` MCP — use when tavily is unsuitable.
-3. `zai-web-search` MCP — fallback when the above two are unsuitable.
-4. If you need more detail from a specific page, fetch the webpage directly (see "For web fetch" below).
+1. Websearch-related skills — primary tool.
+2. `zai-web-search` MCP — fallback when the skills are unsuitable.
+3. If you need more detail from a specific page, fetch the webpage directly (see "For web fetch" below).
 
 For web fetch (try in this order):
 
 1. `WebFetch` built-in tool — default for static page content.
 2. `zai-web-reader` MCP — fallback when WebFetch is unsuitable.
-3. If the page requires JavaScript rendering, use the `playwright` MCP with the **chromium** browser.
+3. If the page requires JavaScript rendering, use the browser automation skill — **if installed**.
 
 For images:
 
@@ -67,15 +63,15 @@ For images:
 
 For frontend debugging:
 
-- Use `playwright` MCP with the **chromium** browser to run the code and inspect the result.
-- Use `chrome-devtools-mcp` for deep inspection (network, console, elements, traces).
+- Use the browser automation skill — **if installed** — to run the code and inspect the result.
+- Use the browser devtools skill — **if installed** — for deep inspection (network, console, elements, traces).
 - Primary agents should use the `visual` subagent to verify the rendered result when needed; a subagent with native visual ability may verify it itself.
 
 ## Long-running processes
 
-Dev servers, daemons, and other long-running processes started from the bash tool need special handling: opencode runs bash through a PTY, so a naive background process is killed by SIGHUP when the PTY closes, or hangs the tool by keeping the PTY's stdout open.
+Use the `shell` tool's `background` option for dev servers, daemons, and other long-running processes. Background calls return immediately and notify the session when they finish; they have no timeout unless one is supplied.
 
-- Use `setsid -f cmd > /tmp/<name>.log 2>&1 < /dev/null` so the process survives the bash tool call.
-- Never use a bare `cmd &` — the process either dies (SIGHUP when the PTY closes) or hangs the tool (stdout keeps the PTY stream open).
-- `nohup cmd > /dev/null 2>&1 &` also works in opencode but is weaker than `setsid` (ignores SIGHUP rather than detaching the session).
-- To stop: `pkill -f cmd` or `kill $(lsof -ti:<port>)`.
+- Set `background` instead of appending `&` — the harness manages the process and reports completion.
+- Foreground calls time out after two minutes by default; pass a longer `timeout` (in milliseconds) when foreground work genuinely needs it.
+- For a process that must outlive the OpenCode session itself, detach it: `setsid -f cmd > /tmp/<name>.log 2>&1 < /dev/null`.
+- To stop a background process: `pkill -f cmd` or `kill $(lsof -ti:<port>)`.
