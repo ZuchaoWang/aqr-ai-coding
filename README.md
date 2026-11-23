@@ -10,11 +10,12 @@ Custom AI-coding skills and agents — three pattern skills (code patterns, desi
 - `aqr-project-principle` — Working principles that define the quality bar for project work: what good work looks like, not a fixed workflow.
 - `aqr-cleanup` — Manual-only cleanup pass over a code project. Thorough mode checks code/doc consistency, addresses code problems and quality risks, flags design-level complexity, and verifies fixes; quick mode fixes only typos, stale references, and simple inconsistencies.
 
-The five auto-invocable skills are doc only — no executable code. `aqr-cleanup` is manual-only (invoked by name).
+All five skills are doc only — no executable code. `aqr-cleanup` is manual-only
+(invoked by name); the other four are auto-invocable.
 
 ## Agents
 
-Read-only or scoped subagents with focused capabilities. Installed into the host's agents location; invoked by the host agent when their `description` matches the task.
+Focused subagents installed into the host's agents location; invoked by the host agent when their `description` matches the task.
 
 - `visual` — General-purpose agent with vision: reads and edits code and can see screenshots, images, SVG/PNG, and rendered PDFs. Use for any task where pixels matter - investigating rendering bugs, verifying UI, reading diagrams, or repairing what it finds. Returns `CLARIFY` when context is insufficient, otherwise completes the task like any general agent. The vision-capable model is configured externally, not in the agent file.
 
@@ -34,11 +35,6 @@ configs/                # opencode v2 global config, managed here and copied int
 Copy the item verbatim into the host's location:
 
 ```
-# Claude Code
-~/.claude/skills/<skill-name>/                # user scope
-<project>/.claude/skills/<skill-name>/        # project scope
-<project>/.claude/agents/<agent-name>.md      # agents, project scope
-
 # opencode v2 (config uses v2 fields: permissions, plugins, instructions, providers, mcp.servers; global config under ~/.config/opencode/, not ~/.opencode/)
 ~/.config/opencode/skills/<skill-name>/       # user scope
 <project>/.opencode/skills/<skill-name>/      # project scope

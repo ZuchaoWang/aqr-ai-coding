@@ -15,6 +15,7 @@ skills/
   <skill-name>/
     SKILL.md                  # skill definition: YAML frontmatter + body
     reference/                # explanatory docs loaded on demand; subfolders allowed
+skills/recommended.md        # third-party skills worth installing (doc, not a skill)
 agents/<agent-name>.md        # subagent definition: YAML frontmatter + body
 configs/                      # opencode global config (AGENTS.md, opencode.json)
 ```
@@ -77,14 +78,6 @@ When editing an agent:
 ## Installing skills and agents
 
 These are opt-in. Skills that state a universal floor are typically installed at user scope; taste-based skills at project scope, only in projects that want them. Copy or symlink each item verbatim into the host's location.
-
-Claude Code:
-
-```
-~/.claude/skills/<skill-name>/               # user scope
-<project>/.claude/skills/<skill-name>/        # project scope
-<project>/.claude/agents/<agent-name>.md      # agents, project scope
-```
 
 opencode (global config lives under `~/.config/opencode/`, not `~/.opencode/`):
 
