@@ -34,7 +34,8 @@
     { "action": "read", "resource": "*.env.example", "effect": "allow" },
     { "action": "read", "resource": "~/.local/share/opencode/auth.json", "effect": "deny" },
     { "action": "read", "resource": "~/.local/share/opencode/account.json", "effect": "deny" },
-    { "action": "edit", "resource": "/*", "effect": "ask" }
+    { "action": "edit", "resource": "/*", "effect": "ask" },
+    { "action": "edit", "resource": "/tmp/*", "effect": "allow" }
   ],
   "providers": {
     "ark-agent-plan": {
