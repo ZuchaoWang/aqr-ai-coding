@@ -121,3 +121,34 @@ of the `Agents365-ai/365-skills` repo; upstream marks it manual-only.
 - `mermaid-skill` — create Mermaid diagrams with automatic layout:
   flowcharts, sequence and class diagrams, ER diagrams, state machines, and
   architecture overviews.
+
+## 10. writing style
+
+No CLI is required; each skill comes from its own GitHub repo, installed by
+copying the named folder into `~/.config/opencode/skills/`. They divide the
+work: `zh-tech-writing` sets the standard for Chinese technical documents,
+`talk-like-a-human` is a general patch for everything else an agent writes.
+
+- `zh-tech-writing` — write or revise Chinese technical documents (README,
+  design docs, API references, tutorials) so they read like a senior
+  engineer wrote them: short affirmative sentences, facts instead of
+  adjectives, no AI filler. Rules are distilled from Ruan Yifeng's
+  `ruanyf/document-style-guide` plus a 14-item list of AI-writing patterns.
+  Install from the `leter/zh-tech-writing` repo by copying its
+  `skills/zh-tech-writing/` folder. Optional companion: the `autocorrect`
+  CLI inserts spaces between CJK and Latin text and converts half-width
+  punctuation to full-width in Chinese sentences; when it is on PATH the
+  skill runs `autocorrect --fix` after writing, and skips the step when
+  absent.
+- `talk-like-a-human` — make everything else an agent writes in Chinese or
+  English read plainly and accurately: chat replies, reports, docs, and
+  slides, plus code comments, commit messages, PR descriptions, and error
+  messages. Restores dropped subjects and connectives, keeps one name per
+  thing, never invents numbers or details the source lacks, removes
+  defensive hedging and stock AI phrasing, and marks claims the source does
+  not support instead of guessing. Install from the
+  `caredhieacid/talk-like-a-human` repo by copying its `talk-like-a-human/`
+  folder; upstream's `install.py` targets Claude Code, Codex, and Gemini CLI
+  and is not used with opencode. The folder also carries
+  `scripts/check_terms.py`, an optional Python 3 script that checks a
+  project's documents against a glossary of approved terms.
